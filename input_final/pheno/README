@@ -1,0 +1,8 @@
+FILE	DESCRIPTION
+agincourt-pilot-data.csv	pheno data from bushbuckridge (agincourt) stool collection round 1
+agt_swt_metadata_study.csv	16S manuscript metadata provided by Voke 4-25-20
+awi-phase1.csv			participant data from AWI-gen
+codebook.pdf			AWI-gen codebook
+redcap_batch2.csv		pheno data from bushbuckridge (agincourt) stool collection round 2
+soweto.txt			pheno data from soweto stool collection
+za_sequenced_samples.txt	samples for which metagenomic data were generated

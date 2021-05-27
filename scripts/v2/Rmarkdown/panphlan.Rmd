@@ -1,0 +1,150 @@
+---
+title: "Panphlan results"
+author: "Fiona Tamburini"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: paper
+    code_folding: hide
+    toc: true
+    toc_float: true
+    toc_depth: 2
+---
+
+## Methods
+
+Panphlan v3 with updated markers (v2019)
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+knitr::opts_knit$set(root.dir = "/Users/tamburif/za-microbiome/")
+```
+
+```{r}
+library(ggplot2)
+library(vegan)
+library(dplyr)
+library(ggrepel)
+library(reshape2)
+library(grid)
+library(MASS)
+library(gridExtra)
+library(cowplot)
+
+# read metadata ---
+za_meta <- readRDS("rds/za_meta.rds")
+za_pheno <- readRDS("rds/za_pheno.rds")
+za_pheno$site_abbrev <- ifelse(za_pheno$site == "Bushbuckridge", "BBR", "SWT")
+
+### panphlan nmds ----
+
+# function to ordinate and plot panphlan results table
+plot_panphlan <- function(panphlan_f, nmds = T, plot_title = ""){
+  
+  # read panphlan pangenome matrix
+  panphlan <- read.table(panphlan_f, sep = "\t", header = T, row.names = 1, quote = "")
+  colnames(panphlan) <- gsub('.tsv', '', colnames(panphlan))
+  
+  # filter for relevant samples
+  panphlan <- panphlan[, which(names(panphlan) %in% za_pheno$sample | grepl("REF", names(panphlan)))]
+  
+  # calculate jaccard distance
+  panphlan_t <- t(panphlan)
+  dist_matrix <- vegdist(panphlan_t, method = "jaccard", binary = T)
+  # colnames(dist_matrix) <- colnames(panphlan)
+  
+  # ordinate
+  if (nmds){
+    # default nmds
+    vare_mds0 <- isoMDS(dist_matrix)
+    mds_df <- data.frame(vare_mds0$points)
+    mds_df$sample <- row.names(mds_df)
+  } else {
+    # calculate pcoa/mds
+    mds <- cmdscale(dist_matrix)
+    mds_df <- data.frame(sample = rownames(mds),
+                         X1 = mds[,1],
+                         X2 = mds[,2])
+  }
+  
+  # merge mds and pheno
+  mds_pheno <- merge(mds_df, za_pheno, by = "sample", all.x = T)
+  mds_pheno$site[is.na(mds_pheno$site)] <- "Reference"
+  
+  # no labels
+  ggplot(mds_pheno, aes(X1, X2, color = site)) +
+    geom_point(size = 2, alpha = 0.75) +
+    labs(x = ifelse(nmds, "NMDS 1", "MDS 1"),
+         y = ifelse(nmds, "NMDS 2", "MDS 2"),
+         color = "",
+         title = plot_title) +
+    theme_cowplot() +
+    background_grid() +
+    theme(legend.position = "bottom",
+          legend.justification = "center",
+          plot.title = element_text(face = "italic")) +
+    coord_fixed()
+}
+```
+
+## Adonis - significance tests by site
+
+Model: distance matrix ~ site
+
+```{r}
+## adonis
+adonis_res <- data.frame()
+
+sp <- c("Prevotella_copri",
+        "Faecalibacterium_prausnitzii",
+        "Bacteroides_vulgatus",
+        "Eubacterium_siraeum",
+        "Alistipes_putredinis",
+        "Butyrivibrio_crossotus")
+
+for (org in sp){
+  panphlan_f <- paste0("input_final/panphlan_v2/", org, "_profile_sensitive.txt")
+  
+  # read panphlan pangenome matrix
+  panphlan <- read.table(panphlan_f, sep = "\t", header = T, row.names = 1, quote = "")
+  colnames(panphlan) <- gsub('.tsv', '', colnames(panphlan))
+  
+  # metadata
+  meta <- za_pheno %>%
+    filter(sample %in% names(panphlan))
+  
+  # filter for relevant samples
+  panphlan <- panphlan[, meta$sample]
+  
+  # calculate jaccard distance
+  panphlan_t <- t(panphlan)
+  dist_matrix <- vegdist(panphlan_t, method = "jaccard", binary = T)
+  
+  ad <- adonis(dist_matrix~site, meta)
+  
+  adonis_res <- rbind(adonis_res,
+                      data.frame("Species" = org,
+                                 "R2" = ad$aov.tab$R2[1],
+                                 "pvalue" = ad$aov.tab$`Pr(>F)`[1]))
+}
+
+kableExtra::kable(adonis_res) %>%
+  kableExtra::kable_styling(full_width = F)
+```
+
+## Ordination
+
+Jaccard distance-based multidimensional scaling
+
+```{r, fig.width = 10, fig.height = 10}
+plots <- list()
+for (org in sp){
+  infile <- paste0("input_final/panphlan_v2/", org, "_profile_sensitive.txt")
+  p <- plot_panphlan(infile, nmds = F, plot_title = gsub("_", " ", org))
+  
+  plots[[org]] <- p
+}
+
+plot_grid(plotlist = plots, ncol = 2)
+
+```

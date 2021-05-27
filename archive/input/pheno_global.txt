@@ -1,0 +1,556 @@
+sample	site	site2
+1	A62_01_1FE	Madagascar	Madagascar
+2	A79_02_1FE	Madagascar	Madagascar
+3	A04_01_1FE	Madagascar	Madagascar
+4	A90_03_1FE	Madagascar	Madagascar
+5	A55_01_1FE	Madagascar	Madagascar
+6	A47_02_1FE	Madagascar	Madagascar
+7	A66_02_1FE	Madagascar	Madagascar
+8	A34_01_1FE	Madagascar	Madagascar
+9	A55_02_1FE	Madagascar	Madagascar
+10	A73_02_1FE	Madagascar	Madagascar
+11	A01_02_1FE	Madagascar	Madagascar
+12	A94_03_1FE	Madagascar	Madagascar
+13	A08_01_1FE	Madagascar	Madagascar
+14	A23_01_1FE	Madagascar	Madagascar
+15	A15_02_1FE	Madagascar	Madagascar
+16	A69_01_1FE	Madagascar	Madagascar
+17	A36_01_1FE	Madagascar	Madagascar
+18	A88_02_1FE	Madagascar	Madagascar
+19	A58_03_1FE	Madagascar	Madagascar
+20	V07_02_2FE	Madagascar	Madagascar
+21	A19_03_1FE	Madagascar	Madagascar
+22	V19_02_2FE	Madagascar	Madagascar
+23	A49_01_1FE	Madagascar	Madagascar
+24	A43_02_1FE	Madagascar	Madagascar
+25	A34_02_1FE	Madagascar	Madagascar
+26	A53_01_1FE	Madagascar	Madagascar
+27	A72_01_1FE	Madagascar	Madagascar
+28	A48_01_1FE	Madagascar	Madagascar
+29	A91_02_1FE	Madagascar	Madagascar
+30	A45_02_1FE	Madagascar	Madagascar
+31	A70_03_1FE	Madagascar	Madagascar
+32	A83_02_1FE	Madagascar	Madagascar
+33	A13_03_1FE	Madagascar	Madagascar
+34	A24_02_1FE	Madagascar	Madagascar
+35	V07_01_2FE	Madagascar	Madagascar
+36	A94_02_1FE	Madagascar	Madagascar
+37	A10_02_1FE	Madagascar	Madagascar
+38	A39_01_1FE	Madagascar	Madagascar
+39	A94_01_1FE	Madagascar	Madagascar
+40	A54_02_1FE	Madagascar	Madagascar
+41	A07_01_1FE	Madagascar	Madagascar
+42	A93_01_1FE	Madagascar	Madagascar
+43	V32_02_2FE	Madagascar	Madagascar
+44	A20_03_1FE	Madagascar	Madagascar
+45	A22_01_1FE	Madagascar	Madagascar
+46	A09_01_1FE	Madagascar	Madagascar
+47	A25_01_1FE	Madagascar	Madagascar
+48	A13_01_1FE	Madagascar	Madagascar
+49	A27_02_1FE	Madagascar	Madagascar
+50	V40_01_1FE	Madagascar	Madagascar
+51	V53_02_1FE	Madagascar	Madagascar
+52	A24_04_1FE	Madagascar	Madagascar
+53	V31_01_2FE	Madagascar	Madagascar
+54	A70_01_1FE	Madagascar	Madagascar
+55	A56_01_1FE	Madagascar	Madagascar
+56	A04_04_1FE	Madagascar	Madagascar
+57	A67_01_1FE	Madagascar	Madagascar
+58	A36_02_1FE	Madagascar	Madagascar
+59	A28_02_1FE	Madagascar	Madagascar
+60	V19_01_2FE	Madagascar	Madagascar
+61	V54_01_1FE	Madagascar	Madagascar
+62	A10_01_1FE	Madagascar	Madagascar
+63	A75_02_1FE	Madagascar	Madagascar
+64	A68_01_1FE	Madagascar	Madagascar
+65	A19_01_1FE	Madagascar	Madagascar
+66	A03_01_1FE	Madagascar	Madagascar
+67	A44_01_1FE	Madagascar	Madagascar
+68	A92_01_1FE	Madagascar	Madagascar
+69	V18_02_1FE	Madagascar	Madagascar
+70	A59_01_1FE	Madagascar	Madagascar
+71	A41_01_1FE	Madagascar	Madagascar
+72	A11_01_1FE	Madagascar	Madagascar
+73	A81_03_1FE	Madagascar	Madagascar
+74	V30_01_1FE	Madagascar	Madagascar
+75	V06_02_1FE	Madagascar	Madagascar
+76	A69_02_1FE	Madagascar	Madagascar
+77	V36_02_2FE	Madagascar	Madagascar
+78	A42_02_1FE	Madagascar	Madagascar
+79	A48_05_1FE	Madagascar	Madagascar
+80	A29_01_1FE	Madagascar	Madagascar
+81	A46_02_1FE	Madagascar	Madagascar
+82	A39_02_1FE	Madagascar	Madagascar
+83	A14_01_1FE	Madagascar	Madagascar
+84	A46_01_1FE	Madagascar	Madagascar
+85	V48_03_2FE	Madagascar	Madagascar
+86	A32_01_1FE	Madagascar	Madagascar
+87	A47_01_1FE	Madagascar	Madagascar
+88	V50_01_2FE	Madagascar	Madagascar
+89	V01_01_1FE	Madagascar	Madagascar
+90	A91_01_1FE	Madagascar	Madagascar
+91	A95_01_1FE	Madagascar	Madagascar
+92	A89_01_1FE	Madagascar	Madagascar
+93	A39_04_1FE	Madagascar	Madagascar
+94	V12_01_2FE	Madagascar	Madagascar
+95	A81_01_1FE	Madagascar	Madagascar
+96	A85_01_1FE	Madagascar	Madagascar
+97	A09_02_1FE	Madagascar	Madagascar
+98	A72_02_1FE	Madagascar	Madagascar
+99	A05_01_1FE	Madagascar	Madagascar
+100	A40_02_1FE	Madagascar	Madagascar
+101	A20_01_1FE	Madagascar	Madagascar
+102	A73_01_1FE	Madagascar	Madagascar
+103	A89_02_1FE	Madagascar	Madagascar
+104	A62_03_1FE	Madagascar	Madagascar
+105	A35_01_1FE	Madagascar	Madagascar
+106	A82_02_1FE	Madagascar	Madagascar
+107	A58_01_1FE	Madagascar	Madagascar
+108	A90_04_1FE	Madagascar	Madagascar
+109	V50_01_1FE	Madagascar	Madagascar
+110	A06_01_1FE	Madagascar	Madagascar
+111	V50_02_1FE	Madagascar	Madagascar
+112	A02_01_1FE	Madagascar	Madagascar
+113	TZ_47979	Tanzania	Tanzania
+114	TZ_93321	Tanzania	Tanzania
+115	TZ_67706	Tanzania	Tanzania
+116	TZ_21460	Tanzania	Tanzania
+117	TZ_41014	Tanzania	Tanzania
+118	TZ_10742	Tanzania	Tanzania
+119	TZ_73414	Tanzania	Tanzania
+120	TZ_83893	Tanzania	Tanzania
+121	TZ_65172	Tanzania	Tanzania
+122	TZ_65642	Tanzania	Tanzania
+123	TZ_90808	Tanzania	Tanzania
+124	TZ_16581	Tanzania	Tanzania
+125	TZ_24827	Tanzania	Tanzania
+126	TZ_70090	Tanzania	Tanzania
+127	TZ_86768	Tanzania	Tanzania
+128	TZ_37609	Tanzania	Tanzania
+129	TZ_39227	Tanzania	Tanzania
+130	TZ_81781	Tanzania	Tanzania
+131	TZ_42864	Tanzania	Tanzania
+132	TZ_29321	Tanzania	Tanzania
+133	TZ_87532	Tanzania	Tanzania
+134	TZ_76219	Tanzania	Tanzania
+135	TZ_83985	Tanzania	Tanzania
+136	TZ_25806	Tanzania	Tanzania
+137	TZ_83788	Tanzania	Tanzania
+138	TZ_38244	Tanzania	Tanzania
+139	TZ_43638	Tanzania	Tanzania
+140	TZ_99300	Tanzania	Tanzania
+141	TZ_42041	Tanzania	Tanzania
+142	TZ_86771	Tanzania	Tanzania
+143	TZ_60579	Tanzania	Tanzania
+144	TZ_83627	Tanzania	Tanzania
+145	TZ_91827	Tanzania	Tanzania
+146	TZ_40311	Tanzania	Tanzania
+147	TZ_39371	Tanzania	Tanzania
+148	TZ_21618	Tanzania	Tanzania
+149	TZ_14139	Tanzania	Tanzania
+150	TZ_12739	Tanzania	Tanzania
+151	TZ_61717	Tanzania	Tanzania
+152	TZ_27689	Tanzania	Tanzania
+153	SRS015190	United States	United States
+154	SRS015960	United States	United States
+155	SRS017103	United States	United States
+156	SRS018427	United States	United States
+157	SRS022137	United States	United States
+158	SRS013158	United States	United States
+159	SRS019968	United States	United States
+160	SRS146812	United States	United States
+161	SRS016495	United States	United States
+162	SRS016954	United States	United States
+163	SRS020328	United States	United States
+164	SRS015794	United States	United States
+165	SRS018656	United States	United States
+166	SRS015890	United States	United States
+167	SRS018575	United States	United States
+168	SRS146764	United States	United States
+169	SRS063489	United States	United States
+170	SRS144506	United States	United States
+171	SRS054352	United States	United States
+172	SRS015133	United States	United States
+173	SRS011061	United States	United States
+174	SRS064973	United States	United States
+175	SRS143181	United States	United States
+176	SRS063518	United States	United States
+177	SRS016203	United States	United States
+178	SRS015663	United States	United States
+179	SRS022713	United States	United States
+180	SRS011271	United States	United States
+181	SRS014459	United States	United States
+182	SRS023346	United States	United States
+183	SRS016437	United States	United States
+184	SRS052697	United States	United States
+185	SRS011405	United States	United States
+186	SRS020622	United States	United States
+187	SRS053335	United States	United States
+188	SRS043667	United States	United States
+189	SRS016056	United States	United States
+190	SRS014313	United States	United States
+191	SRS049712	United States	United States
+192	SRS018313	United States	United States
+193	SRS018817	United States	United States
+194	SRS019397	United States	United States
+195	SRS147139	United States	United States
+196	SRS048870	United States	United States
+197	SRS097889	United States	United States
+198	SRS015578	United States	United States
+199	SRS148196	United States	United States
+200	SRS015782	United States	United States
+201	SRS015264	United States	United States
+202	SRS018133	United States	United States
+203	SRS021948	United States	United States
+204	SRS053398	United States	United States
+205	SRS014683	United States	United States
+206	SRS054590	United States	United States
+207	SRS077294	United States	United States
+208	SRS148424	United States	United States
+209	SRS045713	United States	United States
+210	SRS013098	United States	United States
+211	SRS021153	United States	United States
+212	SRS098571	United States	United States
+213	SRS024663	United States	United States
+214	SRS042284	United States	United States
+215	SRS017916	United States	United States
+216	SRS019601	United States	United States
+217	SRS013687	United States	United States
+218	SRS016335	United States	United States
+219	SRS017247	United States	United States
+220	SRS022524	United States	United States
+221	SRS017433	United States	United States
+222	SRS017521	United States	United States
+223	SRS045004	United States	United States
+224	SRS014923	United States	United States
+225	SRS050752	United States	United States
+226	SRS054956	United States	United States
+227	SRS016753	United States	United States
+228	SRS011452	United States	United States
+229	SRS015431	United States	United States
+230	SRS019582	United States	United States
+231	SRS017191	United States	United States
+232	SRS011586	United States	United States
+233	SRS146813	United States	United States
+234	SRS017701	United States	United States
+235	SRS075963	United States	United States
+236	SRS019910	United States	United States
+237	SRS018351	United States	United States
+238	SRS013476	United States	United States
+239	SRS017307	United States	United States
+240	SRS143070	United States	United States
+241	SRS098827	United States	United States
+242	SRS147346	United States	United States
+243	SRS014235	United States	United States
+244	SRS049900	United States	United States
+245	SRS016018	United States	United States
+246	SRS017821	United States	United States
+247	SRS144362	United States	United States
+248	SRS016267	United States	United States
+249	SRS104311	United States	United States
+250	SRS049959	United States	United States
+251	SRS147022	United States	United States
+252	SRS148721	United States	United States
+253	SRS021219	United States	United States
+254	SRS043001	United States	United States
+255	SRS014979	United States	United States
+256	SRS015854	United States	United States
+257	SRS011302	United States	United States
+258	SRS023583	United States	United States
+259	SRS011134	United States	United States
+260	SRS020869	United States	United States
+261	SRS016095	United States	United States
+262	SRS011529	United States	United States
+263	SRS015217	United States	United States
+264	SRS019267	United States	United States
+265	SRS048164	United States	United States
+266	SRS014287	United States	United States
+267	SRS015369	United States	United States
+268	SRS012902	United States	United States
+269	SRS014613	United States	United States
+270	SRS013521	United States	United States
+271	SRS020233	United States	United States
+272	SRS011239	United States	United States
+273	SRS053356	United States	United States
+274	SRS013800	United States	United States
+275	SRS012849	United States	United States
+276	SRS147088	United States	United States
+277	SRS013638	United States	United States
+278	SRS019381	United States	United States
+279	SRS055533	United States	United States
+280	SRS142599	United States	United States
+281	SRS098644	United States	United States
+282	SRS077194	United States	United States
+283	SRS016585	United States	United States
+284	SRS104485	United States	United States
+285	SRS013951	United States	United States
+286	SRS024388	United States	United States
+287	SRS011084	United States	United States
+288	A1	South Africa	Soweto
+289	A2	South Africa	Soweto
+290	A4	South Africa	Soweto
+291	A6	South Africa	Soweto
+292	A9	South Africa	Soweto
+293	A10	South Africa	Soweto
+294	A11	South Africa	Soweto
+295	A12	South Africa	Soweto
+296	A13	South Africa	Soweto
+297	A15	South Africa	Soweto
+298	A16	South Africa	Soweto
+299	A17	South Africa	Soweto
+300	A18	South Africa	Soweto
+301	A19	South Africa	Soweto
+302	A21	South Africa	Soweto
+303	A22	South Africa	Soweto
+304	A24	South Africa	Soweto
+305	A25	South Africa	Soweto
+306	A26	South Africa	Soweto
+307	A27	South Africa	Soweto
+308	A28	South Africa	Soweto
+309	A29	South Africa	Soweto
+310	A30	South Africa	Soweto
+311	A31	South Africa	Soweto
+312	A32	South Africa	Soweto
+313	A33	South Africa	Soweto
+314	A34	South Africa	Soweto
+315	A35	South Africa	Soweto
+316	A36	South Africa	Soweto
+317	A37	South Africa	Soweto
+318	A38	South Africa	Soweto
+319	A39	South Africa	Soweto
+320	A41	South Africa	Soweto
+321	A42	South Africa	Soweto
+322	A43	South Africa	Soweto
+323	A44	South Africa	Soweto
+324	A45	South Africa	Soweto
+325	A46	South Africa	Soweto
+326	A47	South Africa	Soweto
+327	A48	South Africa	Soweto
+328	A49	South Africa	Soweto
+329	A50	South Africa	Soweto
+330	A51	South Africa	Soweto
+331	A52	South Africa	Soweto
+332	A53	South Africa	Soweto
+333	A54	South Africa	Soweto
+334	A55	South Africa	Soweto
+335	A56	South Africa	Soweto
+336	A57	South Africa	Soweto
+337	A58	South Africa	Soweto
+338	A59	South Africa	Bushbuckridge
+339	A60	South Africa	Bushbuckridge
+340	A61	South Africa	Bushbuckridge
+341	A62	South Africa	Bushbuckridge
+342	A63	South Africa	Bushbuckridge
+343	A64	South Africa	Bushbuckridge
+344	A66	South Africa	Bushbuckridge
+345	A67	South Africa	Bushbuckridge
+346	A68	South Africa	Bushbuckridge
+347	A69	South Africa	Bushbuckridge
+348	A70	South Africa	Bushbuckridge
+349	A71	South Africa	Bushbuckridge
+350	A72	South Africa	Bushbuckridge
+351	A73	South Africa	Bushbuckridge
+352	A75	South Africa	Bushbuckridge
+353	A77	South Africa	Bushbuckridge
+354	A78	South Africa	Bushbuckridge
+355	A79	South Africa	Bushbuckridge
+356	B1	South Africa	Bushbuckridge
+357	B2	South Africa	Bushbuckridge
+358	B4	South Africa	Bushbuckridge
+359	B5	South Africa	Bushbuckridge
+360	B7	South Africa	Bushbuckridge
+361	B8	South Africa	Bushbuckridge
+362	B9	South Africa	Bushbuckridge
+363	B10	South Africa	Bushbuckridge
+364	B11	South Africa	Bushbuckridge
+365	B12	South Africa	Bushbuckridge
+366	B13	South Africa	Bushbuckridge
+367	B14	South Africa	Bushbuckridge
+368	B15	South Africa	Bushbuckridge
+369	B16	South Africa	Bushbuckridge
+370	B17	South Africa	Bushbuckridge
+371	B18	South Africa	Bushbuckridge
+372	B20	South Africa	Bushbuckridge
+373	B22	South Africa	Bushbuckridge
+374	B23	South Africa	Bushbuckridge
+375	B24	South Africa	Bushbuckridge
+376	B25	South Africa	Bushbuckridge
+377	B26	South Africa	Bushbuckridge
+378	B27	South Africa	Bushbuckridge
+379	B28	South Africa	Bushbuckridge
+380	B29	South Africa	Bushbuckridge
+381	B30	South Africa	Bushbuckridge
+382	B31	South Africa	Bushbuckridge
+383	B32	South Africa	Bushbuckridge
+384	B33	South Africa	Bushbuckridge
+385	B34	South Africa	Bushbuckridge
+386	B36	South Africa	Bushbuckridge
+387	B37	South Africa	Bushbuckridge
+388	B38	South Africa	Bushbuckridge
+389	B39	South Africa	Bushbuckridge
+390	B40	South Africa	Bushbuckridge
+391	B41	South Africa	Bushbuckridge
+392	B42	South Africa	Bushbuckridge
+393	B43	South Africa	Bushbuckridge
+394	B44	South Africa	Bushbuckridge
+395	B45	South Africa	Bushbuckridge
+396	B46	South Africa	Bushbuckridge
+397	B47	South Africa	Bushbuckridge
+398	B48	South Africa	Bushbuckridge
+399	B49	South Africa	Bushbuckridge
+400	B50	South Africa	Bushbuckridge
+401	B52	South Africa	Bushbuckridge
+402	B55	South Africa	Bushbuckridge
+403	B56	South Africa	Bushbuckridge
+404	B57	South Africa	Bushbuckridge
+405	B58	South Africa	Bushbuckridge
+406	B61	South Africa	Bushbuckridge
+407	B62	South Africa	Bushbuckridge
+408	B63	South Africa	Bushbuckridge
+409	B65	South Africa	Bushbuckridge
+410	B66	South Africa	Bushbuckridge
+411	B67	South Africa	Bushbuckridge
+412	B68	South Africa	Bushbuckridge
+413	B69	South Africa	Bushbuckridge
+414	B70	South Africa	Bushbuckridge
+415	B71	South Africa	Bushbuckridge
+416	B72	South Africa	Bushbuckridge
+417	B73	South Africa	Bushbuckridge
+418	B74	South Africa	Bushbuckridge
+419	B75	South Africa	Bushbuckridge
+420	B76	South Africa	Bushbuckridge
+421	B77	South Africa	Bushbuckridge
+422	B78	South Africa	Bushbuckridge
+423	B79	South Africa	Soweto
+424	C1	South Africa	Bushbuckridge
+425	C2	South Africa	Bushbuckridge
+426	C3	South Africa	Bushbuckridge
+427	C4	South Africa	Bushbuckridge
+428	C5	South Africa	Bushbuckridge
+429	C6	South Africa	Bushbuckridge
+430	C8	South Africa	Bushbuckridge
+431	C9	South Africa	Bushbuckridge
+432	C10	South Africa	Bushbuckridge
+433	C11	South Africa	Bushbuckridge
+434	C12	South Africa	Bushbuckridge
+435	C13	South Africa	Bushbuckridge
+436	C14	South Africa	Bushbuckridge
+437	C15	South Africa	Bushbuckridge
+438	C16	South Africa	Bushbuckridge
+439	C17	South Africa	Bushbuckridge
+440	C18	South Africa	Bushbuckridge
+441	C19	South Africa	Bushbuckridge
+442	C20	South Africa	Bushbuckridge
+443	C21	South Africa	Bushbuckridge
+444	C22	South Africa	Bushbuckridge
+445	C23	South Africa	Bushbuckridge
+446	C24	South Africa	Bushbuckridge
+447	C25	South Africa	Bushbuckridge
+448	C26	South Africa	Bushbuckridge
+449	C27	South Africa	Bushbuckridge
+450	C28	South Africa	Bushbuckridge
+451	C29	South Africa	Bushbuckridge
+452	C30	South Africa	Bushbuckridge
+453	C31	South Africa	Bushbuckridge
+454	C32	South Africa	Bushbuckridge
+455	C33	South Africa	Bushbuckridge
+456	1_M	Sweden	Sweden
+457	10_M	Sweden	Sweden
+458	103_M	Sweden	Sweden
+459	105_M	Sweden	Sweden
+460	12_M	Sweden	Sweden
+461	128_M	Sweden	Sweden
+462	130_M	Sweden	Sweden
+463	133_M	Sweden	Sweden
+464	137_M	Sweden	Sweden
+465	150_M	Sweden	Sweden
+466	157_M	Sweden	Sweden
+467	172_M	Sweden	Sweden
+468	179_M	Sweden	Sweden
+469	18_M	Sweden	Sweden
+470	180_M	Sweden	Sweden
+471	181_M	Sweden	Sweden
+472	184_M	Sweden	Sweden
+473	195_M	Sweden	Sweden
+474	201_M	Sweden	Sweden
+475	203_M	Sweden	Sweden
+476	224_M	Sweden	Sweden
+477	229_M	Sweden	Sweden
+478	238_M	Sweden	Sweden
+479	240_M	Sweden	Sweden
+480	241_M	Sweden	Sweden
+481	244_M	Sweden	Sweden
+482	256_M	Sweden	Sweden
+483	258_M	Sweden	Sweden
+484	26_M	Sweden	Sweden
+485	263_M	Sweden	Sweden
+486	265_M	Sweden	Sweden
+487	268_M	Sweden	Sweden
+488	272_M	Sweden	Sweden
+489	274_M	Sweden	Sweden
+490	275_M	Sweden	Sweden
+491	276_M	Sweden	Sweden
+492	281_M	Sweden	Sweden
+493	282_M	Sweden	Sweden
+494	326_M	Sweden	Sweden
+495	332_M	Sweden	Sweden
+496	335_M	Sweden	Sweden
+497	338_M	Sweden	Sweden
+498	341_M	Sweden	Sweden
+499	343_M	Sweden	Sweden
+500	345_M	Sweden	Sweden
+501	350_M	Sweden	Sweden
+502	367_M	Sweden	Sweden
+503	377_M	Sweden	Sweden
+504	38_M	Sweden	Sweden
+505	383_M	Sweden	Sweden
+506	385_M	Sweden	Sweden
+507	387_M	Sweden	Sweden
+508	39_M	Sweden	Sweden
+509	397_M	Sweden	Sweden
+510	42_M	Sweden	Sweden
+511	45_M	Sweden	Sweden
+512	503_M	Sweden	Sweden
+513	504_M	Sweden	Sweden
+514	507_M	Sweden	Sweden
+515	51_M	Sweden	Sweden
+516	511_M	Sweden	Sweden
+517	521_M	Sweden	Sweden
+518	526_M	Sweden	Sweden
+519	527_M	Sweden	Sweden
+520	53_M	Sweden	Sweden
+521	532_M	Sweden	Sweden
+522	536_M	Sweden	Sweden
+523	544_M	Sweden	Sweden
+524	546_M	Sweden	Sweden
+525	549_M	Sweden	Sweden
+526	560_M	Sweden	Sweden
+527	565_M	Sweden	Sweden
+528	566_M	Sweden	Sweden
+529	567_M	Sweden	Sweden
+530	570_M	Sweden	Sweden
+531	572_M	Sweden	Sweden
+532	577_M	Sweden	Sweden
+533	582_M	Sweden	Sweden
+534	585_M	Sweden	Sweden
+535	587_M	Sweden	Sweden
+536	589_M	Sweden	Sweden
+537	590_M	Sweden	Sweden
+538	591_M	Sweden	Sweden
+539	598_M	Sweden	Sweden
+540	599_M	Sweden	Sweden
+541	608_M	Sweden	Sweden
+542	615_M	Sweden	Sweden
+543	622_M	Sweden	Sweden
+544	624_M	Sweden	Sweden
+545	626_M	Sweden	Sweden
+546	633_M	Sweden	Sweden
+547	635_M	Sweden	Sweden
+548	637_M	Sweden	Sweden
+549	640_M	Sweden	Sweden
+550	7_M	Sweden	Sweden
+551	70_M	Sweden	Sweden
+552	78_M	Sweden	Sweden
+553	82_M	Sweden	Sweden
+554	87_M	Sweden	Sweden
+555	9_M	Sweden	Sweden

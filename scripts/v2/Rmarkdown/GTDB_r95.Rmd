@@ -1,0 +1,372 @@
+---
+title: "GTDB r95 taxonomy profiling"
+author: "Fiona Tamburini"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: paper
+    code_folding: hide
+    toc: true
+    toc_float: true
+    toc_depth: 2
+---
+
+## Methods
+
+* Genome Taxonomy Database (GTDB) r95
+  * https://gtdb.ecogenomic.org/
+* Database version: Struo, 1 genome per species
+  * https://github.com/leylabmpi/Struo
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F, warning = F)
+# knitr::opts_knit$set(root.dir = "/Users/tamburif/za-microbiome/")
+```
+
+```{r}
+library(cowplot)
+library(DESeq2)
+library(genefilter)
+library(ggplot2)
+library(here)
+library(RColorBrewer)
+library(tidyverse)
+library(vegan)
+
+# read metadata ---
+za_meta <- readRDS(here("rds/za_meta.rds"))
+za_pheno <- readRDS(here("rds/za_pheno.rds"))
+za_pheno$site_abbrev <- ifelse(za_pheno$site == "Bushbuckridge", "BBR", "SWT")
+
+# read gtdb data ---
+for (lvl in c("S", "G", "P")){
+  bracken <- read.table(here(paste0("input_final/gtdb_r95/bracken_", lvl, ".txt")), sep = "\t", header = T)
+  rownames(bracken) <- gsub("s__", "", rownames(bracken))
+  
+  # keep relevant samples
+  bracken <- bracken[, za_pheno$sample]
+  
+  # rm zero features
+  bracken <- bracken[rowSums(bracken) > 0, ]
+  
+  bracken_rel <- sweep(bracken, 2, colSums(bracken), FUN = "/")
+  
+  assign(paste0("bracken_", lvl), bracken)
+  assign(paste0("bracken_", lvl, "_rel"), bracken_rel)
+}
+```
+
+```{r}
+plot_tax <- function(counts, ntax = 20){
+cts_long <- counts %>%
+  rownames_to_column("feature") %>%
+  pivot_longer(cols = !(feature), names_to = "sample", values_to = "relab") %>%
+  group_by(feature) %>%
+  mutate(mean_relab = mean(relab)) %>%
+  arrange(-mean_relab) %>%
+  ungroup() %>%
+  filter(dense_rank(dplyr::desc(mean_relab)) %in% 1:ntax) %>%
+  select(-mean_relab)
+
+other <- cts_long %>%
+  group_by(sample) %>%
+  summarise(relab = 1-sum(relab)) %>%
+  mutate(feature = "Other")
+
+cts_long <- rbind(cts_long, other) %>%
+  left_join(za_pheno, by = "sample")
+
+# plot features by relab
+lvls_y <- cts_long %>%
+  group_by(feature) %>%
+  summarise(mean = mean(relab)) %>%
+  arrange(-mean) %>%
+  filter(feature != "Other") %>%
+  pull(feature) %>%
+  as.character()
+
+cts_long$feature <- factor(cts_long$feature, levels = c(lvls_y, "Other"))
+
+# plot samples by top feature
+lvls_x <- cts_long %>%
+  filter(feature == lvls_y[1]) %>%
+  arrange(-relab) %>%
+  pull(sample)
+
+cts_long$sample <- factor(cts_long$sample, levels = lvls_x)
+
+# palette
+myCols <- colorRampPalette(brewer.pal(12, "Paired"))
+my_pal <- myCols(ntax)
+my_pal[ntax + 1] <- "#BBBBBB"
+
+# plot
+ggplot(cts_long, aes(sample, relab, fill = feature)) +
+  geom_bar(stat="identity") +
+  scale_fill_manual(values = my_pal) +
+  labs(x = "Sample",
+       y = "Abundance",
+       fill = "") +
+  guides(fill = guide_legend(ncol = 3)) +
+  facet_grid(~site, scales = "free_x", space = "free") +
+  theme_cowplot(12) +
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank(),
+        legend.position = "bottom")
+}
+```
+
+## GTDB profiles
+
+### Phylum
+```{r}
+plot_tax(bracken_P_rel, ntax = 6)
+```
+
+### Genus
+```{r}
+plot_tax(bracken_G_rel)
+```
+
+### Species
+```{r}
+plot_tax(bracken_S_rel)
+```
+
+## Metaphlan species profile
+```{r}
+# read metaphlan data
+m_out <- read.table(here("input_final/metaphlan_merge.txt"), sep = "\t", header = T)
+
+colnames(m_out) <- gsub("_concat.+", "", colnames(m_out))
+
+m_out_s <- m_out %>%
+  filter(grepl("s__", clade_name)) %>%
+  dplyr::select(-NCBI_tax_id) %>%
+  column_to_rownames("clade_name")
+
+# keep relevant samples
+m_out_s <- m_out_s[, za_meta$sample]
+
+# rm zero features
+m_out_s <- m_out_s[rowSums(m_out_s) > 0, ]
+
+plot_m <- m_out_s
+rownames(plot_m) <- make.names(gsub(".+s__", "", rownames(plot_m)), unique = T)
+
+plot_tax(plot_m/100)
+```
+
+## MDS
+```{r}
+bray_dist <- vegdist(t(bracken_S_rel), method = "bray")
+
+mds <- cmdscale(bray_dist, eig = TRUE, x.ret = TRUE)
+
+mds_values <- mds$points
+wa_scores <- wascores(mds_values, t(bracken_S_rel[genefilter(bracken_S_rel, pOverA(0.2, 0.001)), ]))
+wa_scores <- data.frame(sample = rownames(wa_scores),
+                        x = wa_scores[,1],
+                        y = wa_scores[,2])
+
+# isolate taxa with strongest contribution to principal coordinate axes
+n_taxa <- 10
+wa_scores_1<- head(arrange(wa_scores, desc(abs(wa_scores$x))), n = n_taxa)
+wa_scores_2<- head(arrange(wa_scores, desc(abs(wa_scores$y))), n = n_taxa)
+wa_scores_final <- rbind(wa_scores_1, wa_scores_2)
+
+# calculate percentage of variation that each MDS axis accounts for
+mds_var_per <- round(mds$eig/sum(mds$eig) * 100, 1)
+
+# plot
+mds_data <- data.frame(sample = rownames(mds_values),
+                       x = mds_values[,1],
+                       y = mds_values[,2])
+
+# merge pheno data
+mds_meta <- merge(mds_data, za_pheno, by = "sample")
+
+g <- ggplot(mds_meta, aes(x, y, color = site)) +
+  geom_point(size = 2, alpha = 0.75) +
+  # scale_color_manual(values = za_pal) +
+  labs(x = paste("MDS 1 (", mds_var_per[1], "%)",sep=""),
+       y = paste("MDS 2 (", mds_var_per[2], "%)",sep=""),
+       color = "") +
+  theme_cowplot()
+
+# g +
+#   ggrepel::geom_text_repel(data = wa_scores_final, aes(x, y, label = sample), inherit.aes = F)
+
+g +
+  stat_ellipse(type = 't', size = 1, show.legend = F)
+
+## permanova
+ad_res <- adonis(bray_dist ~ site, za_pheno)
+```
+
+## Prevotella species diversity
+```{r}
+cts <- bracken_S_rel[rev(order(rowMeans(bracken_S_rel))), ]
+cts[cts == 0] <- 1e-5
+
+cts_long <- cts %>%
+  head(12) %>%
+  rownames_to_column("feature") %>%
+  pivot_longer(cols = !starts_with("feature"),
+               names_to = "sample") %>%
+  left_join(za_pheno, by = "sample") %>%
+  mutate(genus = gsub("\\s.+", "", feature)) %>%
+  filter(genus == "Prevotella")
+
+ggplot(cts_long, aes(feature, value * 100, fill = site_abbrev)) +
+  geom_boxplot() +
+  facet_grid(~ genus, space = "free", scales = "free") +
+  theme_cowplot() +
+  background_grid() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+  labs(x = "",
+       y = "Relative abundance (%)")
+```
+
+## Differentially abundant features
+```{r}
+run_deseq2 <- function(count_data, col_data, form, coeff, run_parallel = T, alpha = 0.1){
+
+  stopifnot(all(colnames(count_data) == rownames(col_data)))
+
+  dds <- DESeqDataSetFromMatrix(countData = count_data,
+                                colData = col_data,
+                                design = formula(form))
+
+  dds <- estimateSizeFactors(dds, type = "poscounts")
+
+  dds <- DESeq(dds, parallel = run_parallel)
+  # resultsNames(dds) # lists the coefficients
+
+  res <- results(dds, name = coeff, alpha = alpha)
+  res <- as.data.frame(res)
+
+  return(res)
+}
+
+vplot <- function(res, xlim1 = 0, xlim2 = 0, labelsize = 4){
+  
+  res_plot <- res %>%
+    rownames_to_column("feature") %>%
+    mutate(feature = gsub("^[a-z]__", "", feature),
+           label = ifelse(log2FoldChange < xlim1 | log2FoldChange > xlim2 | feature == "Bacteroides",
+                          feature, ""))
+  
+  ggplot(res_plot, aes(log2FoldChange, -log10(pvalue))) +
+    geom_point() +
+    theme_cowplot() +
+    ggrepel::geom_text_repel(aes(label = label), size = labelsize) +
+    geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+    geom_vline(xintercept = c(-1, 1), linetype = "dashed") +
+    background_grid()
+}
+```
+
+### Genus
+```{r}
+col_data <- za_pheno
+rownames(col_data) <- col_data$sample
+count_data <- bracken_G[, za_pheno$sample]
+count_data <- count_data[genefilter(count_data, pOverA(0.2, 250)), ]
+res_G <- run_deseq2(count_data, col_data, form = "~site_abbrev",
+                  coeff = "site_abbrev_SWT_vs_BBR", alpha = 0.05)
+
+res_G %>%
+  filter(padj < 0.05, abs(log2FoldChange) > 1) %>%
+  rownames_to_column("feature") %>%
+  arrange(log2FoldChange) %>%
+  select(feature, log2FoldChange, pvalue, padj) %>%
+  mutate(across(where(is.numeric), ~ signif(., 4))) %>%
+  DT::datatable()
+
+vplot(res_G, xlim1 = -5, xlim2 = 2, labelsize = 3) +
+  xlim(-12, 10)
+```
+
+### Species
+```{r}
+col_data <- za_pheno
+rownames(col_data) <- col_data$sample
+count_data <- bracken_S[, za_pheno$sample]
+count_data <- count_data[genefilter(count_data, pOverA(0.2, 500)), ]
+res_S <- run_deseq2(count_data, col_data, form = "~site_abbrev",
+                    coeff = "site_abbrev_SWT_vs_BBR", alpha = 0.05)
+
+res_S %>%
+  filter(padj < 0.05, abs(log2FoldChange) > 1) %>%
+  rownames_to_column("feature") %>%
+  arrange(log2FoldChange) %>%
+  select(feature, log2FoldChange, pvalue, padj) %>%
+  mutate(across(where(is.numeric), ~ signif(., 4))) %>%
+  DT::datatable()
+
+vplot(res_S, xlim1 = -5, xlim2 = 3, labelsize = 3) +
+  xlim(-12.5, 6)
+```
+
+## Lean versus obese
+
+### Species
+```{r}
+col_data <- za_pheno %>%
+  filter(!is.na(bmi_status))
+rownames(col_data) <- col_data$sample
+count_data <- bracken_S[, rownames(col_data)]
+count_data <- count_data[genefilter(count_data, pOverA(0.2, 500)), ]
+res_S <- run_deseq2(count_data, col_data, form = "~site_abbrev + bmi_status",
+                    coeff = "bmi_status_Obese_vs_Lean", alpha = 0.05)
+
+res_S %>%
+  filter(padj < 0.05, abs(log2FoldChange) > 1) %>%
+  rownames_to_column("feature") %>%
+  arrange(log2FoldChange) %>%
+  select(feature, log2FoldChange, pvalue, padj) %>%
+  mutate(across(where(is.numeric), ~ signif(., 4))) %>%
+  DT::datatable()
+```
+
+### Genus
+```{r}
+col_data <- za_pheno %>%
+  filter(!is.na(bmi_status))
+rownames(col_data) <- col_data$sample
+count_data <- bracken_G[, rownames(col_data)]
+count_data <- count_data[genefilter(count_data, pOverA(0.2, 500)), ]
+res_G <- run_deseq2(count_data, col_data, form = "~site_abbrev + bmi_status",
+                    coeff = "bmi_status_Obese_vs_Lean", alpha = 0.05)
+
+res_G %>%
+  filter(padj < 0.05, abs(log2FoldChange) > 1) %>%
+  rownames_to_column("feature") %>%
+  arrange(log2FoldChange) %>%
+  select(feature, log2FoldChange, pvalue, padj) %>%
+  mutate(across(where(is.numeric), ~ signif(., 4))) %>%
+  DT::datatable()
+```
+
+```{r, include=F}
+## Continuous correlation with phenotype data
+## spearman correlation
+bmi_df <- za_pheno %>%
+  column_to_rownames("sample") %>%
+  filter(!is.na(bmi)) %>%
+  select(bmi) %>%
+  t() %>%
+  as.data.frame()
+
+df <- bind_rows(bmi_df, bracken_S_rel[genefilter(bracken_S_rel, pOverA(0.25, 0)), names(bmi_df)])
+
+spcor <- cor(t(df), method = "spearman")
+
+spcor_long <- harrietr::melt_dist(spcor)
+
+spcor_long %>%
+  filter(iso2 == "bmi", abs(dist) > 0.25) %>%
+  arrange(-abs(dist))
+
+```

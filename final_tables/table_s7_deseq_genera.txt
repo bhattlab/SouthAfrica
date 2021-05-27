@@ -1,0 +1,75 @@
+Genus	Log2 fold change (SWT/BBR)	P-value	FDR-adjusted p-value
+unclassified Elusimicrobia	-3.35	4.89e-16	3.28e-14
+unclassified Candidatus Melainabacteria	-3.07	3.56e-16	3.28e-14
+Bifidobacterium	2.82	8.43e-16	3.76e-14
+Succinivibrio	-2.34	1.87e-06	1.19e-05
+Guerin_crAss_Delta	-2.3	6.55e-07	5.17e-06
+Succinatimonas	-2.27	2.19e-05	9.18e-05
+Streptococcus	2.23	8.87e-12	1.98e-10
+unclassified Desulfovibrionaceae	2.11	7.61e-11	1.27e-09
+Alistipes	1.97	2.62e-11	5.01e-10
+unclassified Cyanobacteria	-1.86	5.83e-06	3.02e-05
+Thauera	-1.73	1.45e-06	1.03e-05
+Bacteria: environmental samples	-1.71	1.54e-06	1.03e-05
+Shigella	-1.71	0.000108	0.000391
+Citrobacter	-1.68	1.99e-06	1.21e-05
+Dialister	-1.55	1.29e-05	5.95e-05
+unclassified Alphaproteobacteria (miscellaneous)	-1.54	2.99e-09	4.01e-08
+Butyricimonas	1.51	8.84e-08	9.11e-07
+Butyrivibrio	-1.41	0.00025	0.00078
+unclassified Bacteroidaceae	1.41	6.31e-06	3.13e-05
+Staphylococcus	1.39	1.84e-12	4.94e-11
+Bilophila	1.39	3.46e-05	0.00014
+unclassified Eubacteriaceae	-1.32	1.49e-07	1.42e-06
+Parasutterella	1.24	0.0159	0.0313
+Zoogloea	-1.23	0.000188	0.000615
+Mitsuokella	-1.23	0.00277	0.00715
+Catabacter	-1.2	4.77e-07	3.99e-06
+unclassified Prevotellaceae	-1.2	0.000602	0.00172
+Bacteroides	1.15	0.000361	0.00105
+Eisenbergiella	1.13	4.54e-10	6.77e-09
+Anaerotruncus	1.08	1.43e-13	4.79e-12
+Holdemania	1.06	2.96e-07	2.65e-06
+Ruthenibacterium	1.05	5.8e-06	3.02e-05
+unclassified Burkholderiales (miscellaneous)	1.03	0.00566	0.014
+Victivallis	-1.01	0.00856	0.0188
+Parabacteroides	0.971	0.000161	0.000554
+Dysosmobacter	0.941	7.85e-08	8.76e-07
+Anaerostipes	0.937	0.000188	0.000615
+Barnesiella	0.905	0.0273	0.0495
+Tannerella	0.903	0.00954	0.0203
+Fusicatenibacter	0.901	1.61e-05	7.2e-05
+Escherichia	-0.893	0.00756	0.0169
+unclassified Lentisphaerae	-0.881	0.00679	0.0163
+unclassified Rikenellaceae	0.855	5.33e-05	0.000204
+Odoribacter	0.85	0.00151	0.00414
+Erysipelatoclostridium	0.811	0.000124	0.000439
+Oribacterium	-0.785	0.000277	0.000842
+unclassified Bacillales	-0.773	0.00722	0.0167
+Enterococcus	0.765	5.86e-06	3.02e-05
+Lachnotalea	0.746	4.36e-05	0.000172
+Selenomonas	-0.731	4.38e-08	5.34e-07
+Gemmiger	0.714	0.00264	0.00693
+Tyzzerella	0.687	0.0103	0.0213
+unclassified Ruminococcaceae	0.665	6.19e-05	0.000231
+Salmonella	-0.664	0.0111	0.0225
+Lachnospiraceae: environmental samples	-0.661	9.44e-06	4.52e-05
+Blautia	0.586	0.000233	0.000742
+unclassified Coriobacteriaceae	0.584	0.00884	0.0191
+Subdoligranulum	0.581	0.000319	0.000949
+Mediterranea	0.58	0.0258	0.0473
+Pseudoflavonifractor	0.564	1.75e-05	7.58e-05
+Erysipelotrichaceae: environmental samples	-0.546	0.00654	0.0159
+Firmicutes: environmental samples	0.529	0.00695	0.0163
+Coprococcus	0.526	0.00733	0.0167
+Clostridiales: environmental samples	-0.525	0.00104	0.0029
+Collinsella	0.502	0.0245	0.046
+Clostridioides	0.497	0.00173	0.00464
+Absiella	0.488	0.0126	0.0252
+Desulfotomaculum	0.433	0.0247	0.046
+Lachnoclostridium	0.417	0.0205	0.0393
+Lactobacillus	0.414	0.0189	0.0367
+Intestinimonas	0.404	0.0036	0.00911
+Paenibacillus	-0.341	1.14e-06	8.46e-06
+Geoglossum	-0.256	4.69e-06	2.73e-05
+Streptomyces	-0.218	0.0103	0.0213

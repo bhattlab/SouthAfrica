@@ -1,0 +1,42 @@
+Sample	Bin	Final.Class	Classification	Size.Mb	GC	N50	Quality	rna.16S	LongReadPolished
+C27	bin.11	Clostridium sp.	d__Bacteria;p__Firmicutes;c__Bacilli;o__RF39;f__CAG-1000;g__CAG-1000;s__	1.53	25.24	1.53	Medium	1	Short Read Only
+C27	bin.114	Treponema succinifaciens	d__Bacteria;p__Spirochaetota;c__Spirochaetia;o__Treponematales;f__Treponemataceae;g__Treponema_D;s__Treponema_D succinifaciens	2.55	39.12	2.55	High	4	Short Read Only
+C27	bin.130	Lachnospiraceae bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Lachnospirales;f__Lachnospiraceae;g__CAG-95;s__	3.38	43.55	1.94	Medium	4	Short Read Only
+C27	bin.160	Treponema sp.	d__Bacteria;p__Spirochaetota;c__Spirochaetia;o__Treponematales;f__Treponemataceae;g__Treponema_D;s__Treponema_D sp900541945	2.06	41.55	2.06	Medium	3	Short Read Only
+C27	bin.2	Clostridium sp.	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__CAG-917;g__CAG-349;s__CAG-349 sp003539515	1.3	46.87	1.3	Medium	1	Short Read Only
+C27	bin.30	Bacteroidales bacterium	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Paludibacteraceae;g__RF16;s__RF16 sp900556095	2.67	47.31	1.8	High	3	Short Read Only
+C29	bin.1	Clostridium sp.	d__Bacteria;p__Firmicutes;c__Bacilli;o__Acholeplasmatales;f__Anaeroplasmataceae;g__;s__	2.01	28.81	2.01	Medium	3	Short Read Only
+C29	bin.127	Ruminococcaceae bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Acutalibacteraceae;g__Ruminococcus_E;s__Ruminococcus_E sp003526955	1.95	38.35	0.8	Medium	4	Short Read Only
+C29	bin.14	uncultured Ruminococcus	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Acutalibacteraceae;g__CAG-180;s__CAG-180 sp004556705	1.59	44	1.34	Medium	2	Short Read Only
+C29	bin.156	Clostridiales bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__CAG-74;g__UBA11524;s__UBA11524 sp000437595	2.03	57.9	0.6	Medium	4	Short Read Only
+C29	bin.3	Clostridiales bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__CAG-917;g__CAG-349;s__CAG-349 sp003539515	1.53	47.28	1.53	Medium	1	Short Read Only
+C29	bin.31	Bacteroides vulgatus	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Tannerellaceae;g__Parabacteroides;s__Parabacteroides sp900549585	2.68	42.71	2.68	Medium	3	Short Read Only
+C29	bin.32	Porphyromonadaceae bacterium	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Muribaculaceae;g__C941;s__C941 sp004557565	2.97	47.43	2.97	Medium	5	Short Read Only
+C29	bin.94	Bacteroides sp.	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__UBA932;g__RC9;s__RC9 sp000432655	2	48.24	1.59	High	3	Short Read Only
+C33	bin.1	Candidatus Melainabacteria	d__Bacteria;p__Cyanobacteria;c__Vampirovibrionia;o__Gastranaerophilales;f__Gastranaerophilaceae;g__UMGS1477;s__UMGS1477 sp900552205	2	30.9	2	Medium	1	Long Read
+C33	bin.104	Alistipes putredinis	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Rikenellaceae;g__;s__	1.91	53.1	1.91	Medium	2	Short Read Only
+C33	bin.117	Prevotella sp.	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Bacteroidaceae;g__Prevotella;s__Prevotella sp000434515	3.29	43.6	1.14	Medium	6	Long Read
+C33	bin.144	Lachnospiraceae bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Lachnospirales;f__Lachnospiraceae;g__CAG-95;s__CAG-95 sp000438155	3.81	43.56	2.83	Medium	4	Short Read Only
+C33	bin.182	Clostridiales bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__CAG-138;g__PeH17;s__PeH17 sp000435055	1.95	49.59	0.73	Medium	3	Short Read Only
+C33	bin.194	Clostridiales bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__CAG-272;g__CAG-724;s__	2.24	48.65	0.58	Medium	2	Short Read Only
+C33	bin.2	Clostridiales bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__UMGS1810;f__UMGS1810;g__;s__	2.65	42.82	2.65	Medium	3	Short Read Only
+C33	bin.207	Lentisphaeria bacterium	d__Bacteria;p__Verrucomicrobiota;c__Lentisphaeria;o__Victivallales;f__Victivallaceae;g__Victivallis;s__Victivallis sp900550905	5.08	57.5	5.08	Medium	3	Long Read
+C33	bin.207	Clostridium sp.	d__Bacteria;p__Firmicutes;c__Bacilli;o__RF39;f__CAG-1000;g__CAG-533;s__CAG-533 sp000434495	1.14	29.09	1.14	Medium	1	Short Read Only
+C33	bin.228	Clostridium sp.	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Acutalibacteraceae;g__CAG-177;s__CAG-177 sp000431775	2.44	52.53	2.23	High	3	Short Read Only
+C33	bin.232	Oscillibacter sp.	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Oscillospiraceae;g__Oscillibacter;s__Oscillibacter sp001916835	1.13	57.37	0.17	Medium	1	Short Read Only
+C33	bin.233	Lentisphaeria bacterium	d__Bacteria;p__Verrucomicrobiota;c__Lentisphaeria;o__Victivallales;f__Victivallaceae;g__Victivallis;s__Victivallis sp900550905	5.09	57.34	5.09	Medium	3	Short Read Only
+C33	bin.24	Bacteroides sp.	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Bacteroidaceae;g__Phocaeicola;s__Phocaeicola sp000434735	2.82	43.31	2	Medium	6	Short Read Only
+C33	bin.244	Bacilli bacterium	d__Bacteria;p__Firmicutes;c__Bacilli;o__RF39;f__CAG-302;g__CAG-302;s__CAG-302 sp900548425	1.46	26.19	1.46	Medium	1	Short Read Only
+C33	bin.253	Bacteroidales bacterium	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Muribaculaceae;g__CAG-279;s__CAG-279 sp000437795	2.79	49.82	2.79	High	4	Short Read Only
+C33	bin.255	Anaerotruncus sp.	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Acutalibacteraceae;g__Eubacterium_R;s__Eubacterium_R sp000433975	2.04	43.71	2.04	Medium	2	Short Read Only
+C33	bin.267	Catabacter sp.	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__CAG-917;g__CAG-475;s__CAG-475 sp900550915	1.65	46.4	1.65	Medium	1	Long Read
+C33	bin.27	Clostridiales bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__Borkfalkiaceae;g__UBA1259;s__	1.32	45.19	0.79	Medium	1	Short Read Only
+C33	bin.271	Mycoplasma sp.	d__Bacteria;p__Firmicutes;c__Bacilli;o__RF39;f__CAG-1000;g__CAG-460;s__CAG-460 sp000437315	1.14	25.06	1.14	Medium	2	Short Read Only
+C33	bin.284	Mollicutes bacterium	d__Bacteria;p__Firmicutes;c__Bacilli;o__ML615J-28;f__CAG-698;g__Tener-01;s__Tener-01 sp001940985	1.68	28.1	1.49	Medium	2	Long Read
+C33	bin.3	Ruminococcaceae bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__QALW01;g__UMGS1338;s__UMGS1338 sp900550805	2.27	51.43	2.27	High	3	Short Read Only
+C33	bin.4	Bacteroidales bacterium	d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Bacteroidales;f__Rikenellaceae;g__Alistipes;s__Alistipes sp900546065	1.7	56.6	1.7	Medium	1	Short Read Only
+C33	bin.44	Eubacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Acutalibacteraceae;g__UMGS1532;s__UMGS1532 sp900552605	2	44.52	0.63	Medium	2	Short Read Only
+C33	bin.52	Mycoplasma sp.	d__Bacteria;p__Firmicutes;c__Bacilli;o__RF39;f__CAG-1000;g__CAG-460;s__CAG-460 sp000437315	1.17	25.3	1.12	Medium	2	Long Read
+C33	bin.6	uncultured Ruminococcus	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__Ruminococcaceae;g__CAG-353;s__CAG-353 sp900066885	2.08	46.85	2.08	Medium	5	Short Read Only
+C33	bin.7	Clostridiales bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia_A;o__Christensenellales;f__CAG-917;g__CAG-349;s__CAG-349 sp003539515	1.61	46.9	1.61	Medium	1	Short Read Only
+C33	bin.8	Ruminococcaceae bacterium	d__Bacteria;p__Firmicutes_A;c__Clostridia;o__Oscillospirales;f__CAG-272;g__CAG-448;s__	1.78	58.25	1.78	Medium	3	Short Read Only

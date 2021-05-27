@@ -1,0 +1,193 @@
+	study_id	sample_code	site	medicine	medicine_CURATED	medicine_CATEGORY	medicine_reason	medicine_reason_CURATED					
+A1	1186710	A1	Soweto	Ridaq	RIDAQ	ANTIHYPERTENSIVE							
+A2	1333396	A2	Soweto										
+A4	1499095	A4	Soweto	Austell-Simvastatin	SIMVASTATIN	STATIN	High blood pressure	HYPERTENSION					
+A6	1597674	A6	Soweto										
+A9	1930043	A9	Soweto	Eltroxin	LEVOTHYROXINE	HORMONE							
+A10	2031518	A10	Soweto	Austell-Metformin	METFORMIN	ANTIHYPERGLYCEMIC	Cholesterol	CHOLESTEROL					
+A11	2123689	A11	Soweto										
+A12	2146745	A12	Soweto	FUROSEMIDE	FUROSEMIDE	DIURETIC	DIABETES	DIABETES					
+A13	2266332	A13	Soweto										
+A15	2554637	A15	Soweto										
+A16	3379474	A16	Soweto	RIDAQ	RIDAQ	ANTIHYPERTENSIVE							
+A17	3480141	A17	Soweto										
+A18	3602219	A18	Soweto	ECOTRIN	ASPIRIN	NSAID							
+A19	3663723	A19	Soweto										
+A21	3924929	A21	Soweto										
+A22	3956441	A22	Soweto	Metformin	METFORMIN	ANTIHYPERGLYCEMIC	Cholestorol	CHOLESTEROL					
+B79	4152135	B79	Soweto										
+A24	4233802	A24	Soweto	Ridaq 25mg	RIDAQ	ANTIHYPERTENSIVE	Eyes	EYES					
+A25	4858889	A25	Soweto	Pharmapress	PHARMAPRESS	ANTIHYPERTENSIVE	Eyes	EYES					
+A25	4858889	A25	Soweto	Ridaq	RIDAQ	ANTIHYPERTENSIVE	Eyes	EYES					
+A25	4858889	A25	Soweto	Ciplavasc	AMLODIPINE	ANTIHYPERTENSIVE	Eyes	EYES					
+A25	4858889	A25	Soweto	Soluspirin	SOLUSPIRIN	ASPIRIN	Eyes	EYES					
+A25	4858889	A25	Soweto	Austell-Furosemide	FUROSEMIDE	DIURETIC	Eyes	EYES					
+A26	4971044	A26	Soweto										
+C19	BKHRQ	C19	Bushbuckridge	No medication taken	NONE		NA						
+C25	BQNHZ	C25	Bushbuckridge	No medication taken	NONE		NA						
+C23	BZEHG	C23	Bushbuckridge	No medication taken	NONE		NA						
+A27	CAWOD	A27	Soweto										
+A28	CAX0E	A28	Soweto										
+C1	CBSNC	C1	Bushbuckridge	No	NONE		NA						
+A29	CBY0H	A29	Soweto										
+A30	CBZOI	A30	Soweto										
+A31	CCJOV	A31	Soweto										
+C26	CCLEW	C26	Bushbuckridge	No medication taken	NONE		NA						
+A32	CCPOB	A32	Soweto										
+A33	CDKOY	A33	Soweto	RIDAQ	RIDAQ	ANTIHYPERTENSIVE							
+A34	CFI0B	A34	Soweto	Amlodipine	AMLODIPINE	ANTIHYPERTENSIVE							
+A35	CFVOM	A35	Soweto										
+A36	CHPOL	A36	Soweto	Ridaq 12.5mg	RIDAQ	ANTIHYPERTENSIVE	Hypertension	HYPERTENSION					
+A37	CKQOT	A37	Soweto	RIDAQ	RIDAQ	ANTIHYPERTENSIVE							
+A38	CKXOB	A38	Soweto	RIDAQ	RIDAQ	ANTIHYPERTENSIVE							
+C27	CLLYS	C27	Bushbuckridge	5mg Ciplavasc hydrochlorothiazide	AMLODIPINE	ANTIHYPERTENSIVE	NA						
+A39	CLNOT	A39	Soweto	INSULIN (NOVOMIX 30)	INSULIN	INSULIN	CHOLESTEROL	CHOLESTEROL					
+C3	CQGFO	C3	Bushbuckridge	No madication	NONE		NA						
+A41	CQMOC	A41	Soweto	Ridaq	RIDAQ	ANTIHYPERTENSIVE	HEADACHE	HEADACHE					
+A42	CRCOS	A42	Soweto										
+A43	CRXON	A43	Soweto	Carloc 6.25	CARVEDILOL	ANTIHYPERTENSIVE	blood thinner						
+A44	CSK0E	A44	Soweto	Pharmapress	PHARMAPRESS	ANTIHYPERTENSIVE							
+C17	CTBOZ	C17	Bushbuckridge	No madication	NONE		NA						
+A45	CVQON	A45	Soweto	GLUCOPHAGE METFORMIN	METFORMIN	ANTIHYPERGLYCEMIC	HIGH BLOOD PRESSURE	HYPERTENSION					
+A46	CWIOI	A46	Soweto	LANSOLOC	LANSOPRAZOLE	PROTONPUMPINHIBITOR	BONES	BONES					
+A47	CWQ0Q	A47	Soweto	Prexim	PREXIM	UNKNOWN							
+A48	CXCOE	A48	Soweto										
+A49	DBGOS	A49	Soweto	Amiloretic									
+A50	DBT0G	A50	Soweto										
+A51	DCGOV	A51	Soweto	Metformin	METFORMIN	ANTIHYPERGLYCEMIC							
+A52	DDPOG	A52	Soweto	RIDAQ	RIDAQ		SKIN	SKIN					
+A53	DDWOM	A53	Soweto	LANSOLOC	LANSOPRAZOLE	PROTONPUMPINHIBITOR							
+A54	DDZ0Q	A54	Soweto										
+A55	DEROK	A55	Soweto										
+C11	DFEZM	C11	Bushbuckridge	No medication	NONE		NA						
+A56	DGEOC	A56	Soweto										
+A57	DGV05	A57	Soweto	Hydrochlorithiazide	HYDROCHLOROTHIAZIDE	ANTIHYPERTENSIVE							
+C32	DGXFV	C32	Bushbuckridge	Traditional medication	TRADITIONALMED	UNKNOWN	NA						
+A58	DHHOH	A58	Soweto										
+C8	DKWHW	C8	Bushbuckridge	No medication taken	NONE		NA						
+C5	DZPJR	C5	Bushbuckridge	No medication taken last week	NONE		NA						
+C2	DZWHL	C2	Bushbuckridge	"She threw the box of medication away, hence she cannot remember. "	UNKNOWN		NA						
+C12	EDFHQ	C12	Bushbuckridge	No medication taken	NONE		NA						
+C28	EKZCV	C28	Bushbuckridge	No medication taken	NONE		NA						
+C20	ELHZE	C20	Bushbuckridge	No medication taken	NONE		NA						
+C6	EZWQX	C6	Bushbuckridge	No medication	NONE		NA						
+C24	FQOSV	C24	Bushbuckridge	No medication taken	NONE		NA						
+C16	FRGPC	C16	Bushbuckridge	No medication	NONE		NA						
+C18	GWBHF	C18	Bushbuckridge	Amoxicillin 100mg	AMOXICILLIN	ANTIINFECTIVE	NA						
+C13	HDWHX	C13	Bushbuckridge	No madication	NONE		NA						
+C10	HEJHE	C10	Bushbuckridge	No medication	NONE		NA						
+C30	HFZEJ	C30	Bushbuckridge	Paracetamol	PARACETAMOL		NA						
+C29	HGRSG	C29	Bushbuckridge	PC calcium	CALCIUM		NA						
+C29	HGRSG	C29	Bushbuckridge	diclofenac	DICLOFENAC	NSAID	NA						
+C4	HPRXQ	C4	Bushbuckridge	No medication taken	NONE		NA						
+C15	HVFJZ	C15	Bushbuckridge	No	NONE		NA						
+C33	JLNGC	C33	Bushbuckridge	No madication	NONE		NA						
+C14	JQKFV	C14	Bushbuckridge	No medication taken	NONE		NA						
+C22	JRWPH	C22	Bushbuckridge	No medication taken	NONE		NA						
+C9	JXTVM	C9	Bushbuckridge	No medication taken	NONE		NA						
+C31	KDRZJ	C31	Bushbuckridge	No medication	NONE								
+C21	KLHYD	C21	Bushbuckridge	Ridag	RIDAQ	ANTIHYPERTENSIVE							
+C21	KLHYD	C21	Bushbuckridge	almodipine	AMLODIPINE	ANTIHYPERTENSIVE	NA						
+C21	KLHYD	C21	Bushbuckridge	pharmapress	PHARMAPRESS	ANTIHYPERTENSIVE	NA						
+A59	MB17003	A59	Bushbuckridge	No	NONE		NA						
+A60	MB17004	A60	Bushbuckridge	No . She did not go to the clinic. Reason no bus fare.	NONE		NA						
+A61	MB17006	A61	Bushbuckridge	No	NONE		NA						
+A62	MB17007	A62	Bushbuckridge	No	NONE		NA						
+A63	MB17009	A63	Bushbuckridge	No	NONE								
+A64	MB17010	A64	Bushbuckridge	Betamox	AMOXICILLIN	ANTIINFECTIVE	NA						
+A64	MB17010	A64	Bushbuckridge	Flagyl	METRONIDAZOLE	ANTIINFECTIVE	NA						
+A66	MB17012	A66	Bushbuckridge	No	NONE		NA						
+A67	MB17013	A67	Bushbuckridge	Chlorpheniramine	CHLORPHENIRAMINE	ANTIHISTAMINE	NA						
+B72	MB17014	B72	Bushbuckridge	"Metronidazole,  Anaerobyl 400 mg"	METRONIDAZOLE	ANTIINFECTIVE	NA						
+A68	MB17015	A68	Bushbuckridge	No	NONE		NA						
+A69	MB17016	A69	Bushbuckridge	No	NONE		NA						
+A70	MB17017	A70	Bushbuckridge	No	NONE		NA						
+A71	MB17018	A71	Bushbuckridge	No	NONE		NA						
+A72	MB17019	A72	Bushbuckridge	Loperamide	LOPERAMIDE	ANTIDIARRHEAL							
+A72	MB17019	A72	Bushbuckridge	Anaerobyl 400 mg	METRONIDAZOLE	ANTIINFECTIVE							
+A72	MB17019	A72	Bushbuckridge	Pyridoxine	PYRIDOXINE								
+A72	MB17019	A72	Bushbuckridge	Ilvitrim (Co-trimoxazole)	CO-TRIMOXAZOLE	ANTIINFECTIVE	NA						
+A73	MB17020	A73	Bushbuckridge	No	NONE		NA						
+A75	MB17022	A75	Bushbuckridge	No she didn't go for consultation. No specific reasons given.	NONE		NA						
+A77	MB17024	A77	Bushbuckridge	No	NONE		NA						
+A78	MB17025	A78	Bushbuckridge	No	NONE		NA						
+A79	MB17026	A79	Bushbuckridge	No	NONE		NA						
+B1	MB17027	B1	Bushbuckridge	No	NONE		NA						
+B2	MB17028	B2	Bushbuckridge	No	NONE		NA						
+B4	MB17030	B4	Bushbuckridge	Lost the medication. No diarrhea	NONE		NA						
+B5	MB17031	B5	Bushbuckridge	Loperamide HCl 2 mg tablets	LOPERAMIDE	ANTIDIARRHEAL	NA						
+B7	MB17033	B7	Bushbuckridge	No	NONE		NA						
+B78	MB17034	B78	Bushbuckridge	No	NONE		NA						
+B8	MB17035	B8	Bushbuckridge	She did not consult a physician	NONE		NA						
+B9	MB17036	B9	Bushbuckridge	No medication was taken	NONE		NA						
+B73	MB17037	B73	Bushbuckridge	No	NONE		NA						
+B10	MB17038	B10	Bushbuckridge	Amoxilyn	AMOXICILLIN	ANTIINFECTIVE	NA						
+B11	MB17039	B11	Bushbuckridge	No	NONE		NA						
+B12	MB17040	B12	Bushbuckridge	No	NONE		NA						
+B13	MB17041	B13	Bushbuckridge	No medication was taken	NONE		NA						
+B14	MB17042	B14	Bushbuckridge	No	NONE		NA						
+B15	MB17043	B15	Bushbuckridge	Adco- Retic	AMILORIDE-HYDROCHLORIDE/HYDROCHLOROTHIAZIDE	ANTIHYPERTENSIVE							
+B15	MB17043	B15	Bushbuckridge	purgoxin	DIGOXIN	ANTIHYPERTENSIVE	NA						
+B16	MB17044	B16	Bushbuckridge	No on medication. After being tested the participant was referred to the clinic and she was admitted.	NONE		NA						
+B17	MB17045	B17	Bushbuckridge	No	NONE		NA						
+B74	MB17046	B74	Bushbuckridge	No	NONE		NA						
+B18	MB17047	B18	Bushbuckridge	No	NONE		NA						
+B20	MB17049	B20	Bushbuckridge	No	NONE		NA						
+B22	MB17051	B22	Bushbuckridge	No  The participant was referred to the clinic were she  was admitted	NONE		NA						
+B23	MB17052	B23	Bushbuckridge	No	NONE		NA						
+B24	MB17053	B24	Bushbuckridge	No	NONE		NA						
+B25	MB17054	B25	Bushbuckridge	No	NONE		NA						
+B26	MB17055	B26	Bushbuckridge	Ridag 12mg	RIDAQ	ANTIHYPERTENSIVE							
+B26	MB17055	B26	Bushbuckridge	Potassium chloride 600mg	POTASSIUM-CHLORIDE								
+B26	MB17055	B26	Bushbuckridge	Amiodipin 5mg	AMLODIPINE	ANTIHYPERTENSIVE							
+B26	MB17055	B26	Bushbuckridge	Envas10mg	ENALAPRIL-MALEATE	ANTIHYPERTENSIVE							
+B26	MB17055	B26	Bushbuckridge	Pharmapress 20mg	PHARMAPRESS	ANTIHYPERTENSIVE							
+B26	MB17055	B26	Bushbuckridge	Paracentamol 500mg	PARACETAMOL		NA						
+B27	MB17056	B27	Bushbuckridge	No	NONE		NA						
+B28	MB17057	B28	Bushbuckridge	No	NONE		NA						
+B29	MB17058	B29	Bushbuckridge	No	NONE		NA						
+B30	MB17059	B30	Bushbuckridge	No	NONE		NA						
+B31	MB17061	B31	Bushbuckridge	Napamol	PARACETAMOL								
+B31	MB17061	B31	Bushbuckridge	Prednisone	PREDNISONE	CORTICOSTEROID							
+B31	MB17061	B31	Bushbuckridge	Celebrex200m	CELECOXIB	NSAID							
+B31	MB17061	B31	Bushbuckridge	Mylan diclofenac50mg	DICLOFENAC	NSAID							
+B31	MB17061	B31	Bushbuckridge	Osteoeze	GLUCOSAMINE-SULFATE								
+B31	MB17061	B31	Bushbuckridge	Simvastatin 10mg	SIMVASTATIN	STATIN							
+B31	MB17061	B31	Bushbuckridge	Ridag 25mg	RIDAQ	ANTIHYPERTENSIVE	NA						
+B32	MB17062	B32	Bushbuckridge	Napamol	PARACETAMOL								
+B32	MB17062	B32	Bushbuckridge	Ridag 25mg	RIDAQ	ANTIHYPERTENSIVE	NA						
+B33	MB17063	B33	Bushbuckridge	No medication was taken	NONE		NA						
+B34	MB17064	B34	Bushbuckridge	Ridaq 12.5 mg   Glycomin 5 mg  Metformin 850 mg  Enaapril 10 mg			NA						
+B36	MB17066	B36	Bushbuckridge	No	NONE		NA						
+B37	MB17067	B37	Bushbuckridge	No	NONE		NA						
+B75	MB17068	B75	Bushbuckridge	No	NONE		NA						
+B76	MB17069	B76	Bushbuckridge	Ridag  Austell amoxicillin500mg.  Aspirin soluble500mg  Envas 10mg			NA						
+B38	MB17070	B38	Bushbuckridge	"Pharmapress10mg.solusprin,   Austell Amlodipine 5mg,    Vitamin B-complex tablets,   Ridag-25mg,   Magasil, "			NA						
+B39	MB17071	B39	Bushbuckridge	No	NONE		NA						
+B40	MB17072	B40	Bushbuckridge	No	NONE		NA						
+B41	MB17073	B41	Bushbuckridge	No	NONE		NA						
+B77	MB17074	B77	Bushbuckridge	No	NONE		NA						
+B42	MB17075	B42	Bushbuckridge	"Ridag-25mg,   anti- inflammatories: Napamol,  Arthrexin-25mg, Panamol 50mg, Solusprin."			NA						
+B43	MB17076	B43	Bushbuckridge	No	NONE		NA						
+B44	MB17077	B44	Bushbuckridge	No	NONE		NA						
+B45	MB17078	B45	Bushbuckridge	"Anti hypertensives:  Pharmapress10mg, ridag12.5mg, Amtas10mg,  Anti-inflammatory: solusprin."			NA						
+B46	MB17079	B46	Bushbuckridge	"Paracetamol 300mg tablets, solusprin300mg tablets  ridag25mg tablets  hyospasmol 10mg tablets  power gesic"			NA						
+B47	MB17080	B47	Bushbuckridge	No	NONE		NA						
+B48	MB17081	B48	Bushbuckridge	No	NONE		NA						
+B49	MB17082	B49	Bushbuckridge	"Anti epiletic: Tegretol cr 400mg.  Anti hyerpetensive: amlodipine 5mg , Envas 10mg, solusprin, purgoxin 0.25mg  Antibiotics: Amoxicap 250mg.  "			NA						
+B50	MB17083	B50	Bushbuckridge	"Gulf haloperodol 5mg.  Amlodipine ascendis 5mg   Soluspirin 4mg,   Phenerine 50mg.  Austell paracetamol "			NA						
+B52	MB17085	B52	Bushbuckridge	No	NONE		NA						
+B55	MB17088	B55	Bushbuckridge	No	NONE		NA						
+B56	MB17091	B56	Bushbuckridge	No	NONE		NA						
+B57	MB17092	B57	Bushbuckridge	No	NONE		NA						
+B58	MB17093	B58	Bushbuckridge	No    	NONE		NA						
+B61	MB17096	B61	Bushbuckridge	Anti diabetic Medication:   Solusprin.  Metformin 850mg.  Glycomin 5mg			NA						
+B62	MB17097	B62	Bushbuckridge	No	NONE		NA						
+B63	MB17098	B63	Bushbuckridge	No no medication was taken	NONE		NA						
+B65	MB17100	B65	Bushbuckridge	No	NONE		NA						
+B66	MB17101	B66	Bushbuckridge	"Phenerine 50mg,  haloperidol 5mg"			NA						
+B67	MB17102	B67	Bushbuckridge	Ridag  Pharma press  Soluspirin			NA						
+B68	MB17103	B68	Bushbuckridge	Nustell enalapril  Soluspirin  Ciplavasc  Pharmacare			NA						
+B69	MB17104	B69	Bushbuckridge	Soluspirin300mg  Ridag-12.5mg  Ranitidine150			NA						
+B70	MB17105	B70	Bushbuckridge	Envas10  Ridag-25mg  Arthexin 25mg			NA						
+B71	MB17106	B71	Bushbuckridge	No	NONE								

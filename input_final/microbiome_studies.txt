@@ -1,0 +1,64 @@
+Title	First author	Year	DOI	Country of enrollment	Sequencing methodology	Study category	Study population	Cohort Size (African individuals)
+Impact of diet in shaping gut microbiota revealed by a comparative study in children from Europe and rural Africa	De Filipo	2010	10.1073/pnas.1005963107	Burkina Faso	16S	Comparative	Children	14
+The effects of iron fortification on the gut microbiota in African children: a randomized controlled trial in Cote d'Ivoire.	Zimmerman	2010	10.3945/ajcn.110.004564	Cote d'Ivore	16S, qPCR	Nutrition	Children	60
+Human gut microbiome viewed across age and geography.	Yatsunenko	2012	10.1038/nature11053	Malawi	16S	Comparative	Children,adults	115
+Distinct Gut Microbiota in Southeastern African and Northern European Infants	Ayeni	2012	10.1097/MPG.0b013e318249039c	Malawi	qPCR	Comparative	Infants	44
+Breast Milk and Gut Microbiota in African Mothers and Infants from an Area of High HIV Prevalence	Gonzalez	2013	10.1371/journal.pone.0080299	Mozambique	16S	Maternal/Infant Health	Children,infants	120
+Gut microbiome of the Hadza hunter-gatherers	Schnorr	2013	10.1038/ncomms4654	Tanzania	16S	Comparative	Adults,children	27
+Gut microbiomes of Malawian twin pairs discordant for kwashiorkor	Smith	2013	10.1126/science.1229000	Malawi	Metagenomics	Nutrition	Children	634
+Effects of iron supplementation on dominant bacterial groups in the gut, faecal SCFA and gut inflammation: a randomised, placebo-controlled intervention trial in South African children	Dostal	2014	10.1017/S0007114514001160	South Africa	16S	Nutrition	Children	73
+Diarrhea in young children from low-income countries leads to large-scale alterations in intestinal microbiota composition	Pop	2014	10.1186/gb-2014-15-6-r76	The Gambia, Kenya, Mali	16S	ID/Antibiotics	Children	786
+Distinctive Intestinal Lactobacillus Communities in 6-Month-Old Infants From Rural Malawi and Southwestern Finland	Aako	2015	10.1097/MPG.0000000000000878	Malawi	qPCR	Comparative	Infants	44
+The microbiota at multiple body sites during pregnancy in a rural Tanzanian population and the effects of Moringa supplemented probiotic yogurt	Bisanz	2015	10.1128/AEM.00780-15	Tanzania	16S	Nutrition	Adults,children	71
+Iron fortification adversely affects the gut microbiome, increases pathogen abundance and induces intestinal inflammation in Kenyan infants	Jaeggi	2015	10.1136/gutjnl-2014-307720	Kenya	16S, qPCR	Nutrition	Infants	115
+Differences in the Faecal Microbiome in Schistosoma haematobium Infected Children vs. Uninfected Children	Kay	2015	10.1371/journal.pntd.0003861	Zimbabwe	16S	ID/Antibiotics	Children	139
+Variation in Rural African Gut Microbiota Is Strongly Correlated with Colonization by Entamoeba and Subsistence	Morton	2015	10.1371/journal.pgen.1005658	Cameroon	16S	Comparative	Adults	64
+Fat, fibre and cancer risk in African Americans and rural Africans	O'Keefe	2015	10.1038/ncomms7342	South Africa	16S	Comparative	Adults	20
+The effect of dietary resistant starch type 2 on the microbiota and markers of gut inflammation in rural Malawi children	Ordiz	2015	10.1186/s40168-015-0102-9	Malawi	16S	Nutrition	Children	18
+Metagenome Sequencing of the Hadza Hunter-Gatherer Gut Microbiota	Rampelli	2015	10.1016/j.cub.2015.04.055	Tanzania	Metagenomics	Comparative	Adults,children	27
+Gut DNA viromes of Malawian twins discordant for severe acute malnutrition	Reyes	2015	10.1073/pnas.1514285112	Malawi	16S	Nutrition/Development	Children	53
+Stool microbiota composition is associated with the prospective risk of Plasmodium falciparum infection	Yooseph	2015	10.1186/s12864-015-1819-3	Mali	16S	ID/Antibiotics	Adults,children	195
+Gut microbiota in Malawian infants in a nutritional supplementation trial	Cheung	2016	10.1111/tmi.12650	Malawi	16S	Nutrition	Infants	213
+Comparison of the distal gut microbiota from people and animals in Africa	Ellis	2016	10.1371/journal.pone.0054783	Uganda	16S	Comparative	Adults,children	21
+Gut Microbiome of Coexisting BaAka Pygmies and Bantu Reflects Gradients of Traditional Subsistence Patterns	Gomez	2016	10.1016/j.celrep.2016.02.013	Central African Republic	16S	Comparative	Adults	57
+Gut microbiota related to Giardia duodenalis, Entamoeba spp. and Blastocystis hominis infections in humans from Côte d'Ivoire	Iebba	2016	10.3855/jidc.8179	Cote d'Ivore	qPCR	Infectious disease/antibiotics	Adults,children	20
+Gut Microbiota in Children Hospitalized with Oedematous and Non-Oedematous Severe Acute Malnutrition in Uganda	Kristensen	2016	10.1371/journal.pntd.0004369	Uganda	16S	Nutrition	Children,infants	87
+Increased Gut Redox and Depletion of Anaerobic and Methanogenic Prokaryotes in Severe Acute Malnutrition	Million	2016	10.1038/srep26051	Senegal, Niger	16S	Nutrition	Children	79
+Altered Virome and Bacterial Microbiome in Human Immunodeficiency Virus-Associated Acquired Immunodeficiency Syndrome	Monaco	2016	10.1016/j.chom.2016.02.011	Uganda	16S	Infectious disease/antibiotics	Adults	110
+Mortality in children with complicated severe acute malnutrition is related to intestinal and systemic inflammation: an observational cohort study	Attia	2016	10.3945/ajcn.116.130518	Malawi	qPCR	Nutrition	Children,infants	79
+Lipid-based Nutrient Supplements Do Not Affect Gut Bifidobacterium Microbiota in Malawian Infants: A Randomized Trial	Aako	2017	10.1097/MPG.0000000000001333	Malawi	qPCR	Nutrition	Infants	160
+Evolution in fecal bacterial/viral composition in infants of two central African countries (Gabon and Republic of the Congo) during their first month of life	Brazier	2017	10.1371/journal.pone.0185569	Gabon, Republic of the Congo	Metagenomics	Maternal/Infant Health	Infants	15
+Gut Microbial Diversity in Antibiotic-Naive Children After Systemic Antibiotic Exposure: A Randomized Controlled Trial	Doan	2017	10.1093/cid/cix141	Niger	16S	Infectious disease/antibiotics	Children	80
+Significant Correlation Between the Infant Gut Microbiome and Rotavirus Vaccine Response in Rural Ghana	Harris	2017	10.1093/infdis/jiw518	Ghana	16S	Infectious disease/antibiotics	Infants	78
+The Microbiome in Posttraumatic Stress Disorder and Trauma-Exposed Controls: An Exploratory Study	Hemmings	2017	10.1097/PSY.0000000000000512	South Africa	16S	Other	Adults	30
+Atopic dermatitis and food sensitization in South African toddlers: Role of fiber and gut microbiota	Mahdavinia	2017	10.1016/j.anai.2017.04.011	South Africa	16S	Nutrition	Children	38
+Microbiome sharing between children, livestock and household surfaces in western Kenya	Moscites	2017	10.1371/journal.pone.0171017	Kenya	16S	Comparative	Children	184
+Environmental Enteric Dysfunction and the Fecal Microbiota in Malawian Children	Ordiz	2017	10.4269/ajtmh.16-0617	Malawi	16S	Nutrition	Children	81
+Gut bacterial communities of diarrheic patients with indications of Clostridioides difficile infection	Schneider	2017	10.1038/sdata.2017.152	Ghana	16S	Infectious disease/antibiotics	Adults,children	24
+Seasonal cycling in the gut microbiome of the Hadza hunter-gatherers of Tanzania	Smits	2017	10.1126/science.aan4834	Tanzania	16S,metagenomics	Comparative	Adults,children	188
+Diet, Environments, and Gut Microbiota. A Preliminary Investigation in Children Living in Rural and Urban Burkina Faso and Italy	De Filipo	2017	10.3389/fmicb.2017.01979	Burkina Faso	16S	Comparative	Children	24
+Gut Bacteria Missing in Severe Acute Malnutrition, Can We Identify Potential Probiotics by Culturomics?	Tidjani	2017	10.3389/fmicb.2017.00899	Niger, Senegal	16S	Nutrition	Children	15
+Differential human gut microbiome assemblages during soil-transmitted helminth infections in Indonesia and Liberia	Rosa	2018	10.1186/s40168-018-0416-5	Liberia	16S	ID/Antibiotics	Adults,children	250
+Infant and Adult Gut Microbiome and Metabolome in Rural Bassa and Urban Settlers from Nigeria	Ayeni	2018	10.1016/j.celrep.2018.05.018	Nigeria	16S	Comparative	Adults,children,infants	48
+Stunted childhood growth is associated with decompartmentalization of the gastrointestinal tract and overgrowth of oropharyngeal taxa	Vonaesch	2018	10.1073/pnas.1806573115	Central African Republic, Madagascar	16S	Other	Children	404
+Gut microbiome of Moroccan colorectal cancer patients	Allali	2018	10.1007/s00430-018-0542-5	Morocco	16S	Other	Adults	23
+Iron-containing micronutrient powders modify the effect of oral antibiotics on the infant gut microbiome and increase post-antibiotic diarrhoea risk: a controlled study in Kenya	Paganini	2018	10.1136/gutjnl-2018-317399	Kenya	16S	Nutrition	Infants	28
+Longitudinal Analysis of Infant Stool Bacteria Communities Before and After Acute Febrile Malaria and Artemether-Lumefantrine Treatment	Mandal	2018	10.1093/infdis/jiy740	Kenya	16S	Infectious disease	Infants	10
+Effect of Commonly Used Pediatric Antibiotics on Gut Microbial Diversity in Preschool Children in Burkina Faso: A Randomized Clinical Trial	Oldenburg	2018	10.1093/ofid/ofy289	Burkina Faso	16S	Antibiotics	Children,infants	248
+HIV-exposure, early life feeding practices and delivery mode impacts on faecal bacterial profiles in a South African birth cohort	Claasen-Weitz	2018	10.1038/s41598-018-22244-6	South Africa	16S	Nutrition/infectious disease	Adults,infants	197
+Treponema species enrich the gut microbiota of traditional rural populations but are absent from urban individuals	Angelakis	2019	10.1016/j.nmni.2018.10.009	Nigeria, Senegal	16S	Comparative	Adults	174
+Population structure of human gut bacteria in a diverse cohort from rural Tanzania and Botswana	Hansen	2019	10.1186/s13059-018-1616-9	Tanzania, Botswana	16S	Comparative	Adults	114
+Urogenital schistosomiasis is associated with signatures of microbiome dysbiosis in Nigerian adolescents	Ajibola	2019	10.1038/s41598-018-36709-1	Nigeria	16S	Infectious disease	Adults	49
+Extensive Unexplored Human Microbiome Diversity Revealed by Over 150,000 Genomes from Metagenomes Spanning Age, Geography, and Lifestyle	Pasolli	2019	10.1016/j.cell.2019.01.001	Ethiopia, Madagascar	Metagenomics	Comparative	Adults	117
+Plasticity in the Human Gut Microbiome Defies Evolutionary Constraints	Gomez	2019	10.1128/mSphere.00271-19	Central African Republic	16S	Comparative	Adults	57
+Gut Microbiota Alteration is Characterized by a Proteobacteria and Fusobacteria Bloom in Kwashiorkor and a Bacteroidetes Paucity in Marasmus	Pham	2019	10.1038/s41598-019-45611-3	Niger, Senegal	16S	Nutrition	Children	22
+Household composition and the infant fecal microbiome: The INSPIRE study	Lane	2019	10.1002/ajpa.23843	Ethiopia, The Gambia, Ghana, Kenya, Peru, Spain	16S	Maternal/Infant Health	Infants	217
+Different Gut Microbial Profiles in Sub-Saharan African and South Asian Women of Childbearing Age Are Primarily Associated With Dietary Intakes	Tang	2019	10.3389/fmicb.2019.01848	Democratic Republic of the Congo	16S	Nutrition	Adults	117
+Urogenital schistosomiasis is associated with signatures of microbiome dysbiosis in Nigerian adolescents	Ajibola	2019	10.1038/s41598-018-36709-1	Nigeria	16S	Infectious disease/antibiotics	Children	49
+Use of shotgun metagenomics for the identification of protozoa in the gut microbiota of healthy individuals from worldwide populations with various industrialization levels	Lokmer	2019	10.1371/journal.pone.0211139	Cameroon	Metagenomics	Infectious disease	Adults	57
+The Prevotella copri complex comprises four distinct clades underrepresented in Westernized populations	Tett	2019	10.1016/j.chom.2019.08.018	Ethiopia, Ghana, Tanzania	Metagenomics	Comparative	Adults, children, infants	162
+Evolution of the gut microbiome following acute HIV-1 infection	Rocafort	2019	10.1186/s40168-019-0687-5	Mozambique	16S,metagenomics	Infectious disease	Adults	202
+Gut virome analysis of Cameroonians reveals high diversity of enteric viruses, including potential interspecies transmitted viruses	Yinda	2019	10.1128/mSphere.00585-18	Cameroon	Viral metagenomics	Infectious disease	Adults, children, infants	221
+Gut microbiome alteration in MORDOR I: a community-randomized trial of mass azithromycin distribution	Doan	2020	10.1038/s41591-019-0533-0	Niger, Malawi, Tanzania	Metagenomics (RNA)	Infectious disease/antibiotics	Children	300
+The microbiome and resistome of chimpanzees, gorillas, and humans across host lifestyle and geography	Campbell	2020	10.1038/s41396-020-0634-2	Republic of the Congo	16S,metagenomics	Comparative	Adults	81
+The effect of legume supplementation on the gut microbiota in rural Malawian infants aged 6 to 12 months	Ordiz	2020	10.1093/ajcn/nqaa011	Malawi	16S	Nutrition	Infants	236

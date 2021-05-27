@@ -1,0 +1,8 @@
+Taxonomic rank	Mean classified reads (%)	Range classified reads (%)	Mean unclassified reads (%)	Range unclassified reads (%)
+Domain	0.365	0.196-0.882	0.635	0.118-0.804
+Phylum	0.355	0.185-0.879	0.645	0.121-0.815
+Class	0.349	0.178-0.878	0.651	0.122-0.822
+Order	0.349	0.179-0.879	0.651	0.121-0.821
+Family	0.33	0.155-0.858	0.67	0.142-0.845
+Genus	0.301	0.149-0.849	0.699	0.151-0.851
+Species	0.282	0.148-0.717	0.718	0.283-0.852
