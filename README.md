@@ -1,8 +1,8 @@
-# ZA Microbiome
+# Bushbuckridge and Soweto microbiome project
 
 Analysis scripts for Wits-Stanford shotgun microbiome data.
 
-To generate all figures from the manuscript, install all required packages and run `scripts.figures/manuscript_figures.R`
+To generate all figures from the manuscript, install all required packages and run `scripts/figures/manuscript_figures.R`
 
 Required packages:
 
