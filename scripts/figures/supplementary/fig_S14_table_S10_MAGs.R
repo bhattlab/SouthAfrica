@@ -2,7 +2,6 @@ library(cowplot)
 library(ggplot2)
 library(ggpubr)
 library(here)
-library(kableExtra)
 library(tidyverse)
 
 ## params ----
