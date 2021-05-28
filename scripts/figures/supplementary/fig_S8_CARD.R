@@ -186,7 +186,7 @@ b <- plot_grid(b1, b2, ncol = 1, align = "v", axis = "lr", rel_heights = c(0.05,
 
 plot_grid(b, a, ncol = 1, rel_heights = c(0.6, 0.4), labels = c("A", "B"))
 
-ggsave(here("final_plots/supplementary/fig_S8_shortbred_card.png"),
+ggsave(here("final_plots/supplementary/figure_S8_shortbred_card.png"),
        width = 16, height = 18)
 
 # clst <- c("C14", "B11", "B16", "B33", "C1", "C19", "A69", "B9", "B20", "B26")

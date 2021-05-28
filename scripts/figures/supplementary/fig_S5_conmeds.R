@@ -4,6 +4,7 @@ library(cowplot)
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
+library(here)
 library(vegan)
 
 ## metadata ----
@@ -51,8 +52,8 @@ conmeds %>%
 # mds plot with drug trt colored
 global_pal <- c("#E3211C", "#F89897", "#6A3D9A", "#CAB2D6", "#1F78B4", "#A5CEE3")
 za_pal <- global_pal[3:4]
-za_meta <- readRDS("rds/za_meta.rds")
-za_S_css <- readRDS("rds/za_S_css.rds")
+za_meta <- readRDS(here("rds/za_meta.rds"))
+za_S_css <- readRDS(here("rds/za_S_css.rds"))
 
 vare_dis <- vegdist(t(za_S_css), method = "bray")
 

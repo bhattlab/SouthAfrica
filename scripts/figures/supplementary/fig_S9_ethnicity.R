@@ -1,9 +1,11 @@
 library(cowplot)
 library(ggpubr)
 library(here)
+library(MASS)
 library(RColorBrewer)
 library(reshape2)
 library(tidyverse)
+library(vegan)
 
 ## load data ----
 source(here("scripts/load_data.R"))

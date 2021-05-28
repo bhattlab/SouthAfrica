@@ -69,7 +69,8 @@ rc <- ggplot(counts_long, aes(x=reads_m, fill=step)) +
   theme_cowplot(14) +
   background_grid()
 
-# ggsave("final_plots/misc/readcounts_preprocessing.png", rc, device = "png", height = 12, width = 12)
+# ggsave(here("final_plots/misc/readcounts_preprocessing.png"), rc,
+#        height = 12, width = 12)
 
 # save readcounts to supp file
 za_counts <- za_counts %>%
@@ -91,7 +92,7 @@ z <- za_counts %>%
 
 wilcox.test(human_rm_frac ~ site, z)
 
-z %>%x
+z %>%
   group_by(site) %>%
   summarise(mean_human_frac = mean(human_rm_frac))
 

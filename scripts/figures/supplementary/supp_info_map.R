@@ -3,6 +3,7 @@
 library(cowplot)
 library(ggrepel)
 library(ggspatial)
+library(here)
 library(maps)
 library(rgeos)
 library(rnaturalearth)
@@ -87,6 +88,6 @@ ggplot(data = world) +
     y = "Latitude"
   )
 
-ggsave(here("final_plots/supplementary/supp_map.png"),
+ggsave(here("final_plots/supplementary/supp_info_map.png"),
        width = 8.64, height = 7.224)
 

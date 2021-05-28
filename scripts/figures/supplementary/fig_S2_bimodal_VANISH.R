@@ -1,5 +1,7 @@
 library(cowplot)
+library(genefilter)
 library(ggpubr)
+library(harrietr)
 library(here)
 library(reshape2)
 library(scales)
@@ -8,24 +10,25 @@ library(tidyverse)
 ## load data ----
 source(here("scripts/load_data.R"))
 
-## Succinatimonas correlation with other genera --
-za_G_cor <- cor(t(za_G_rel[genefilter(za_G_rel, pOverA(0.1, 0.0001)), ]), method = "spearman")
-
-za_G_cor_long <- melt_dist(za_G_cor)
-za_G_cor_long %>%
-  filter(iso1 == "Succinatimonas" | iso2 == "Succinatimonas") %>%
-  arrange(-abs(dist)) %>%
-  head(20)
-
 ## plot distributions
+vanish_tax <- data.frame(
+  "F" = gsub(".+f__|\\|g__.+", "", vanish_G),
+  "G" = gsub(".+g__", "", vanish_G)
+)
+
+za_G_VANISH <- za_G_rel[which(rownames(za_G_rel) %in% as.character(vanish_tax$G)), ]
+za_F_VANISH <- za_F_rel[which(rownames(za_F_rel) %in% as.character(vanish_tax$F)), ]
+
 za_VANISH_G_long <- reshape2::melt(za_G_VANISH %>% rownames_to_column(var = "G"),
                                    id.vars = "G",
                                    variable.name = "sample",
                                    value.name = "relab")
+
 za_VANISH_G_long <- merge(za_VANISH_G_long, za_meta, by = "sample")
 
 succin_long <- za_VANISH_G_long %>%
-  filter(G %in% c("Succinatimonas", "Succinivibrio", "Treponema") & site == "Bushbuckridge")
+  filter(G %in% c("Succinatimonas", "Succinivibrio", "Treponema") &
+           site == "Bushbuckridge")
 
 density_plot <- ggplot(succin_long, aes(x = relab * 100)) +
   geom_density(fill = za_pal[1]) +
