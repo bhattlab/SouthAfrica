@@ -21,7 +21,6 @@ Required packages:
 * gtools
 * harrietr
 * here
-* kableExtra
 * maps
 * MASS
 * RColorBrewer
