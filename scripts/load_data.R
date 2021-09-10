@@ -1,19 +1,16 @@
 library(here)
 
-## color palettes ----
-global_pal <- c("#E3211C", "#F89897", "#6A3D9A", "#CAB2D6", "#1F78B4", "#A5CEE3")
-za_pal <- global_pal[3:4]
-
 ## study sites ----
-sites <- c("Tanzania", "Madagascar", "Bushbuckridge", "Soweto",
+sites <- c("Tanzania", "Madagascar", "Burkina Faso", "Bushbuckridge", "Soweto",
            "Sweden", "United States")
 
 ## vanish taxa ----
 vanish_F <- c("Prevotellaceae", "Succinivibrionaceae", "Paraprevotellaceae",
               "Spirochaetaceae")
 
-taxonomy <- read.table(here("input_final/taxonomy/kraken_feb2019_inspect_mpa.out"),
-                       sep = "\t", quote = "", comment.char = "")
+taxonomy <- read.table(
+  here("input_final/taxonomy/kraken_feb2019_inspect_mpa.out"),
+  sep = "\t", quote = "", comment.char = "")
 
 vanish_G <- taxonomy %>%
   filter(grepl("g__", V1) & grepl(paste(vanish_F, collapse = "|"), V1)) %>%
@@ -66,3 +63,9 @@ for (k in c("21", "31", "51")){
   }
 }
 
+## color palettes ----
+global_pal <- c("#E3211C", "#F89897", "#FF7F00", "#6A3D9A", "#CAB2D6",
+                "#1F78B4", "#A5CEE3")
+names(global_pal) <- levels(pheno_global$site2)
+
+za_pal <- global_pal[c("Bushbuckridge", "Soweto")]

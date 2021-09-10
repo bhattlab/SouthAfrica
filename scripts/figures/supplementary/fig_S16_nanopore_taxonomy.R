@@ -5,10 +5,10 @@ library(RColorBrewer)
 library(reshape2)
 library(tidyverse)
 
-## load data ----
+# load data ----
 source(here("scripts/load_data.R"))
 
-## nanopore figure ----
+# nanopore figure ----
 labels <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)
 
 # nanopore mags
@@ -24,7 +24,7 @@ gtdbtk <- rbind(gtdbtk_bac, gtdbtk_arc)
 gtdbtk <- gtdbtk %>%
   separate(user_genome, into = c("Sample", "Bin"), sep = "_", extra = "merge")
 
-## binning dastool pipeline output
+# binning dastool pipeline output
 mags <- read.table(here("input_final/mags/binning_table_all_simple.tsv"),
                    sep = "\t", header = T, comment.char = "")
 
@@ -32,18 +32,20 @@ mags <- read.table(here("input_final/mags/binning_table_all_simple.tsv"),
 mags <- mags %>%
   filter(Bin != "unbinned") %>%
   mutate(Quality = ifelse(Completeness > 90 & Contamination < 5 & tRNA >= 18 &
-                            rna.16S > 0 & rna.23S > 0 & rna.5S > 0, "High-quality",
+                            rna.16S > 0 & rna.23S > 0 & rna.5S > 0,
+                          "High-quality",
                           ifelse(Completeness >= 50 & Contamination <10,
                                  "Medium-quality", "Low-quality")),
          Quality = factor(Quality, levels = c("Low-quality", "Medium-quality",
                                               "High-quality"))) %>%
   left_join(za_meta, by = c("Sample" = "sample")) %>%
-  left_join(gtdbtk[, c("Sample", "Bin", "classification")], by = c("Sample", "Bin"))
+  left_join(gtdbtk[, c("Sample", "Bin", "classification")],
+            by = c("Sample", "Bin"))
 
 mags_mqplus <- mags %>%
   filter(Quality != "Low-quality")
 
-## gtdb classifications ----
+# gtdb classifications ----
 for (lvl in c("S", "G")){
   bracken <- read.table(here(paste0("input_final/kraken/gtdb_r95/bracken_", lvl, ".txt")),
                         sep = "\t", header = T)
@@ -118,7 +120,8 @@ plot_nanopore <- function(count_data, sample, n_taxa, rank_label){
       fill = rank_label
     ) +
     scale_fill_manual(values = global_pal) +
-    guides(fill = guide_legend(ncol=1, keywidth = 0.125, keyheight = 0.1, default.unit = "inch")) +
+    guides(fill = guide_legend(ncol=1, keywidth = 0.125, keyheight = 0.1,
+                               default.unit = "inch")) +
     theme_cowplot() +
     theme(
       legend.text = element_text(size = 11),
@@ -130,8 +133,10 @@ plot_nanopore <- function(count_data, sample, n_taxa, rank_label){
 }
 
 nmag_samples <- c("C27", "C29", "C33")
-nmag_species <- lapply(nmag_samples, function(x){plot_nanopore(bracken_S_rel, x, 30, "Species")})
-nmag_genus <- lapply(nmag_samples, function(x){plot_nanopore(bracken_G_rel, x, 30, "Genus")})
+nmag_species <- lapply(nmag_samples, function(x){plot_nanopore(bracken_S_rel,
+                                                               x,30, "Species")})
+nmag_genus <- lapply(nmag_samples, function(x){plot_nanopore(bracken_G_rel,
+                                                             x, 30, "Genus")})
 
 a1 <- nmag_species[[1]] + ggtitle("Bushbuckridge 106")
 a2 <- nmag_genus[[1]]

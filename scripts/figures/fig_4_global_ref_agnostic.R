@@ -7,48 +7,26 @@ library(reshape2)
 library(tidyverse)
 library(vegan)
 
-## load data ----
+# load data ----
 source(here("scripts/load_data.R"))
 
-## A) classification plot ----
-# read data with unclassified reads
-unclass <- read.table(here("input_final/readcounts/global_unclassified.txt"),
-                      sep = "\t")
-names(unclass) <- c("sample", "unclassified_reads")
+# panel A: classification plot ----
 
-# rampelli
-unclass_rampelli <- read.table(
-  here("input_final/readcounts/global_unclassified_rampelli.txt"),
-  sep = "\t")
-names(unclass_rampelli) <- c("sample", "unclassified_reads")
+# total readcounts after preprocessing
+reads_total <- read.table(here("input_final/readcounts/readcounts_all.txt"),
+                          col.names = c("sample", "total_reads"))
 
-unclass <- rbind(unclass, unclass_rampelli)
+# unclassified READ PAIRS
+reads_unclass <- read.table(here("input_final/readcounts/unclassified_all.txt"),
+                            col.names = c("sample", "unclassified_readpairs"))
 
-readcounts <- read.table(here("input_final/readcounts/readcounts_global.txt"),
-                         sep = "\t")
-names(readcounts) <- c("sample", "total_reads")
+reads <- reads_total %>%
+  left_join(reads_unclass, by = "sample") %>%
+  inner_join(pheno_global, by = "sample") %>%
+  mutate(unclassified_reads = unclassified_readpairs * 2,
+         classified_perc = (total_reads - unclassified_reads) / total_reads)
 
-readcounts_rampelli <- read.table(
-  here("input_final/readcounts/readcounts_global_rampelli.txt"), sep = "\t")
-names(readcounts_rampelli) <- c("sample", "total_reads")
-
-readcounts <- rbind(readcounts, readcounts_rampelli)
-
-# kracken/bracken results are in read pairs
-unclass$unclassified_reads <- unclass$unclassified_reads * 2
-
-unclass$total_reads <- readcounts[match(unclass$sample, readcounts$sample), "total_reads"]
-
-unclass <- unclass %>%
-  mutate(
-    classified_reads = total_reads - unclassified_reads,
-    classified_perc = classified_reads / total_reads
-  )
-
-# merge pheno data
-unclass_pheno <- merge(pheno_global, unclass, by = "sample")
-
-## Plot by site with statistical tests
+# plot by site with statistical tests
 # https://github.com/kassambara/ggpubr/wiki/Adding-Adjusted-P-values-to-a-GGPlot
 
 my_comparisons <- list(
@@ -57,15 +35,14 @@ my_comparisons <- list(
   c("Soweto", "United States")
 )
 
-pvals <- unclass_pheno %>%
-  rstatix::pairwise_wilcox_test(classified_perc ~ site2, comparisons = my_comparisons) %>%
+pvals <- reads %>%
+  rstatix::pairwise_wilcox_test(classified_perc ~ site2,
+                                comparisons = my_comparisons) %>%
   rstatix::add_y_position()
+
 pvals$y.position <- pvals$y.position + 2
 
-read_class_plot <- ggplot(unclass_pheno, aes(site2, classified_perc * 100)) + 
-  # geom_boxplot(outlier.shape = NA, aes(fill = site2)) +
-  # geom_jitter(position = position_jitterdodge(jitter.width = 2),
-  #             alpha = 0.5, pch = 21, aes(fill = site2)) +
+read_class_plot <- ggplot(reads, aes(site2, classified_perc * 100)) + 
   geom_jitter(alpha = 0.75, color = "darkgray", width = 0.3) +
   geom_boxplot(outlier.shape = NA, aes(fill = site2), alpha = 0.75) +
   labs(x = "",
@@ -74,17 +51,16 @@ read_class_plot <- ggplot(unclass_pheno, aes(site2, classified_perc * 100)) +
   scale_fill_manual(values = global_pal) +
   scale_y_continuous(breaks = seq(0, 100, 10)) +
   theme_cowplot() +
-  theme(
-    legend.position = "none",
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
-    plot.margin = unit(c(0, 0.5, 0, 0.5), unit = "cm")
-  ) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+        plot.margin = unit(c(0, 0.5, 0, 0.5), unit = "cm")) +
   stat_pvalue_manual(pvals, label = "p.adj.signif", tip.length = 0.01,
                      vjust = 0.5, hide.ns = T, y.position = c(100, 104)) +
   background_grid(major = "y")
 
 
-## B) k-mer comparisons ----
+# panel B: k-mer comparisons ----
+
 # perform kmer nmds/mds
 kmer_mds <- function(k){
   k_matrix_filt <- get(paste0("sourmash_k", k, "_track_abund"))
@@ -111,13 +87,10 @@ plot_kmer_mds <- function(mds, k){
   kmer_mds <- ggplot(mds_pheno, aes(X1, X2, color = site2)) +
     geom_point(size = 1.5, alpha = 0.75) +
     scale_color_manual(values = global_pal, guide = guide_legend(nrow = 1)) +
-    labs(
-      # title = paste("k=", k, sep = ""),
-      x = "NMDS 1",
-      y = "NMDS 2",
-      color="",
-      fill="Site"
-    ) +
+    labs(x = "NMDS 1",
+         y = "NMDS 2",
+         color="",
+         fill="Site") +
     theme_cowplot() +
     theme(
       legend.position = "top",
@@ -134,28 +107,33 @@ plot_kmer_mds <- function(mds, k){
                  show.legend = F)
 }
 
+set.seed(1)
+
 k21_mds <- kmer_mds("21")
 k31_mds <- kmer_mds("31")
 k51_mds <- kmer_mds("51")
 
-k21 <- plot_kmer_mds(k21_mds, 21)
+k21 <- plot_kmer_mds(k21_mds, 21) +
+  theme(legend.spacing.x = unit(0.1, "cm"),
+        legend.justification = "center")
 k31 <- plot_kmer_mds(k31_mds, 31)
 k51 <- plot_kmer_mds(k51_mds, 51)
 
+# panel C: compare k-mer and bray pairwise distances ----
 
-## C) compare k-mer and bray pairwise distances ----
 # species bray-curtis vs kmer angular similarity
 for (method in c("bray", "jaccard")){
   
   suffix <- ifelse(method == "bray", "_track_abund", "")
   
-  # veg_dist <- vegdist(t(global_S_css), method = method)
   veg_dist <- vegdist(t(global_S_rel), method = method)
+  
   dist_long <- melt_dist(as.matrix(veg_dist))
   dist_long <- merge(dist_long, pheno_global[, -2], by.x = "iso1",
                      by.y = "sample", all.x = T, all.y = F)
   dist_long <- merge(dist_long, pheno_global[, -2], by.x = "iso2",
                      by.y = "sample", all.x = T, all.y = F)
+  
   pair_dis_sp <- filter(dist_long, site2.x == site2.y)
   pair_dis_sp$method <- "Species"
   
@@ -164,6 +142,7 @@ for (method in c("bray", "jaccard")){
                   by.y = "sample", all.x = T, all.y = F)
   k_long <- merge(k_long, pheno_global[, -2], by.x = "iso2",
                   by.y = "sample", all.x = T, all.y = F)
+  
   pair_dis_k <- filter(k_long, site2.x == site2.y)
   pair_dis_k$method <- "K-mer"
   
@@ -173,7 +152,7 @@ for (method in c("bray", "jaccard")){
   assign(paste0("pair_dis", suffix), pair_dis)
 }
 
-## plot all species / k-mer comparisons
+# plot all species / k-mer comparisons
 my_comparisons <- list(
   c("Soweto", "Tanzania"),
   c("Soweto", "Madagascar"),
@@ -188,21 +167,17 @@ dist_plot_all <- ggplot(pair_dis_track_abund,
   facet_wrap(~method, scales = "free",
              labeller = labeller(groupwrap = label_wrap_gen(10))) +
   scale_fill_manual(values = global_pal) +
-  labs(
-    x = "",
-    y = "Pairwise Distance"
-  ) +
+  scale_y_continuous(breaks = seq(0, 1, 0.25), limits = c(0, 1.5)) +
+  labs(x = "",
+       y = "Pairwise Distance") +
   theme_cowplot(12) +
-  theme(
-    legend.position = "none",
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
-  ) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   stat_compare_means(comparisons = my_comparisons, label = "p.signif",
                      method = "wilcox.test", vjust = 0.75) +
   background_grid(major = "y")
 
-
-## only za/Sweden
+# only za/Sweden
 my_comparisons <- list(
   c("Bushbuckridge", "Sweden"),
   c("Soweto", "Sweden")
@@ -216,12 +191,6 @@ dat_k <- pair_dis_track_abund %>%
   filter(site2.y %in% c("Bushbuckridge", "Sweden"), method == "K-mer")
 wilcox.test(dist ~ site2.y, dat_k, alternative = "g")
 
-## are dist distributions normal?
-# d <- dat %>% filter(site2.y == "Bushbuckridge") %>% pull(dist)
-# ggdensity(d)
-# ggqqplot(d)
-# shapiro.test(sample(d, 5000))
-
 za_sw <- pair_dis_track_abund %>%
   filter(site2.y %in% c("Bushbuckridge", "Sweden"))
 
@@ -229,25 +198,20 @@ dist_plot_za_swed <- ggplot(za_sw, aes(x = site2.y, y = dist, fill = site2.y)) +
   geom_boxplot(outlier.size = 0.75) +
   facet_wrap(~method, scales = "free",
              labeller = labeller(groupwrap = label_wrap_gen(10))) +
-  scale_fill_manual(values = global_pal[c(3, 5)]) +
+  scale_fill_manual(values = global_pal[c("Bushbuckridge", "Sweden")]) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.075))) +
-  # expand_limits(y = 1.1) +
-  labs(
-    x = "",
-    y = "Pairwise Distance"
-  ) +
+  labs(x = "",
+       y = "Pairwise Distance") +
   theme_cowplot(12) +
-  theme(
-    legend.position = "none",
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
-  ) +
-  # stat_compare_means(comparisons = my_comparisons, label = "p.signif", method = "wilcox.test") +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   stat_compare_means(comparisons = list(c("Bushbuckridge", "Sweden")),
-                     label = "p.signif", method = "wilcox.test", vjust = 0.5) +
+                     label = "p.signif", method = "wilcox.test",
+                     vjust = 0.5) +
   background_grid(major = "y")
 
 
-## Madagascar/USA
+# Madagascar/USA
 mad_usa <- pair_dis_track_abund %>%
   filter(site2.y %in% c("Madagascar", "United States"))
 
@@ -256,20 +220,14 @@ dist_plot_mad_usa <- ggplot(mad_usa, aes(x = site2.y, y = dist, fill = site2.y))
   facet_wrap(~ method, scales = "free",
              labeller = labeller(method = label_wrap_gen(10))) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.075))) +
-  scale_fill_manual(values = global_pal[c(2, 6)]) +
-  labs(
-    x = "",
-    y = "Pairwise Distance"
-  ) +
+  scale_fill_manual(values = global_pal[c("Madagascar", "United States")]) +
+  labs(x = "",
+       y = "Pairwise Distance") +
   theme_cowplot(12) +
-  theme(
-    legend.position = "none",
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
-  ) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   stat_compare_means(comparisons = list(c("Madagascar", "United States")),
                      label = "p.signif", method = "wilcox.test", vjust = 0.5) +
-  # geom_signif(comparisons = list(c("Madagascar", "United States")),
-  #             map_signif_level = TRUE, test = "wilcox.test") +
   background_grid(major = "y")
 
 row1 <- plot_grid(get_legend(k21))
@@ -299,25 +257,22 @@ plot_grid(
   rel_heights = c(0.05, 0.3, 0.35, 0.3)
 )
 
-ggsave(here("final_plots/figure_4.png"), width = 8, height = 12.5)
+ggsave(here("final_plots/figure_4.png"), width = 8, height = 12.5, bg = "white")
 
+# supplementary: Jaccard ----
 
-### supplementary: Jaccard ----
-
-## plot all species / k-mer comparisons
+# plot all species / k-mer comparisons
 ggplot(pair_dis, aes(x = site2.y, y = dist, fill = site2.y)) +
   geom_boxplot(outlier.size = 0.75) +
-  facet_wrap(~method, scales = "free", labeller = labeller(groupwrap = label_wrap_gen(10))) +
+  facet_wrap(~method, scales = "free",
+             labeller = labeller(groupwrap = label_wrap_gen(10))) +
   scale_fill_manual(values = global_pal) +
-  labs(
-    x = "",
-    y = "Pairwise Jaccard Distance"
-  ) +
+  labs(x = "",
+       y = "Pairwise Jaccard Distance") +
   theme_cowplot(12) +
-  theme(
-    legend.position = "none",
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
-  ) +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   background_grid(major = "y")
 
-ggsave(here("final_plots/misc/jaccard_dist_supp.png"), width = 8, height = 5)
+ggsave(here("final_plots/supplementary/figure_S14_jaccard_dist_kmer.png"),
+       width = 8, height = 5, bg = "white")

@@ -52,7 +52,8 @@ za_counts %>%
 colnames(za_counts) <- c("Sample", "Raw reads", "Deduplicated reads",
                          "Trimmed reads", "Non-human reads")
 
-counts_long <- melt(za_counts, id.vars = "Sample", variable.name = "step", value.name = "reads")
+counts_long <- melt(za_counts, id.vars = "Sample",
+                    variable.name = "step", value.name = "reads")
 counts_long$reads_m <- (counts_long$reads / 1e6)
 
 # plot readcounts

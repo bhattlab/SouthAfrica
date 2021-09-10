@@ -1,0 +1,319 @@
+2021-08-29 18:59:42 INFO::Writing function arguments to log file
+2021-08-29 18:59:42 DEBUG::Function arguments
+2021-08-29 18:59:42 DEBUG::Output folder: /Users/tamburif/southafrica/output/maaslin2/CPLM_TSS
+2021-08-29 18:59:42 DEBUG::Min Abundance: 0.000000
+2021-08-29 18:59:42 DEBUG::Min Prevalence: 0.100000
+2021-08-29 18:59:42 DEBUG::Normalization: TSS
+2021-08-29 18:59:42 DEBUG::Transform: NONE
+2021-08-29 18:59:42 DEBUG::Analysis method: CPLM
+2021-08-29 18:59:42 DEBUG::Max significance: 0.250000
+2021-08-29 18:59:42 DEBUG::Random effects:
+2021-08-29 18:59:42 DEBUG::Fixed effects: site
+2021-08-29 18:59:42 DEBUG::Correction method: BH
+2021-08-29 18:59:42 DEBUG::Standardize: FALSE
+2021-08-29 18:59:42 DEBUG::Cores: 1
+2021-08-29 18:59:42 INFO::Verifying options selected are valid
+2021-08-29 18:59:42 INFO::Determining format of input files
+2021-08-29 18:59:42 INFO::Input format is data samples as columns and metadata samples as rows
+2021-08-29 18:59:42 DEBUG::Transformed data so samples are rows
+2021-08-29 18:59:42 DEBUG::A total of 169 samples were found in both the data and metadata
+2021-08-29 18:59:42 DEBUG::Reordering data/metadata to use same sample ordering
+2021-08-29 18:59:42 INFO::Formula for fixed effects: expr ~  site
+2021-08-29 18:59:42 INFO::Filter data based on min abundance and min prevalence
+2021-08-29 18:59:42 INFO::Total samples in data: 169
+2021-08-29 18:59:42 INFO::Min samples required with min abundance for a feature not to be filtered: 16.900000
+2021-08-29 18:59:42 INFO::Total filtered features: 60
+2021-08-29 18:59:42 INFO::Filtered feature names from abundance and prevalence filtering: CODH.PWY..reductive.acetyl.coenzyme.A.pathway, GLUDEG.II.PWY..L.glutamate.degradation.VII..to.butanoate., LYSINE.AMINOAD.PWY..L.lysine.biosynthesis.IV, METHANOGENESIS.PWY..methanogenesis.from.H2.and.CO2, P101.PWY..ectoine.biosynthesis, P165.PWY..superpathway.of.purines.degradation.in.plants, P241.PWY..coenzyme.B.biosynthesis, PWY.101..photosynthesis.light.reactions, PWY.1361..benzoyl.CoA.degradation.I..aerobic., PWY.1501..mandelate.degradation.I, PWY.2221..Entner.Doudoroff.pathway.III..semi.phosphorylative., PWY.4361..S.methyl.5.thio..alpha..D.ribose.1.phosphate.degradation, PWY.4722..creatinine.degradation.II, PWY.5044..purine.nucleotides.degradation.I..plants., PWY.5055..nicotinate.degradation.III, PWY.5079..L.phenylalanine.degradation.III, PWY.5178..toluene.degradation.IV..aerobic...via.catechol., PWY.5180..toluene.degradation.I..aerobic...via.o.cresol., PWY.5182..toluene.degradation.II..aerobic...via.4.methylcatechol., PWY.5198..factor.420.biosynthesis, PWY.5415..catechol.degradation.I..meta.cleavage.pathway., PWY.5419..catechol.degradation.to.2.oxopent.4.enoate.II, PWY.5420..catechol.degradation.II..meta.cleavage.pathway., PWY.5532..adenosine.nucleotides.degradation.IV, PWY.5534..propylene.degradation, PWY.5870..ubiquinol.8.biosynthesis..eukaryotic., PWY.5871..ubiquinol.9.biosynthesis..eukaryotic., PWY.5873..ubiquinol.7.biosynthesis..eukaryotic., PWY.5994..palmitate.biosynthesis.I..animals.and.fungi., PWY.6138..CMP.N.acetylneuraminate.biosynthesis.I..eukaryotes., PWY.6165..chorismate.biosynthesis.II..archaea., PWY.6167..flavin.biosynthesis.II..archaea., PWY.6174..mevalonate.pathway.II..archaea., PWY.6281..L.selenocysteine.biosynthesis.II..archaea.and.eukaryotes., PWY.6344..L.ornithine.degradation.II..Stickland.reaction., PWY.6349..CDP.archaeol.biosynthesis, PWY.6350..archaetidylinositol.biosynthesis, PWY.6383..mono.trans..poly.cis.decaprenyl.phosphate.biosynthesis, PWY.6467..Kdo.transfer.to.lipid.IVA.III..Chlamydia., PWY.6596..adenosine.nucleotides.degradation.I, PWY.6641..superpathway.of.sulfolactate.degradation, PWY.6748..nitrate.reduction.VII..denitrification., PWY.6785..hydrogen.production.VIII, PWY.6863..pyruvate.fermentation.to.hexanol, PWY.6883..pyruvate.fermentation.to.butanol.II, PWY.7007..methyl.ketone.biosynthesis, PWY.7031..protein.N.glycosylation..bacterial., PWY.7090..UDP.2.3.diacetamido.2.3.dideoxy..alpha..D.mannuronate.biosynthesis, PWY.7235..superpathway.of.ubiquinol.6.biosynthesis..eukaryotic., PWY.7286..7..3.amino.3.carboxypropyl..wyosine.biosynthesis, PWY.7317..superpathway.of.dTDP.glucose.derived.O.antigen.building.blocks.biosynthesis, PWY.7373..superpathway.of.demethylmenaquinol.6.biosynthesis.II, PWY.7374..1.4.dihydroxy.6.naphthoate.biosynthesis.I, PWY.7391..isoprene.biosynthesis.II..engineered., PWY.7527..L.methionine.salvage.cycle.III, PWY.7528..L.methionine.salvage.cycle.I..bacteria.and.plants., PWY1F.823..leucopelargonidin.and.leucocyanidin.biosynthesis, PWY5F9.12..biphenyl.degradation, TYRFUMCAT.PWY..L.tyrosine.degradation.I, VALDEG.PWY..L.valine.degradation.I
+2021-08-29 18:59:43 INFO::Total filtered features with variance filtering: 0
+2021-08-29 18:59:43 INFO::Filtered feature names from variance filtering:
+2021-08-29 18:59:43 INFO::Running selected normalization method: TSS
+2021-08-29 18:59:43 INFO::Bypass z-score application to metadata
+2021-08-29 18:59:43 INFO::Running selected transform method: NONE
+2021-08-29 18:59:43 INFO::Running selected analysis method: CPLM
+2021-08-29 18:59:43 INFO::Fitting model to feature number 1, UNMAPPED
+2021-08-29 18:59:44 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-0.7674  -0.1722  -0.0411   0.1277   1.1687  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -1.42194    0.02668 -53.301   <2e-16 ***
+siteSoweto  -0.10020    0.04858  -2.063   0.0407 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.072397
+Estimated index parameter: 1.99 
+
+Residual deviance: 12.386  on 167  degrees of freedom
+AIC:  -456.85 
+
+Number of Fisher Scoring iterations:  4
+2021-08-29 18:59:44 INFO::Fitting model to feature number 2, UNINTEGRATED
+2021-08-29 18:59:44 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.46596  -0.03784   0.00970   0.04069   0.14786  
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -0.346505   0.008135 -42.594   <2e-16 ***
+siteSoweto   0.033989   0.014637   2.322   0.0214 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.0058124
+Estimated index parameter: 1.01 
+
+Residual deviance: 0.9836  on 167  degrees of freedom
+AIC:  -444.06 
+
+Number of Fisher Scoring iterations:  3
+2021-08-29 18:59:44 INFO::Fitting model to feature number 3, X1CMET2.PWY..N10.formyl.tetrahydrofolate.biosynthesis
+2021-08-29 18:59:44 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+      Min         1Q     Median         3Q        Max  
+-0.032433  -0.002192   0.000041   0.002116   0.009672  
+            Estimate Std. Error  t value Pr(>|t|)    
+(Intercept) -7.63675    0.01677 -455.387   <2e-16 ***
+siteSoweto  -0.00247    0.03055   -0.081    0.936    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 2.0875e-05
+Estimated index parameter: 1.01 
+
+Residual deviance: 0.0034407  on 167  degrees of freedom
+AIC:  -2629.6 
+
+Number of Fisher Scoring iterations:  8
+2021-08-29 18:59:44 INFO::Fitting model to feature number 4, X3.HYDROXYPHENYLACETATE.DEGRADATION.PWY..4.hydroxyphenylacetate.degradation
+2021-08-29 18:59:44 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.14463  -0.14463  -0.13203  -0.01863   0.43331  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -12.4632     0.2399 -51.954   <2e-16 ***
+siteSoweto   -0.4208     0.4662  -0.903    0.368    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.019919
+Estimated index parameter: 1.5669 
+
+Residual deviance: 2.9903  on 167  degrees of freedom
+AIC:  -1198.5 
+
+Number of Fisher Scoring iterations:  15
+2021-08-29 18:59:44 INFO::Fitting model to feature number 5, AEROBACTINSYN.PWY..aerobactin.biosynthesis
+2021-08-29 18:59:44 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-0.2044  -0.2044  -0.2044  -0.1868   1.0213  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -13.7909     0.4587 -30.064   <2e-16 ***
+siteSoweto   -0.5091     0.8910  -0.571    0.569    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.14266
+Estimated index parameter: 1.6445 
+
+Residual deviance: 8.1747  on 167  degrees of freedom
+AIC:  -350.77 
+
+Number of Fisher Scoring iterations:  16
+2021-08-29 18:59:44 INFO::Fitting model to feature number 6, ALLANTOINDEG.PWY..superpathway.of.allantoin.degradation.in.yeast
+2021-08-29 18:59:44 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.06109  -0.06109  -0.05857   0.01112   0.13747  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -12.9681     0.1722 -75.317   <2e-16 ***
+siteSoweto   -0.1580     0.3229  -0.489    0.625    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.00367
+Estimated index parameter: 1.4669 
+
+Residual deviance: 0.5509  on 167  degrees of freedom
+AIC:  -1232.5 
+
+Number of Fisher Scoring iterations:  15
+2021-08-29 18:59:44 INFO::Fitting model to feature number 7, ANAEROFRUCAT.PWY..homolactic.fermentation
+2021-08-29 18:59:45 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+       Min          1Q      Median          3Q         Max  
+-0.0240818  -0.0030918   0.0001938   0.0034349   0.0110526  
+            Estimate Std. Error  t value Pr(>|t|)    
+(Intercept) -8.26920    0.02629 -314.597   <2e-16 ***
+siteSoweto   0.04147    0.04717    0.879    0.381    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 2.6804e-05
+Estimated index parameter: 1.0133 
+
+Residual deviance: 0.0043861  on 167  degrees of freedom
+AIC:  -2703 
+
+Number of Fisher Scoring iterations:  9
+2021-08-29 18:59:45 INFO::Fitting model to feature number 8, ANAGLYCOLYSIS.PWY..glycolysis.III..from.glucose.
+2021-08-29 18:59:45 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+       Min          1Q      Median          3Q         Max  
+-0.0289323  -0.0025756   0.0003656   0.0025905   0.0302782  
+            Estimate Std. Error  t value Pr(>|t|)    
+(Intercept) -7.88211    0.02399 -328.522   <2e-16 ***
+siteSoweto   0.09271    0.04232    2.191   0.0299 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 2.601e-05
+Estimated index parameter: 1.0116 
+
+Residual deviance: 0.0048777  on 167  degrees of freedom
+AIC:  -2610.3 
+
+Number of Fisher Scoring iterations:  8
+2021-08-29 18:59:45 INFO::Fitting model to feature number 9, ARG.POLYAMINE.SYN..superpathway.of.arginine.and.polyamine.biosynthesis
+2021-08-29 18:59:45 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+      Min         1Q     Median         3Q        Max  
+-0.054079  -0.014212  -0.005122   0.007779   0.053193  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -9.30013    0.05270 -176.49   <2e-16 ***
+siteSoweto  -0.13721    0.09942   -1.38    0.169    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.00030859
+Estimated index parameter: 1.265 
+
+Residual deviance: 0.055229  on 167  degrees of freedom
+AIC:  -2850.6 
+
+Number of Fisher Scoring iterations:  10
+2021-08-29 18:59:45 INFO::Fitting model to feature number 10, ARGDEG.PWY..superpathway.of.L.arginine..putrescine..and.4.aminobutanoate.degradation
+2021-08-29 18:59:45 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.18893  -0.16910  -0.09522   0.00063   0.39285  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -11.2115     0.1730 -64.793   <2e-16 ***
+siteSoweto   -0.5116     0.3412  -1.499    0.136    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.018869
+Estimated index parameter: 1.5664 
+
+Residual deviance: 3.67  on 167  degrees of freedom
+AIC:  -1755.4 
+
+Number of Fisher Scoring iterations:  13
+2021-08-29 18:59:45 INFO::Fitting model to feature number 11, ARGININE.SYN4.PWY..L.ornithine.de.novo..biosynthesis
+2021-08-29 18:59:46 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+     Min        1Q    Median        3Q       Max  
+-0.94929  -0.30018  -0.10351   0.06908   0.92645  
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -9.58074    0.09642 -99.365  < 2e-16 ***
+siteSoweto   0.59022    0.16706   3.533 0.000532 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 0.081174
+Estimated index parameter: 1.7549 
+
+Residual deviance: 16.225  on 167  degrees of freedom
+AIC:  -2767.1 
+
+Number of Fisher Scoring iterations:  5
+2021-08-29 18:59:46 INFO::Fitting model to feature number 12, ARGORNPROST.PWY..arginine..ornithine.and.proline.interconversion
+2021-08-29 18:59:46 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+      Min         1Q     Median         3Q        Max  
+-0.015450  -0.007526  -0.001714   0.004196   0.023728  
+             Estimate Std. Error  t value Pr(>|t|)    
+(Intercept) -11.53056    0.08133 -141.770   <2e-16 ***
+siteSoweto   -0.06865    0.15095   -0.455     0.65    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 7.4791e-05
+Estimated index parameter: 1.1975 
+
+Residual deviance: 0.014785  on 167  degrees of freedom
+AIC:  -2639.4 
+
+Number of Fisher Scoring iterations:  13
+2021-08-29 18:59:46 INFO::Fitting model to feature number 13, ARGSYN.PWY..L.arginine.biosynthesis.I..via.L.ornithine.
+2021-08-29 18:59:46 DEBUG::Summary output
+
+Call:
+model_function(formula = formula, data = dat_sub, na.action = na.exclude)
+
+Deviance Residuals: 
+       Min          1Q      Median          3Q         Max  
+-0.0306001  -0.0027412   0.0001056   0.0036265   0.0121219  
+            Estimate Std. Error  t value Pr(>|t|)    
+(Intercept) -7.75425    0.02195 -353.344  < 2e-16 ***
+siteSoweto  -0.11929    0.04166   -2.863  0.00473 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Estimated dispersion parameter: 2.8879e-05
+Estimated index parameter: 1.01 
+
+Residual deviance: 0.0050674  on 167  degrees of freedom
+AIC:  -2593.3 
+
+Number of Fisher Scoring iterations:  8
+2021-08-29 18:59:46 INFO::Fitting model to feature number 14, ARGSYNBSUB.PWY..L.arginine.biosynthesis.II..acetyl.cycle.

@@ -4,15 +4,13 @@ library(here)
 library(tidyverse)
 
 studies <- read.table(here("input_final/microbiome_studies.txt"), sep = "\t",
-                   header = T, quote = "")
+                   header = T, quote = "", skip = 1)
 
 studies <- studies %>%
-  mutate(
-    Study.population = tolower(Study.population),
-    includes_adults = grepl("adult", Study.population),
-    Sequencing.methodology = tolower(Sequencing.methodology),
-    used_metagenomics = grepl("metagenomics", Sequencing.methodology)
-  )
+  mutate(Study.population = tolower(Study.population),
+         includes_adults = grepl("adult", Study.population),
+         Sequencing.methodology = tolower(Sequencing.methodology),
+         used_metagenomics = grepl("metagenomics", Sequencing.methodology))
 
 # countries
 non_african <- c("Spain", "Peru", "")

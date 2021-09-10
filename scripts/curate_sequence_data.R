@@ -18,7 +18,17 @@ pheno_global <- read.table(here("input_final/pheno_global.txt"), sep = "\t",
 pheno_global <- pheno_global %>%
   filter(!(sample %in% exclude_rampelli))
 
-pheno_global$site2 <- factor(pheno_global$site2, levels = sites)
+bf_S <- read.table(here("input_final/kraken/genbank_jan2020/burkina_faso/bracken_S_reads.txt"),
+                   sep = "\t", header = T, quote = "", comment.char = "")
+
+pheno_bf <- data.frame("sample" = colnames(bf_S), "site" = "Burkina Faso",
+                       "site2" = "Burkina Faso")
+
+pheno_global <- rbind(pheno_global, pheno_bf)
+pheno_global$site2 <- factor(pheno_global$site2,
+                             levels = c("Tanzania", "Madagascar", "Burkina Faso",
+                                        "Bushbuckridge", "Soweto", "Sweden",
+                                        "United States"))
 
 saveRDS(pheno_global, here("rds/pheno_global.rds"))
 
@@ -45,6 +55,12 @@ for (rank in c("S", "G", "F", "O", "C", "P")){
   rampelli_reads <- read.table(rampelli_path, sep = "\t", check.names = F, quote = "",
                                comment.char = "")
   
+  # burkina faso reads
+  bf_path <- here(paste0("input_final/kraken/genbank_jan2020/burkina_faso//bracken_",
+                         rank, "_reads.txt"))
+  bf_reads <- read.table(bf_path, sep = "\t", check.names = F, quote = "",
+                         comment.char = "")
+  
   # exclude non-adult samples
   rampelli_reads <- rampelli_reads[, which(!(names(rampelli_reads) %in%
                                                exclude_rampelli))]
@@ -55,6 +71,10 @@ for (rank in c("S", "G", "F", "O", "C", "P")){
     column_to_rownames("Row.names")
   
   global_reads <- merge(global_reads, rampelli_reads, by = "row.names",
+                        all = T) %>%
+    column_to_rownames("Row.names")
+  
+  global_reads <- merge(global_reads, bf_reads, by = "row.names",
                         all = T) %>%
     column_to_rownames("Row.names")
   

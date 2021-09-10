@@ -7,18 +7,19 @@ library(ggpubr)
 library(here)
 library(vegan)
 
-## metadata ----
+# metadata ----
 za_meta <- readRDS(here("rds/za_meta.rds"))
 
-### conmeds data table
+# conmeds data table
 conmeds <- read.table(here("input_final/conmeds.tsv"), sep = "\t",
                       header = T, quote = "")
 
 conmeds <- conmeds %>%
   filter(!(medicine_CURATED %in% c("", "??", "NONE", "UNKNOWN")))
 
-# set other as last level
+# set "other" as last level
 meds <- unique(conmeds$medicine_CATEGORY)
+
 conmeds$medicine_CATEGORY <- factor(conmeds$medicine_CATEGORY,
                                     levels = c(sort(meds[meds != "OTHER"]), "OTHER"))
 
@@ -29,11 +30,10 @@ conmeds_tbl <- conmeds %>%
 write.table(conmeds_tbl, here("final_tables/table_s2_conmeds.txt"),
             sep = "\t", quote = F, row.names = F)
 
-
-### stats for text
+# stats for text ----
 # n participants anti-infective/antibiotic
 conmeds %>%
-  filter(medicine_CATEGORY == "ANTI-INFECTIVE") %>%
+  filter(medicine_CATEGORY == "ANTIBIOTIC") %>%
   dplyr::select(sample, site) %>%
   distinct() %>%
   group_by(site) %>%
@@ -47,8 +47,8 @@ conmeds %>%
   group_by(site) %>%
   tally()
 
+# conmeds mds plots ----
 
-### conmeds mds plots
 # mds plot with drug trt colored
 global_pal <- c("#E3211C", "#F89897", "#6A3D9A", "#CAB2D6", "#1F78B4", "#A5CEE3")
 za_pal <- global_pal[3:4]

@@ -11,15 +11,18 @@ source(here("scripts/load_data.R"))
 
 ## plot top taxa by mean relative abundance ----
 top_plot <- function(counts, n = 10){
-  counts_long <- reshape2::melt(counts[1:n, ] %>% rownames_to_column(var = "taxon"), variable.name = "sample", value.name = "relab")
   
-  counts_long$taxon <- factor(counts_long$taxon, levels = rev(unique(counts_long$taxon)))
-  counts_long <- merge(counts_long, za_meta, by = "sample")
-  
-  counts_long$site <- factor(counts_long$site, levels = c("Soweto", "Bushbuckridge"))
+  counts_long <- counts %>%
+    head(n) %>%
+    rownames_to_column("taxon") %>%
+    pivot_longer(cols = -taxon, names_to = "sample", values_to = "relab") %>%
+    left_join(za_meta, by = "sample") %>%
+    mutate(taxon = factor(taxon, levels = rev(rownames(counts)[1:n])),
+           site = factor(site, levels = c("Soweto", "Bushbuckridge")))
   
   ggplot(counts_long, aes(taxon, relab * 100, fill = site)) +
-    geom_jitter(position = position_jitterdodge(jitter.width = 0.2), alpha = 0.75, color = "darkgray", size = 1.25) +
+    geom_jitter(position = position_jitterdodge(jitter.width = 0.2),
+                alpha = 0.75, color = "darkgray", size = 1.25) +
     geom_boxplot(outlier.shape = NA, alpha = 0.5) +
     theme_cowplot(12) +
     theme(legend.position = "top",

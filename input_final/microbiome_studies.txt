@@ -1,3 +1,4 @@
+Table S1. Literature Review of African Gut Microbiome Studies								
 Title	First author	Year	DOI	Country of enrollment	Sequencing methodology	Study category	Study population	Cohort Size (African individuals)
 Impact of diet in shaping gut microbiota revealed by a comparative study in children from Europe and rural Africa	De Filipo	2010	10.1073/pnas.1005963107	Burkina Faso	16S	Comparative	Children	14
 The effects of iron fortification on the gut microbiota in African children: a randomized controlled trial in Cote d'Ivoire.	Zimmerman	2010	10.3945/ajcn.110.004564	Cote d'Ivore	16S, qPCR	Nutrition	Children	60
@@ -62,3 +63,4 @@ Gut virome analysis of Cameroonians reveals high diversity of enteric viruses, i
 Gut microbiome alteration in MORDOR I: a community-randomized trial of mass azithromycin distribution	Doan	2020	10.1038/s41591-019-0533-0	Niger, Malawi, Tanzania	Metagenomics (RNA)	Infectious disease/antibiotics	Children	300
 The microbiome and resistome of chimpanzees, gorillas, and humans across host lifestyle and geography	Campbell	2020	10.1038/s41396-020-0634-2	Republic of the Congo	16S,metagenomics	Comparative	Adults	81
 The effect of legume supplementation on the gut microbiota in rural Malawian infants aged 6 to 12 months	Ordiz	2020	10.1093/ajcn/nqaa011	Malawi	16S	Nutrition	Infants	236
+Analysis of global human gut metagenomes shows that metabolic resilience potential for short-chain fatty acid production is strongly influenced by lifestyle	Jacobson	2021	10.1038/s41598-021-81257-w	Burkina Faso	Metagenomics	Comparative	Adults	90
