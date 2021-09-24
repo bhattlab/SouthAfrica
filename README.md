@@ -10,20 +10,23 @@ e.g. from the command line:
 
 Required packages:
 
-* cowplot
 * DESeq2
+* MASS
+* Maaslin2
+* RColorBrewer
+* cowplot
 * dplyr
 * genefilter
 * ggplot2
 * ggpubr
 * ggrepel
 * ggspatial
+* gplots
 * gtools
 * harrietr
 * here
 * maps
-* MASS
-* RColorBrewer
+* metagenomeSeq
 * reshape2
 * rgeos
 * rnaturalearth
