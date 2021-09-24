@@ -4,8 +4,11 @@ library(Maaslin2)
 library(tidyverse)
 library(RColorBrewer)
 
-global_pal <- c("#E3211C", "#F89897", "#6A3D9A", "#CAB2D6", "#1F78B4", "#A5CEE3")
-za_pal <- global_pal[3:4]
+# metadata ----
+load(here("RData/metadata.RData"))
+# load(here("RData/za_data.RData"))
+
+rownames(za_meta) <- za_meta$sample
 
 # functions ----
 
@@ -49,12 +52,6 @@ run_maaslin_humann <- function(humann_filt, meta_filt, dirname, model,
   
   return(res)
 }
-
-# load metadata ----
-za_meta <- readRDS(here("rds/za_meta.rds"))
-rownames(za_meta) <- za_meta$sample
-
-za_pheno <- readRDS(here("rds/za_pheno.rds"))
 
 # run maaslin on humann data ----
 

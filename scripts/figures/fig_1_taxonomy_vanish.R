@@ -4,7 +4,26 @@ library(here)
 library(tidyverse)
 
 # load data ----
-source(here("scripts/load_data.R"))
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
+
+# crassphage ----
+crass <- za_G[grep("crAss", rownames(za_G)), ]
+
+crass_tot <- crass %>%
+  rownames_to_column("crass") %>%
+  pivot_longer(cols = -crass, names_to = "sample", values_to = "value") %>%
+  left_join(za_meta, by = "sample") %>%
+  group_by(sample, site) %>%
+  summarise(tot = sum(value)) %>%
+  ungroup() %>%
+  mutate(present = tot >= 650) %>%
+  select(site, present)
+
+fisher.test(table(crass_tot))
+
+crass_tot %>%
+  count(site, present)
 
 # panel A: taxonomy barplots ----
 
@@ -12,16 +31,16 @@ sort_by <- "Prevotella"
 n_taxa <- 20
 
 # color palette for n taxa
-if (!file.exists(here("rds/global_pal.rds"))){
+if (!file.exists(here("rds/barplot_pal.rds"))){
   myCols <- colorRampPalette(brewer.pal(9, "Set1"))
   
   barplot_pal <- myCols(n_taxa)
   barplot_pal <- sample(barplot_pal)
   barplot_pal[n_taxa + 1] <- "gray"
   
-  saveRDS(barplot_pal, "rds/global_pal.rds")
+  saveRDS(barplot_pal, "rds/barplot_pal.rds")
 } else {
-  barplot_pal <- readRDS("rds/global_pal.rds")
+  barplot_pal <- readRDS(here("rds/barplot_pal.rds"))
 }
 
 # find top n taxa

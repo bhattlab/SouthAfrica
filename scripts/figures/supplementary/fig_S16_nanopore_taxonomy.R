@@ -6,7 +6,7 @@ library(reshape2)
 library(tidyverse)
 
 # load data ----
-source(here("scripts/load_data.R"))
+load(here("RData/metadata.RData"))
 
 # nanopore figure ----
 labels <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)

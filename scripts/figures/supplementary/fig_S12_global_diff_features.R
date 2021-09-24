@@ -9,10 +9,12 @@ library(scales)
 library(tidyverse)
 library(vegan)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
+load(here("RData/global_data.RData"))
 
-## find differential species across geography with DESeq2
+# find differential species across geography with DESeq2
 
 col_data <- pheno_global %>%
   filter(sample %in% names(global_G)) %>%
@@ -79,7 +81,7 @@ plot_features <- res_all %>%
   filter(nonwestern == western) %>%
   pull(feature)
 
-## plot
+# plot
 deseq2_counts <- counts(dds, normalized = TRUE)
 
 # add pseudocount

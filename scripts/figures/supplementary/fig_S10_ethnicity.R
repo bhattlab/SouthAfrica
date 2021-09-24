@@ -7,11 +7,13 @@ library(reshape2)
 library(tidyverse)
 library(vegan)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
+# load(here("RData/global_data.RData"))
 
-## mds plot ----
-## ethnicity info
+# mds plot ----
+# ethnicity info
 awi_data_f <- here("input_final/pheno/awi-phase1.csv")
 awi_data <- read.csv(awi_data_f)
 
@@ -29,7 +31,7 @@ awi_eth$site_name <- ifelse(awi_eth$site == "6", "Soweto", "Bushbuckridge")
 
 eth_counts <- plyr::count(awi_eth, c("site_name", "ethnicity_name"))
 
-## nmds clustering by ethincity
+# nmds clustering by ethincity
 pheno <- merge(za_pheno, awi_eth, by.x = "study_id", by.y = "Microbiome_link")
 
 # mds
@@ -40,7 +42,7 @@ mds_values <- mds$points
 # variation per axis
 mds_var_per <- round(mds$eig/sum(mds$eig) * 100, 1)
 
-## Plot
+# Plot
 mds_data <- data.frame(sample = rownames(mds_values),
                        x = mds_values[,1],
                        y = mds_values[,2])
@@ -66,4 +68,4 @@ ggplot(mds_meta, aes(x, y, color = ethnicity_name)) +
   background_grid()
 
 ggsave(here("final_plots/supplementary/figure_S10_za_ethnicity_mds.png"),
-       height = 4, width = 5)
+       height = 4, width = 6, bg = "white")

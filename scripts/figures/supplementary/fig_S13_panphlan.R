@@ -6,10 +6,11 @@ library(reshape2)
 library(tidyverse)
 library(vegan)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/palettes.RData"))
 
-### panphlan mds function ----
+# panphlan mds function ----
 
 set.seed(1)
 
@@ -66,7 +67,7 @@ plot_panphlan <- function(panphlan_f, plot_title = "", legend = F){
   return(g)
 }
 
-## panphlan plots ----
+# panphlan plots ----
 sp <- c("Prevotella_copri",
         "Faecalibacterium_prausnitzii",
         "Bacteroides_vulgatus",
@@ -91,15 +92,8 @@ a1 <- plot_grid(plotlist = plots, ncol = 3, align = "hv", axis = "lrbt")
 
 a <- plot_grid(a1, legend, ncol = 1, rel_heights = c(0.95, 0.05))
 
-## adonis
+# adonis ----
 adonis_res <- data.frame()
-
-# sp <- c("Prevotella_copri",
-#         "Faecalibacterium_prausnitzii",
-#         "Bacteroides_vulgatus",
-#         "Eubacterium_siraeum",
-#         "Alistipes_putredinis",
-#         "Butyrivibrio_crossotus")
 
 for (org in sp){
   panphlan_f <- here(paste0("input_final/panphlan/", org,
@@ -135,6 +129,7 @@ b <- adonis_res %>%
   ggtexttable(rows = NULL, cols = c("Species", "R2", "Pr(>F)", "FDR"), theme =
                 ttheme("classic", base_size = 12, padding = unit(c(4, 4), "mm")))
 
+# plot ----
 plot_grid(a, b, ncol = 1, labels = c("A", "B"), rel_heights = c(0.7, 0.3))
 
 ggsave(here("final_plots/supplementary/figure_S13_panphlan.png"),

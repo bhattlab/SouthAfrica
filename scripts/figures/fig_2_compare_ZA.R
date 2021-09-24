@@ -9,19 +9,8 @@ library(vegan)
 library(metagenomeSeq)
 
 # load data ----
-source(here("scripts/load_data.R"))
-
-# rarefy ----
-za_S_rare <- rrarefy(t(za_S), min(colSums(za_S)))
-za_S_rare <- data.frame(t(za_S_rare))
-
-mr <- newMRexperiment(za_S_rare)
-p <- cumNormStatFast(mr)
-mr_css <- cumNorm(mr, p = p)
-za_S_rare_css <- MRcounts(mr_css, norm = T, log = T)
-za_S_rare_css <- data.frame(za_S_rare_css)
-
-za_S_rare_rel <- sweep(za_S_rare, 2, colSums(za_S_rare), FUN = "/")
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
 
 # panel A: MDS ordination ----
 vare_dis <- vegdist(t(za_S_rare_css), method = "bray")
@@ -29,7 +18,7 @@ vare_dis <- vegdist(t(za_S_rare_css), method = "bray")
 # permanova
 meta <- za_meta %>% filter(sample %in% names(za_S_rare_css))
 meta <- meta[match(names(za_S_rare_css), meta$sample), ]
-adonis(vare_dis ~ site, data = meta)
+adonis2(vare_dis ~ site, data = meta)
 
 dispersion <- betadisper(vare_dis, group = meta$site)
 permutest(dispersion)

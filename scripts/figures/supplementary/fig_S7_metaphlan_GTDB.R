@@ -7,10 +7,11 @@ library(scales)
 library(tidyverse)
 library(vegan)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
 
-## read gtdb data ---
+# read gtdb data ---
 for (lvl in c("S", "G", "P")){
   bracken <- read.table(here(paste0("input_final/kraken/gtdb_r95/bracken_", lvl, ".txt")),
                         sep = "\t", header = T)
@@ -28,7 +29,7 @@ for (lvl in c("S", "G", "P")){
   assign(paste0("bracken_", lvl, "_rel"), bracken_rel)
 }
 
-## function ----
+# function ----
 
 plot_tax <- function(counts, ntax = 20, legend_ncol = 4){
   cts_long <- counts %>%
@@ -119,7 +120,7 @@ process_metaphlan <- function(m_out, rank, rank_filter_stop){
   return(m_out_filt)
 }
 
-## metaphlan plot ----
+# metaphlan plot ----
 m_out <- read.table(here("input_final/metaphlan/metaphlan_merge.txt"),
                     sep = "\t", header = T)
 
@@ -133,16 +134,16 @@ rownames(plot_m) <- make.names(gsub(".+s__", "", rownames(plot_m)), unique = T)
 
 a <- plot_tax(plot_m)
 
-## gtdb plot ----
+# gtdb plot ----
 cts <- bracken_G_rel
 rownames(cts) <- gsub("g__", "", rownames(cts))
 
 b <- plot_tax(cts * 100, legend_ncol = 6)
 
-## genbank plot ----
+# genbank plot ----
 # c <- plot_tax(za_S_rel * 100)
 
-## plot shannon diversity ----
+# plot shannon diversity ----
 
 m <- plot_richness(m_out_s/100, "Metaphlan")
 gb <- plot_richness(za_S_rel, "Genbank")
@@ -167,7 +168,7 @@ plot_grid(a, b, plot_grid(d, NULL, nrow = 1),
 ggsave(here("final_plots/supplementary/figure_S7_metaphlan_gtdb.png"),
        width = 8.5, height = 12)
 
-## stats tests
+# stats tests
 # Genbank vs GTDB
 wilcox.test(value ~ cohort, rbind(gb, gtdb))
 

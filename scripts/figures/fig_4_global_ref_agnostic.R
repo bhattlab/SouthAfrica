@@ -8,7 +8,10 @@ library(tidyverse)
 library(vegan)
 
 # load data ----
-source(here("scripts/load_data.R"))
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
+load(here("RData/global_data.RData"))
+load(here("RData/sourmash_data.RData"))
 
 # panel A: classification plot ----
 
@@ -151,6 +154,9 @@ for (method in c("bray", "jaccard")){
   
   assign(paste0("pair_dis", suffix), pair_dis)
 }
+
+pvals <- compare_means(dist ~ site2.x, data = pair_dis_track_abund,
+                       method = "wilcox.test", p.adjust.method = "fdr")
 
 # plot all species / k-mer comparisons
 my_comparisons <- list(

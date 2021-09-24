@@ -2,12 +2,14 @@ library(genefilter)
 library(here)
 library(metagenomeSeq)
 library(tidyverse)
+library(vegan)
 
-## metadata ----
-za_meta <- readRDS("rds/za_meta.rds")
-za_pheno <- readRDS("rds/za_pheno.rds")
+set.seed(1)
 
-## public global sequence data ----
+# metadata ----
+load(here("RData/metadata.RData"))
+
+# public global sequence data ----
 # exclude rampelli participants under the age of 18
 exclude_rampelli <- c("SRR1929485", "SRR1929574", "SRR1930128", "SRR1930132",
                       "SRR1930134")
@@ -30,9 +32,9 @@ pheno_global$site2 <- factor(pheno_global$site2,
                                         "Bushbuckridge", "Soweto", "Sweden",
                                         "United States"))
 
-saveRDS(pheno_global, here("rds/pheno_global.rds"))
+# saveRDS(pheno_global, here("rds/pheno_global.rds"))
 
-### kraken/bracken output ----
+# kraken/bracken output ----
 for (rank in c("S", "G", "F", "O", "C", "P")){
   
   # za reads
@@ -100,17 +102,27 @@ for (rank in c("S", "G", "F", "O", "C", "P")){
   za_pseudo <- za_reads + 1
   za_pseudo_rel <- sweep(za_pseudo, 2, colSums(za_pseudo), FUN = "/")
   
-  # save rds
-  saveRDS(global_reads, here("rds", paste0("global_", rank, ".rds")))
-  saveRDS(global_rel, here("rds", paste0("global_", rank, "_rel.rds")))
-  saveRDS(global_pseudo_rel, here("rds", paste0("global_", rank, "_pseudo_rel.rds")))
+  # global
+  assign(paste0("global_", rank), global_reads)
+  assign(paste0("global_", rank, "_rel"), global_rel)
+  assign(paste0("global_", rank, "_pseudo_rel"), global_pseudo_rel)
   
-  saveRDS(za_reads, here("rds", paste0("za_", rank, ".rds")))
-  saveRDS(za_rel, here("rds", paste0("za_", rank, "_rel.rds")))
-  saveRDS(za_pseudo_rel, here("rds", paste0("za_", rank, "_pseudo_rel.rds")))
+  # za
+  assign(paste0("za_", rank), za_reads)
+  assign(paste0("za_", rank, "_rel"), za_rel)
+  assign(paste0("za_", rank, "_pseudo_rel"), za_pseudo_rel)
+  
+  # save rds
+  # saveRDS(global_reads, here("rds", paste0("global_", rank, ".rds")))
+  # saveRDS(global_rel, here("rds", paste0("global_", rank, "_rel.rds")))
+  # saveRDS(global_pseudo_rel, here("rds", paste0("global_", rank, "_pseudo_rel.rds")))
+  # 
+  # saveRDS(za_reads, here("rds", paste0("za_", rank, ".rds")))
+  # saveRDS(za_rel, here("rds", paste0("za_", rank, "_rel.rds")))
+  # saveRDS(za_pseudo_rel, here("rds", paste0("za_", rank, "_pseudo_rel.rds")))
 }
 
-## css normalize
+# CSS normalize ----
 # za
 for (rank in c("S", "G")){
   cts <- readRDS(here(paste0("rds/za_", rank, ".rds")))
@@ -118,7 +130,9 @@ for (rank in c("S", "G")){
   p <- cumNormStatFast(mr)
   mr_css <- cumNorm(mr, p = p)
   counts_css <- MRcounts(mr_css, norm = T, log = T)
-  saveRDS(counts_css, here("rds", paste0("za_", rank, "_css.rds")))
+  
+  assign(paste0("za_", rank, "_css"), counts_css)
+  # saveRDS(counts_css, here("rds", paste0("za_", rank, "_css.rds")))
 }
 
 # global
@@ -128,10 +142,24 @@ for (rank in c("S", "G")){
   p <- cumNormStatFast(mr)
   mr_css <- cumNorm(mr, p = p)
   counts_css <- MRcounts(mr_css, norm = T, log = T)
-  saveRDS(counts_css, here("rds", paste0("global_", rank, "_css.rds")))
+  
+  assign(paste0("global_", rank, "_css"), counts_css)
+  # saveRDS(counts_css, here("rds", paste0("global_", rank, "_css.rds")))
 }
 
-## sourmash data ----
+# rarefied and normalized ----
+za_S_rare <- rrarefy(t(za_S), min(colSums(za_S)))
+za_S_rare <- data.frame(t(za_S_rare))
+
+mr <- newMRexperiment(za_S_rare)
+p <- cumNormStatFast(mr)
+mr_css <- cumNorm(mr, p = p)
+za_S_rare_css <- MRcounts(mr_css, norm = T, log = T)
+za_S_rare_css <- data.frame(za_S_rare_css)
+
+za_S_rare_rel <- sweep(za_S_rare, 2, colSums(za_S_rare), FUN = "/")
+
+# sourmash data ----
 for (k in c("21", "31", "51")){
   for (suffix in c("", "_track_abund")){
     
@@ -148,6 +176,51 @@ for (k in c("21", "31", "51")){
     keep <- which(names(sourmash) %in% pheno_global$sample)
     sourmash <- sourmash[keep, keep]
     
-    saveRDS(sourmash, here("rds", paste0("sourmash_k", k, suffix, ".rds")))
+    assign(paste0("sourmash_k", k, suffix), sourmash)
+    # saveRDS(sourmash, here("rds", paste0("sourmash_k", k, suffix, ".rds")))
   }
 }
+
+# study sites ----
+sites <- c("Tanzania", "Madagascar", "Burkina Faso", "Bushbuckridge", "Soweto",
+           "Sweden", "United States")
+
+# vanish taxa ----
+vanish_F <- c("Prevotellaceae", "Succinivibrionaceae", "Paraprevotellaceae",
+              "Spirochaetaceae")
+
+taxonomy <- read.table(
+  here("input_final/taxonomy/kraken_feb2019_inspect_mpa.out"),
+  sep = "\t", quote = "", comment.char = "")
+
+vanish_G <- taxonomy %>%
+  filter(grepl("g__", V1) & grepl(paste(vanish_F, collapse = "|"), V1)) %>%
+  mutate(feature = gsub("\\|s__.+", "", V1)) %>%
+  pull(feature) %>%
+  unique()
+
+# color palettes ----
+global_pal <- c("#E3211C", "#F89897", "#FF7F00", "#6A3D9A", "#CAB2D6",
+                "#1F78B4", "#A5CEE3")
+names(global_pal) <- levels(pheno_global$site2)
+
+za_pal <- global_pal[c("Bushbuckridge", "Soweto")]
+
+# save rdata ----
+
+# global sequence data
+filelist = ls()[grepl("global_[A-Z].*", ls())]
+save(pheno_global, sites, vanish_F, vanish_G, taxonomy, global_pal, za_pal,
+     list = filelist, file = here("RData/global_data.RData"))
+
+# za sequence data
+filelist = ls()[grepl("za_[A-Z].*", ls())]
+save(global_pal, za_pal, list = filelist, file = here("RData/za_data.RData"))
+
+# sourmash data
+filelist = ls()[grepl("sourmash_k", ls())]
+save(global_pal, za_pal, list = filelist, file = here("RData/sourmash_data.RData"))
+
+# palettes only
+save(global_pal, za_pal, file = here("RData/palettes.RData"))
+

@@ -7,10 +7,12 @@ library(reshape2)
 library(scales)
 library(tidyverse)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
+load(here("RData/global_data.RData"))
 
-## plot distributions
+# plot distributions
 vanish_tax <- data.frame(
   "F" = gsub(".+f__|\\|g__.+", "", vanish_G),
   "G" = gsub(".+g__", "", vanish_G)
@@ -40,7 +42,7 @@ density_plot <- ggplot(succin_long, aes(x = relab * 100)) +
     y = "Density"
   )
 
-## correlate VANISH taxa ----
+# correlate VANISH taxa ----
 vanish_cor <- function(counts){
   # correlation
   vanish_cor_G <- cor(t(counts), method = "spearman")

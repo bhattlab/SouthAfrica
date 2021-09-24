@@ -6,14 +6,14 @@ library(RColorBrewer)
 library(reshape2)
 library(tidyverse)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
 
 labs <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)
 
-## readcounts ----
+# readcounts ----
 
-## read PAIRS
+# read PAIRS
 za_readcounts <- read.table(here("input_final", "readcounts",
                                  "za_readcounts_preprocessing.txt"),
                             sep = '\t', header = T)
@@ -32,7 +32,7 @@ za_counts <- za_readcounts %>%
 
 # za_counts <- za_readcounts[, c(1:3, 5, 7)]
 
-## stats for intro
+# stats for intro
 za_counts %>%
   mutate(
     Gb_raw = raw_reads * 150 / 1e9,
@@ -83,7 +83,7 @@ za_counts <- za_counts %>%
 
 za_counts <- za_counts[mixedorder(za_counts$Sample), ]
 
-## do BBR/SWT differ in % host reads?
+# do BBR/SWT differ in % host reads?
 z <- za_counts %>%
   mutate(
     human_removed = `Deduplicated reads` - `Non-human reads`,

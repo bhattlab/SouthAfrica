@@ -7,10 +7,11 @@ library(reshape2)
 library(tidyverse)
 library(vegan)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
 
-## differentially abundant species with deseq2 ----
+# differentially abundant species with deseq2 ----
 count_data <- za_S
 count_data <- count_data[, za_meta$sample]
 

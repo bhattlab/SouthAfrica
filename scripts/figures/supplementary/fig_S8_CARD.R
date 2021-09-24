@@ -7,7 +7,8 @@ library(tidyverse)
 library(Maaslin2)
 
 # load data ----
-source(here("scripts/load_data.R"))
+load(here("RData/metadata.RData"))
+load(here("RData/palettes.RData"))
 
 # read card metadata ----
 aro_desc <- read.csv(here("input_final/shortbred/aro.csv"))

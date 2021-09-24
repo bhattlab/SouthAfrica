@@ -6,11 +6,13 @@ library(tidyverse)
 ## supplementary feature tables ----
 
 ## load data ----
-source(here("scripts/load_data.R"))
-
-labs <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)
+load(here("RData/metadata.RData"))
+load(here("RData/sequence_data.RData"))
 
 # only include features present at at least 0.01% relab in at least one sample
+labs <- za_pheno %>%
+  select(sample, label) %>%
+  as.data.frame
 
 # genus
 genus_supp <- za_G_rel * 100

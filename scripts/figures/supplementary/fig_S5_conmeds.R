@@ -1,5 +1,3 @@
-# plot table of conmeds and categories
-
 library(cowplot)
 library(dplyr)
 library(ggplot2)
@@ -7,10 +5,11 @@ library(ggpubr)
 library(here)
 library(vegan)
 
-# metadata ----
-za_meta <- readRDS(here("rds/za_meta.rds"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
 
-# conmeds data table
+# conmeds data table ----
 conmeds <- read.table(here("input_final/conmeds.tsv"), sep = "\t",
                       header = T, quote = "")
 
@@ -48,13 +47,6 @@ conmeds %>%
   tally()
 
 # conmeds mds plots ----
-
-# mds plot with drug trt colored
-global_pal <- c("#E3211C", "#F89897", "#6A3D9A", "#CAB2D6", "#1F78B4", "#A5CEE3")
-za_pal <- global_pal[3:4]
-za_meta <- readRDS(here("rds/za_meta.rds"))
-za_S_css <- readRDS(here("rds/za_S_css.rds"))
-
 vare_dis <- vegdist(t(za_S_css), method = "bray")
 
 # calculate mds
@@ -116,12 +108,13 @@ plot_conmeds <- function(categories, mds_plot){
   ggplot(plot_data, aes(x, y, shape = site, color = taking_med, alpha = alpha)) +
     geom_point(size = 2) +
     scale_alpha_manual(values = c(0.5, 0.85)) +
-    scale_color_manual(values = c("red3"), na.value = "gray") +
+    scale_color_manual(values = c("red3"), na.value = "darkgray") +
     facet_wrap(~ category, ncol = 3) +
     labs(x = paste("MDS 1 (", mds_var_per[1], "%)",sep=""),
          y = paste("MDS 2 (", mds_var_per[2], "%)",sep=""),
          color = "") +
     theme_cowplot() +
+    background_grid() +
     labs(
       shape = "Site",
       color = "Medication"
@@ -184,13 +177,14 @@ plot_conmeds_by_drug <- function(category, mds_plot){
   ggplot(plot_data, aes(x, y, shape = site, color = label, alpha = alpha)) +
     geom_point(size = 2) +
     scale_alpha_manual(values = c(0.5, 0.85)) +
-    scale_color_discrete(na.value = "gray",
+    scale_color_discrete(na.value = "darkgray",
                          breaks = sort(unique(plot_data$label))) +
     labs(x = paste("MDS 1 (", mds_var_per[1], "%)",sep=""),
          y = paste("MDS 2 (", mds_var_per[2], "%)",sep=""),
          color = "") +
     facet_wrap(~ category) +
     theme_cowplot() +
+    background_grid() +
     theme(legend.position = "bottom") +
     labs(
       shape = "Site",
@@ -203,7 +197,7 @@ plot_conmeds_by_drug <- function(category, mds_plot){
       )
 }
 
-## adonis table
+# adonis table ----
 vare_dis <- vegdist(t(za_S_css), method = "bray")
 
 meta <- za_meta %>%
@@ -256,7 +250,7 @@ t <- res_tbl %>%
                 ttheme("classic", base_size = 12, padding = unit(c(4, 4), "mm")))
 
 
-## compile figure
+# compile figure ----
 a <- plot_conmeds(categories, mds_meta)
 b <- plot_grid(plot_conmeds_by_drug("ANTIBIOTIC", mds_meta), t,
                rel_widths = c(0.395, 0.605), nrow = 1, labels = c("B", "C"))
@@ -264,4 +258,4 @@ b <- plot_grid(plot_conmeds_by_drug("ANTIBIOTIC", mds_meta), t,
 plot_grid(a, b, ncol = 1, rel_heights = c(0.71, 0.29), labels = c("A", ""))
 
 ggsave(here("final_plots/supplementary/figure_S5_conmeds_mds.png"),
-       width = 8, height = 14)
+       width = 8, height = 14, bg = "white")

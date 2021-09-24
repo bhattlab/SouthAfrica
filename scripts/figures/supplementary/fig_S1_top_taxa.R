@@ -6,10 +6,11 @@ library(here)
 library(reshape2)
 library(tidyverse)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
 
-## plot top taxa by mean relative abundance ----
+# plot top taxa by mean relative abundance ----
 top_plot <- function(counts, n = 10){
   
   counts_long <- counts %>%
@@ -36,10 +37,10 @@ top_plot <- function(counts, n = 10){
     background_grid(major = "x", minor = "x")
 }
 
-## top species plot
+# top species plot
 top_S_bracken <- top_plot(za_S_rel)
 
-## top genus plot
+# top genus plot
 g <- za_G_rel
 # rownames(g) <- gsub("miscellaneous", "misc", rownames(g))
 top_G_bracken <- top_plot(g)

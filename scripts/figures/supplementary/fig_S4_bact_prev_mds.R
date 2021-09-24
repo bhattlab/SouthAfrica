@@ -6,10 +6,11 @@ library(RColorBrewer)
 library(tidyverse)
 library(vegan)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
 
-## mds ----
+# mds ----
 bray_dist <- vegdist(t(za_S_css), method = "bray")
 mds <- cmdscale(bray_dist, eig = T)
 mds_scores <- as.data.frame(scores(mds))
@@ -39,9 +40,6 @@ plot_by <- function(color_by){
   
   ggplot(mds_taxa, aes(x, y, color = !!sym(color_by), shape = site)) +
     geom_point(size = 3, alpha = 0.85) +
-    # scale_color_gradientn(colours = gradient_pal(100),
-    #                       limits = c(min(mds_taxa[, color_by]),
-    #                                  max(mds_taxa[, color_by]))) +
     viridis::scale_color_viridis() +
     labs(
       x = paste("MDS1 (", mds_var_perc[1], "%)",sep=""),
@@ -70,4 +68,4 @@ mds_Bact_Prev_ratio +
   background_grid()
 
 ggsave(here("final_plots/supplementary/figure_S4_bacteroides_prevotella.png"),
-       width = 6, height = 6)
+       width = 6, height = 6, bg = "white")

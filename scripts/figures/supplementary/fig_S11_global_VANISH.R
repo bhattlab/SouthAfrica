@@ -6,10 +6,11 @@ library(scales)
 library(tidyverse)
 library(vegan)
 
-## load data ----
-source(here("scripts/load_data.R"))
+# load data ----
+load(here("RData/metadata.RData"))
+load(here("RData/global_data.RData"))
 
-## plot global abundance of vanish taxa ----
+# plot global abundance of vanish taxa ----
 
 # pull vanish taxa relative abundance
 vanish_tax <- data.frame(

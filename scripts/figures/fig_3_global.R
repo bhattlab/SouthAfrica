@@ -8,23 +8,11 @@ library(scales)
 library(tidyverse)
 library(vegan)
 library(metagenomeSeq)
+library(genefilter)
 
 # load data ----
-source(here("scripts/load_data.R"))
-
-# rarefy ----
-# rare_lvl <- 1e6
-# global_S_rare <- rrarefy(t(global_S), rare_lvl)
-# global_S_rare <- data.frame(t(global_S_rare))
-# 
-# mr <- newMRexperiment(global_S_rare)
-# p <- cumNormStatFast(mr)
-# mr_css <- cumNorm(mr, p = p)
-# global_S_rare_css <- MRcounts(mr_css, norm = T, log = T)
-# global_S_rare_css <- data.frame(global_S_rare_css)
-# names(global_S_rare_css) <- gsub("^X", "", names(global_S_rare_css))
-# 
-# global_S_rare_rel <- sweep(global_S_rare, 2, colSums(global_S_rare), FUN = "/")
+load(here("RData/metadata.RData"))
+load(here("RData/sequence_data.RData"))
 
 # panel A: cohort summary plot ----
 cohort_size <- pheno_global %>%
@@ -90,7 +78,7 @@ global_mds <- ggplot(mds_meta, aes(x, y, color = site2)) +
   labs(x = paste("MDS 1 (", mds_var_per[1], "%)", sep = ""),
        y = paste("MDS 2 (", mds_var_per[2], "%)", sep = ""),
        color = " ") +
-  theme_cowplot() +
+  theme_cowplot(12) +
   theme(legend.position = "top",
         legend.justification = "center") +
   coord_fixed() +
@@ -146,19 +134,22 @@ mds_taxa_plot <- mds_taxa %>%
   filter(feature %in% features_x)
 mds_taxa_plot$feature <- factor(mds_taxa_plot$feature, levels = features_x)
 
-scatter_F <- ggplot(mds_taxa_plot, aes(x = x, y = rel_abundance, color = site2)) +
+scatter_F <- ggplot(mds_taxa_plot, aes(x = x, y = rel_abundance * 100, color = site2)) +
   geom_point(size = 1) +
-  facet_wrap(feature ~ ., scales = "free", ncol = 1, strip.position = "left") +
+  facet_wrap(feature ~ ., scales = "free_y", ncol = 1, strip.position = "right") +
   scale_color_manual(values = global_pal) +
-  theme_cowplot(11) +
-  theme(axis.title = element_blank(),
+  theme_cowplot(12) +
+  theme(axis.title.x = element_blank(),
         strip.background = element_blank(),
+        # strip.position = "left",
         strip.placement = "outside",
-        strip.text.y.left = element_text(angle = 90, face = "italic", size = 9),
-        axis.text = element_blank(),
-        axis.ticks = element_blank(),
-        axis.line.y = element_blank()) +
-  background_grid(major = "x")
+        strip.text.y.right = element_text(angle = 90, face = "italic", size = 9)
+        # axis.text = element_blank(),
+        # axis.ticks = element_blank(),
+        # axis.line.y = element_blank()
+        ) +
+  background_grid() +
+  labs( y = "Relative Abundance (%)")
 
 # panel C: mds axes ----
 mds1 <- ggplot(mds_meta, aes(site2, x, fill = site2)) +
@@ -194,12 +185,10 @@ shannon_div <- diversity(global_S_rare, index = "shannon")
 div <- data.frame("shannon_div" = shannon_div, "sample" = names(shannon_div))
 div_meta <- merge(div, pheno_global, by = "sample")
 
-div_meta <- div_meta[complete.cases(div_meta), ]
+# div_meta <- div_meta[complete.cases(div_meta), ]
 
 # add p-values
 pvals <- compare_means(shannon_div ~ site2, data = div_meta, method = "wilcox.test", p.adjust.method = "fdr")
-
-div_meta <- div_meta[complete.cases(div_meta), ]
 
 shannon_global <- ggplot(div_meta, aes(site2, shannon_div, fill = site2)) + 
   geom_jitter(alpha = 0.75, color = "darkgray", width = 0.25) +
@@ -236,7 +225,7 @@ mds_scatter <- plot_grid(
   axis = "lr",
   ncol = 1,
   labels = c("B", ""),
-  rel_heights = c(0.5, 0.5)
+  rel_heights = c(0.48, 0.52)
 )
 
 p1 <- plot_grid(

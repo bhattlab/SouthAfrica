@@ -3,7 +3,7 @@ library(here)
 library(reshape2)
 library(tidyverse)
 
-za_pheno <- readRDS(here("rds/za_pheno.rds"))
+load(here("RData/metadata.RData"))
 
 summary_tbl <- za_pheno %>%
   mutate(age_mb = age) %>%

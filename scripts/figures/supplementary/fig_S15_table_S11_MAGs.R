@@ -4,23 +4,23 @@ library(ggpubr)
 library(here)
 library(tidyverse)
 
-## params ----
+# metadata ----
+load(here("RData/metadata.RData"))
+
+# params ----
 global_pal <- c("#E3211C", "#F89897", "#6A3D9A", "#CAB2D6", "#1F78B4", "#A5CEE3")
 za_pal <- global_pal[3:4]
 
-## read input data ----
+# read input data ----
 labels <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)
 
-## sample metadata
-za_meta <- readRDS(here("rds/za_meta.rds"))
-
-## genomesearch output
+# genomesearch output
 gsearch <- read.table(here("input_final/uhgg_ANI_compare/perident_table_uhgg_formatted.tsv"),
                       sep = "\t", header = T,
                       col.names = c("Sample", "Bin", "gsearch.ANI",
                                     "gsearch.Phylum", "gsearch.Species"))
 
-## fastani output
+# fastani output
 fastani <- read.table(here("input_final/uhgg_ANI_compare/fastani_top.txt"),
                       sep = "\t", header = F,
                       col.names = c("Sample", "Bin","UHGG_genome", "fastani.ANI",
@@ -33,7 +33,7 @@ fastani_top <- fastani %>%
   group_by(Sample, Bin) %>%
   slice(1)
 
-## gtdbtk classifications
+# gtdbtk classifications
 gtdbtk_bac <- read.table(here("input_final/mags/gtdbtk.bac120.summary.tsv"),
                          sep = "\t", header = T)
 gtdbtk_arc <- read.table(here("input_final/mags/gtdbtk.ar122.summary.tsv"),
@@ -42,7 +42,7 @@ gtdbtk <- rbind(gtdbtk_bac, gtdbtk_arc)
 gtdbtk <- gtdbtk %>%
   separate(user_genome, into = c("Sample", "Bin"), sep = "_", extra = "merge")
 
-## dereplication lists
+# dereplication lists
 # za 95% ANI
 drep_za_95 <- read.table(here("input_final/mags/za_drep95_reps.txt"), sep = "\t",
                          header = F, col.names = c("Sample", "Bin"))
@@ -55,11 +55,11 @@ drep_za_99 <- read.table(here("input_final/mags/za_drep99_reps.txt"), sep = "\t"
 drep_za_uhgg <- read.table(here("input_final/mags/za_uhggreps_drep95_reps.txt"),
                            sep = "\t", header = F, col.names = c("Sample", "Bin"))
 
-## binning dastool pipeline output
+# binning dastool pipeline output
 mags <- read.table(here("input_final/mags/binning_table_all_simple.tsv"),
                    sep = "\t", header = T, comment.char = "")
 
-## format mag info ----
+# format mag info ----
 # add genomesearch and fastani comparisons
 # only consider MQ and higher
 mags <- mags %>%
@@ -100,7 +100,7 @@ mags_mqplus %>%
   filter(za_rep99) %>%
   separate(classification, into = c("D", "P", "C", "O", "F", "G", "S"),
            sep = ";", remove = F) %>%
-  count(G, site) %>%
+  count(G) %>%
   arrange(-n)
 
 # save to supplementary table
@@ -123,8 +123,8 @@ names(mags_supp) <- c("Sample", "Bin", "Site", "NCBI species", "GTDB taxonomy",
 write.table(mags_supp, here("final_tables/table_S10_drep_mags.txt"), sep = "\t",
             quote = F, row.names = F)
 
-## novel mags ----
-## what are the mags with low identity to uhgg?
+# novel mags ----
+# what are the mags with low identity to uhgg?
 novel_mags <- mags_mqplus %>%
   filter(novel == T) %>%
   separate(classification, into = c("D", "P", "C", "O", "F", "G", "S"),
@@ -133,7 +133,7 @@ novel_mags <- mags_mqplus %>%
 write.table(novel_mags, here("final_tables/novel_mags.txt"), sep = "\t",
             quote = F, row.names = F)
 
-## figure ---
+# figure ---
 data_a <- mags_mqplus %>%
   arrange(Completeness, -Contamination) %>%
   mutate(plot_quality = ifelse(Quality == "Medium-quality" & near_complete,
@@ -192,11 +192,6 @@ d <- novel_mags %>%
 plot_grid(plot_grid(a, b, labels = c("A", "B"), rel_widths = c(0.6, 0.4)),
           d, ncol = 1, labels = c("", "C"))
 
-# plot_grid(a,
-#           plot_grid(b, c, rel_widths = c(0.55, 0.45), labels = c("B", "C")),
-#           ncol = 1,
-#           rel_heights = c(0.55, 0.45),
-#           labels = c("A", ""))
 
 ggsave(here("final_plots/supplementary/figure_S15_MAGs.png"),
        width = 8, height = 9)

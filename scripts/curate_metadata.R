@@ -221,7 +221,8 @@ za_pheno <- za_pheno %>%
   arrange(site, sample) %>%
   group_by(site) %>%
   mutate(label = paste(tolower(site), row_number(), sep = "_"),
-         label_abbrev = paste(site_abbrev, row_number(), sep = ""))
+         label_abbrev = paste(site_abbrev, row_number(), sep = "")) %>%
+  ungroup()
 
 labels <- za_pheno %>%
   select(sample, study_id, site, label, label_abbrev)
@@ -230,8 +231,10 @@ write.table(labels, here("input_final/za_labels.tsv"), sep = "\t",
             row.names = F, quote = F)
 
 # save pheno data ----
-saveRDS(za_pheno, here("rds/za_pheno.rds"))
-saveRDS(za_meta, here("rds/za_meta.rds"))
+# saveRDS(za_pheno, here("rds/za_pheno.rds"))
+# saveRDS(za_meta, here("rds/za_meta.rds"))
+
+save(za_meta, za_pheno, file = here("RData/metadata.RData"))
 
 # setdiff(voke_meta$SampleID, pheno_merge_hiv_neg$study_id)
 # setdiff(pheno_merge_hiv_neg$study_id, voke_meta$SampleID)

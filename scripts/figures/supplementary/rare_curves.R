@@ -3,7 +3,8 @@ library(tidyverse)
 library(vegan)
 
 ## load data ----
-source(here("scripts/load_data.R"))
+load(here("RData/metadata.RData"))
+load(here("RData/za_data.RData"))
 
 ## rarefaction curves ----
 
