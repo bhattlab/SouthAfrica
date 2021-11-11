@@ -6,7 +6,7 @@ library(cowplot)
 library(ggpubr)
 library(scales)
 
-setwd("/Users/dylanmaghini/scg4/projects/southafrica/nanopore/publicationanalyses/000.cleananalysis")
+setwd("/Users/dylanmaghini/scg4/projects/southafrica/za-microbiome/nanopore")
 
 #### LOAD BINNING DATA ####
 # Read in nanopore MAGs
@@ -38,7 +38,7 @@ oranges <- c("#fee391", "#fe9929", "#cc4c02")
 
 point <- format_format(big.mark = ",", decimal.mark = ".", scientific = FALSE)
 
-#### BINNING STATISTICS ########
+#### BINNING STATISTICS: Supplementary Figure 17 ########
 
 # Illumina versus nanopore completeness boxplot
 a <- ggplot(all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned"), aes(x=reorder(Type), y=Completeness, fill=interaction(Quality, Type))) +
@@ -85,20 +85,35 @@ d <- ggplot(all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned"), aes
   geom_bar(width=0.6, position = position_dodge(width=0.8), color="black", alpha=0.75) +
   theme_bw() + 
   ylab("Number of Genomes") +
+  scale_y_log10() +
+  annotation_logticks(sides="l") +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         panel.border = element_blank(), axis.line = element_line(colour = "black"), axis.title.x = element_blank()) +
   scale_fill_manual(values=c(greens,oranges), labels=c("Low Quality nMAG", "Medium Quality nMAG", "High Quality nMAG", "Low Quality MAG", "Medium Quality MAG", "High Quality MAG")) +
   theme(text = element_text(size = 15), legend.title=element_blank())
-
+d
 prow <- plot_grid(d + theme(legend.position = "none"), 
                   a + theme(legend.position = "none"), 
                   b + theme(legend.position = "none"), 
-                  c + theme(legend.position = "none"), rel_widths = c(1, 1, 1, 1), nrow = 2, ncol=2, labels = c("A", "B", "C", "D"))
+                  c + theme(legend.position = "none"), rel_widths = c(1, 1, 1, 1), nrow = 2, ncol=2, labels = c("a", "b", "c", "d"))
 abcdlegend <- get_legend(c + theme(legend.title = element_blank(), legend.box.margin = margin(0,0,0,0)))
 
 plot_grid(prow, abcdlegend, nrow = 1, rel_widths = c(2.8, .8))
-ggsave("plots/supp_binning_plots_1.jpg", units="in", width=10, height =7, dpi=500)
+ggsave("plots/supplementary/figure_S17_nMAG_summary.png", units="in", width=10, height =7, dpi=500)
+ggsave("plots/supplementary/figure_S17_nMAG_summary.pdf", units="in", width=10, height =7, dpi=500)
 
+
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "nMAG") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "nMAG") %>% filter(Quality == "Low-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "nMAG") %>% filter(Quality == "Medium-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "nMAG") %>% filter(Quality == "High-quality") %>% nrow()
+# 
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "MAG") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "MAG") %>% filter(Quality == "Low-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "MAG") %>% filter(Quality == "Medium-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Type == "MAG") %>% filter(Quality == "High-quality") %>% nrow()
+
+##### BINNING STATISTICS: Supplementary Figure 18 #####
 # Illumina versus nanopore, coverage versus N50
 e <- ggplot(all %>% filter(Sample %in% c("C27", "C29", "C33"), Bin != "bin.unbinned", Bin != "unbinned"), aes(x=Coverage, y=N50, color=interaction(Quality, Type))) +
   geom_point() +
@@ -112,7 +127,8 @@ e <- ggplot(all %>% filter(Sample %in% c("C27", "C29", "C33"), Bin != "bin.unbin
         panel.border = element_blank(), axis.line = element_line(colour = "black"), legend.title = element_blank()) +
   scale_color_manual(values=c(greens,oranges), labels=c("Low Quality nMAG", "Medium Quality nMAG", "High Quality nMAG", "Low Quality MAG", "Medium Quality MAG", "High Quality MAG")) +
   annotation_logticks(sides="lb") +
-  theme(text = element_text(size = 15))
+  theme(text = element_text(size = 15)) +
+  theme(plot.margin = unit(c(0.5, 1, 0.5, 0.5), "cm"))
 
 f <- ggplot(all %>% filter(Sample %in% c("C27", "C29", "C33"), Bin != "bin.unbinned", Bin != "unbinned"), aes(x=Total.length, y=N50, color=interaction(Quality, Type))) +
   geom_abline(intercept=0, slope = 1, color = 'black', alpha = 0.3) +
@@ -128,18 +144,31 @@ f <- ggplot(all %>% filter(Sample %in% c("C27", "C29", "C33"), Bin != "bin.unbin
         panel.border = element_blank(), axis.line = element_line(colour = "black"), legend.title = element_blank()) +
   scale_color_manual(values=c(greens,oranges), labels=c("Low Quality nMAG", "Medium Quality nMAG", "High Quality nMAG", "Low Quality MAG", "Medium Quality MAG", "High Quality MAG")) +
   annotation_logticks(sides="lb") +
-  theme(text = element_text(size = 15))
+  theme(text = element_text(size = 15)) +
+  theme(plot.margin = unit(c(0.5, 0.5, 0.5, 1), "cm"))
+
 f
 
 prow <- plot_grid(e + theme(legend.position = "none"), 
-                  f + theme(legend.position = "none"), rel_widths = c(1, 1), nrow = 1, labels = c("A", "B"))
+                  f + theme(legend.position = "none"), rel_widths = c(1, 1), nrow = 1, labels = c("a", "b"))
 leg <- get_legend(f + theme(legend.title = element_blank(), legend.box.margin = margin(0,0,0,0)))
 
-plot_grid(prow, leg, nrow = 1, rel_widths = c(2, .7))
-ggsave("plots/supp_binning_plots_2.jpg", units="in", width=9, height = 4, dpi=500)
+plot_grid(prow, leg, nrow = 1, rel_widths = c(2.5, .7))
+ggsave("plots/supplementary/figure_S18_nMAG_coverage_N50.png", units="in", width=9, height = 4, dpi=500)
+ggsave("plots/supplementary/figure_S18_nMAG_coverage_N50.pdf", units="in", width=9, height = 4, dpi=500)
 
 
-#### MAG GC CONTENT COMPARISON ####
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33")) %>% filter(Type == "nMAG") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33"))%>% filter(Type == "nMAG") %>% filter(Quality == "Low-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33"))%>% filter(Type == "nMAG") %>% filter(Quality == "Medium-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33"))%>% filter(Type == "nMAG") %>% filter(Quality == "High-quality") %>% nrow()
+# 
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33"))%>% filter(Type == "MAG") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33"))%>% filter(Type == "MAG") %>% filter(Quality == "Low-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33"))%>% filter(Type == "MAG") %>% filter(Quality == "Medium-quality") %>% nrow()
+# all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Sample %in% c("C27", "C29", "C33"))%>% filter(Type == "MAG") %>% filter(Quality == "High-quality") %>% nrow()
+
+#### BINNING STATISTICS: Supplementary Figure 21 ####
 
 # load GC content for nanopore MAGs from each sample
 gc33 <- read.table("input_final/C33_all_gc.txt", sep = '\t', header = F)
@@ -172,7 +201,7 @@ allgc <- rbind(igc, gc)
 all <- merge(all, allgc, by=c("Bin", "Sample", "Type"))
 
 # Plot nanopore MAG GC content (MAGs with high contiguity, facet by quality)
-g <- ggplot(all %>% filter(N50 > 1000000, Type=="nMAG"), aes(x=Quality, y=GC, fill = Quality)) +
+g <- ggplot(all %>% filter(N50 > 1000000, Type=="nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned"), aes(x=Quality, y=GC, fill = Quality)) +
   geom_jitter(position = position_jitterdodge(jitter.width = 0.2), alpha = 0.75, size = 1, color = "darkgray") +
   geom_boxplot(outlier.shape = NA, alpha = 0.75) +
   theme_bw() +
@@ -182,9 +211,10 @@ g <- ggplot(all %>% filter(N50 > 1000000, Type=="nMAG"), aes(x=Quality, y=GC, fi
   scale_fill_manual(values=c(greens)) +
   theme(text = element_text(size = 15), legend.title=element_blank()) +
   stat_compare_means(comparisons = list(c("Low-quality", "High-quality")), method="wilcox.test", label="p.signif")
+g
 
 # Plot Illumina and nanopore bin GC content, faceted by quality
-h <- ggplot(all, aes(x=Quality, y=GC, fill = interaction(Quality, reorder(Type)))) +
+h <- ggplot(all %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned"), aes(x=Quality, y=GC, fill = interaction(Quality, reorder(Type)))) +
   geom_jitter(position = position_jitterdodge(jitter.width = 0.2), alpha = 0.75, size = 1, color = "darkgray") +
   geom_boxplot(outlier.shape = NA, alpha = 0.75) +
   theme_bw() +
@@ -195,18 +225,33 @@ h <- ggplot(all, aes(x=Quality, y=GC, fill = interaction(Quality, reorder(Type))
   theme(text = element_text(size = 15),  legend.title=element_blank())
 
 prow <- plot_grid(h + theme(legend.position = "none"), 
-                  g + theme(legend.position = "none"), rel_widths = c(1, 1), nrow = 1, ncol=2, labels = c("A", "B"))
+                  g + theme(legend.position = "none"), rel_widths = c(1, 1), nrow = 1, ncol=2, labels = c("a", "b"))
 newleg <- get_legend(h + theme(legend.title = element_blank(), legend.box.margin = margin(0,0,0,0)))
 
 plot_grid(prow, newleg, nrow = 1, rel_widths = c(2.8, .7))
-ggsave("plots/supp_binning_plots_gcall.jpg", units="in", width=11, height =4, dpi=500)
+ggsave("plots/supplementary/figure_S21_gc_MAGs.png", units="in", width=11, height =4, dpi=500)
+ggsave("plots/supplementary/figure_S21_gc_MAGs.pdf", units="in", width=11, height =4, dpi=500)
 
-#### READ GC CONTENT COMPARISON ####
+# all %>% filter(Type == "nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% nrow()
+# all %>% filter(Type == "nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "Low-quality") %>% nrow()
+# all %>% filter(Type == "nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "Medium-quality") %>% nrow()
+# all %>% filter(Type == "nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "High-quality") %>% nrow()
+# 
+# all %>% filter(Type == "MAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "Low-quality") %>% nrow()
+# all %>% filter(Type == "MAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "Medium-quality") %>% nrow()
+# all %>% filter(Type == "MAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "High-quality") %>% nrow()
+# 
+# all %>% filter(N50 > 1000000, Type=="nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "Low-quality") %>% nrow()
+# all %>% filter(N50 > 1000000, Type=="nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "Medium-quality") %>% nrow()
+# all %>% filter(N50 > 1000000, Type=="nMAG") %>% filter(Bin!="bin.unbinned") %>% filter(Bin!="unbinned") %>% filter(Quality == "High-quality") %>% nrow()
+
+
+#### READ GC CONTENT: Supplementary Figure 22 ####
 
 # load subsampled Illumina read GC content
-reads_ic27 <- read.table('input_final/C27_gc_subsample.tsv', sep = '\t', header = 0, row.names = NULL)
-reads_ic29 <- read.table('input_final/C29_gc_subsample.tsv', sep = '\t', header = 0, row.names = NULL)
-reads_ic33 <- read.table('input_final/C33_gc_subsample.tsv', sep = '\t', header = 0, row.names = NULL)
+reads_ic27 <- read.table('input_final/iC27_gc_subsample.tsv', sep = '\t', header = 0, row.names = NULL) %>% select(V2)
+reads_ic29 <- read.table('input_final/iC29_gc_subsample.tsv', sep = '\t', header = 0, row.names = NULL) %>% select(V2)
+reads_ic33 <- read.table('input_final/iC33_gc_subsample.tsv', sep = '\t', header = 0, row.names = NULL) %>% select(V2)
 
 # load subsampled nanopore read GC content
 reads_nc27<- read.table('input_final/C27_gc_subsample.tsv', sep = '\t', header = 0, row.names = NULL)
@@ -220,12 +265,12 @@ reads_ic33 <- cbind(reads_ic33, "iC33")
 reads_nc27 <- cbind(reads_nc27, "nC27")
 reads_nc29 <- cbind(reads_nc29, "nC29")
 reads_nc33 <- cbind(reads_nc33, "nC33")
-names(reads_ic27)[2] = "GC"
-names(reads_ic27)[3] = "Sample"
-names(reads_ic29)[2] = "GC"
-names(reads_ic29)[3] = "Sample"
-names(reads_ic33)[2] = "GC"
-names(reads_ic33)[3] = "Sample"
+names(reads_ic27)[1] = "GC"
+names(reads_ic27)[2] = "Sample"
+names(reads_ic29)[1] = "GC"
+names(reads_ic29)[2] = "Sample"
+names(reads_ic33)[1] = "GC"
+names(reads_ic33)[2] = "Sample"
 names(reads_nc27)[1] = "GC"
 names(reads_nc27)[2] = "Sample"
 names(reads_nc29)[1] = "GC"
@@ -240,13 +285,12 @@ reads_ic33 <- reads_ic33 %>% select(GC, Sample)
 all_comparos <- rbind(reads_ic27, reads_ic29, reads_ic33, reads_nc27, reads_nc29, reads_nc33)
 all_comparos$Sample = factor(all_comparos$Sample, levels = c("iC27", "iC29", "iC33", "nC27", "nC29", "nC33"))
 
-
 # C27 GC plot
 a <- ggplot(all_comparos[all_comparos$Sample == "iC27" | all_comparos$Sample == "nC27",], aes(x=GC, fill = Sample, alpha = 0.3)) + 
   guides(alpha = "none") +
   geom_density() + 
   theme_bw() + 
-  ggtitle("Bushbuckridge 105") + 
+  ggtitle("Bushbuckridge 106") + 
   xlab("GC Content") + 
   xlim(c(0,1)) +
   scale_fill_manual(values = c("grey", "black"), labels = c("Illumina", "Nanopore")) +
@@ -260,7 +304,7 @@ b <- ggplot(all_comparos[all_comparos$Sample == "iC29" | all_comparos$Sample == 
   guides(alpha = "none") +
   geom_density() + 
   theme_bw() + 
-  ggtitle("Bushbuckridge 107") +
+  ggtitle("Bushbuckridge 108") +
   xlab("GC Content") + 
   xlim(c(0,1)) +
   scale_fill_manual(values = c("grey", "black"), labels = c("Illumina", "Nanopore")) + 
@@ -274,7 +318,7 @@ c <- ggplot(all_comparos[all_comparos$Sample == "iC33" | all_comparos$Sample == 
   guides(alpha = "none") +
   geom_density() + 
   theme_bw() + 
-  ggtitle("Bushbuckridge 112") +
+  ggtitle("Bushbuckridge 113") +
   xlab("GC Content") + 
   xlim(c(0,1)) +
   scale_fill_manual(values = c("grey", "black"), labels = c("Illumina", "Nanopore")) + 
@@ -290,9 +334,11 @@ prow <- plot_grid(a + theme(legend.position = "none"),
 abclegend <- get_legend(c + theme(legend.title = element_blank(), legend.box.margin = margin(0,0,0,0)))
 
 plot_grid(prow, abclegend, nrow = 1, rel_widths = c(3, 0.4))
-ggsave("plots/supp_gcreads.jpg", units="in", width=11, height = 3, dpi=500)
+ggsave("plots/supplementary/figure_S22_gc_reads.png", units="in", width=11, height = 3, dpi=500)
+ggsave("plots/supplementary/figure_S22_gc_reads.pdf", units="in", width=11, height = 3, dpi=500)
 
-#### PAIRED nMAGs AND iMAGs ####
+
+#### PAIRED nMAGs AND iMAGs: Figure 5C ####
 
 # read in and format mobile element data tables
 phage <- read.table("input_final/vibrant.tsv", sep = '\t', header = F)
@@ -355,4 +401,5 @@ prow <- plot_grid(a + theme(legend.position = "none"),
                   c + theme(legend.position = "none"), 
                   NULL,
                   d + theme(legend.position = "none"), rel_widths = c(1.3,0.1,1,0.1,1,0.1, 1), nrow = 1, ncol=7)
-ggsave("plots/direct_plots.jpg", units="in", width=8, height = 3, dpi=800)
+prow
+ggsave("plots/figure_5c.png", units="in", width=8, height = 3, dpi=800)

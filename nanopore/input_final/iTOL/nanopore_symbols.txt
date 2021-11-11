@@ -1,0 +1,116 @@
+DATASET_SYMBOL
+#Symbol datasets allow the display of various symbols on the branches of the tree. For each node, one or more symbols can be defined.
+#Each symbol's color, size and position along the branch can be specified.
+
+#lines starting with a hash are comments and ignored during parsing
+#=================================================================#
+#                    MANDATORY SETTINGS                           #
+#=================================================================#
+#select the separator which is used to delimit the data below (TAB,SPACE or COMMA).This separator must be used throughout this file.
+SEPARATOR TAB
+#SEPARATOR SPACE
+#SEPARATOR COMMA
+
+#label is used in the legend table (can be changed later)
+DATASET_LABEL	Nanopore MAGs
+
+#dataset color (can be changed later)
+COLOR	#ffff00
+
+#=================================================================#
+#                    OPTIONAL SETTINGS                            #
+#=================================================================#
+
+
+#=================================================================#
+#     all other optional settings can be set or changed later     #
+#           in the web interface (under 'Datasets' tab)           #
+#=================================================================#
+
+#Each dataset can have a legend, which is defined using LEGEND_XXX fields below
+#For each row in the legend, there should be one shape, color and label.
+#Optionally, you can define an exact legend position using LEGEND_POSITION_X and LEGEND_POSITION_Y. To use automatic legend positioning, do NOT define these values
+#Optionally, shape scaling can be present (LEGEND_SHAPE_SCALES). For each shape, you can define a scaling factor between 0 and 1.
+#Optionally, shapes can be inverted (LEGEND_SHAPE_INVERT). When inverted, shape border will be drawn using the selected color, and the fill color will be white.
+#Shape should be a number between 1 and 6, or any protein domain shape definition.
+#1: square
+#2: circle
+#3: star
+#4: right pointing triangle
+#5: left pointing triangle
+#6: checkmark
+
+LEGEND_TITLE	Nanopore MAGs
+LEGEND_POSITION_X	1125
+LEGEND_POSITION_Y	275
+LEGEND_SHAPES	2
+LEGEND_COLORS	#006D2C
+LEGEND_LABELS	Nanopore MAGs
+#LEGEND_SHAPE_SCALE	1
+#LEGEND_SHAPE_INVERT,0,0,0
+
+
+#largest symbol will be displayed with this size, others will be proportionally smaller.
+MAXIMUM_SIZE	15
+
+
+#Internal tree nodes can be specified using IDs directly, or using the 'last common ancestor' method described in iTOL help pages
+#=================================================================#
+#       Actual data follows after the "DATA" keyword              #
+#=================================================================#
+#the following fields are required for each node:
+#ID,symbol,size,color,fill,position,label
+#symbol should be a number between 1 and 5:
+#1: rectangle
+#2: circle
+#3: star
+#4: right pointing triangle
+#5: left pointing triangle
+#6: checkmark
+
+#size can be any number. Maximum size in the dataset will be displayed using MAXIMUM_SIZE, while others will be proportionally smaller
+#color can be in hexadecimal, RGB or RGBA notation. If RGB or RGBA are used, dataset SEPARATOR cannot be comma.
+#fill can be 1 or 0. If set to 0, only the outline of the symbol will be displayed.
+#position is a number between 0 and 1 and defines the position of the symbol on the branch (for example, position 0 is exactly at the start of node branch, position 0.5 is in the middle, and position 1 is at the end)
+
+DATA
+#Examples
+nC27_bin.30	2	1	#006D2C	1	1
+nC29_bin.94	2	1	#006D2C	1	1
+nC33_bin.104	2	1	#006D2C	1	1
+nC29_bin.32	2	1	#006D2C	1	1
+nC33_bin.253	2	1	#006D2C	1	1
+nC33_bin.24	2	1	#006D2C	1	1
+nC33_lr_bin.117	2	1	#006D2C	1	1
+nC33_bin.4	2	1	#006D2C	1	1
+nC29_bin.31	2	1	#006D2C	1	1
+nC33_lr_bin.1	2	1	#006D2C	1	1
+nC27_bin.11	2	1	#006D2C	1	1
+nC33_bin.244	2	1	#006D2C	1	1
+nC33_lr_bin.52	2	1	#006D2C	1	1
+nC33_lr_bin.284	2	1	#006D2C	1	1
+nC33_bin.207	2	1	#006D2C	1	1
+nC29_bin.1	2	1	#006D2C	1	1
+nC33_bin.7	2	1	#006D2C	1	1
+nC33_bin.228	2	1	#006D2C	1	1
+nC27_bin.2	2	1	#006D2C	1	1
+nC29_bin.127	2	1	#006D2C	1	1
+nC33_bin.2	2	1	#006D2C	1	1
+nC33_lr_bin.267	2	1	#006D2C	1	1
+nC33_bin.44	2	1	#006D2C	1	1
+nC33_bin.6	2	1	#006D2C	1	1
+nC29_bin.156	2	1	#006D2C	1	1
+nC33_bin.182	2	1	#006D2C	1	1
+nC33_bin.194	2	1	#006D2C	1	1
+nC33_bin.144	2	1	#006D2C	1	1
+nC33_bin.8	2	1	#006D2C	1	1
+nC29_bin.3	2	1	#006D2C	1	1
+nC33_bin.255	2	1	#006D2C	1	1
+nC33_bin.232	2	1	#006D2C	1	1
+nC33_bin.3	2	1	#006D2C	1	1
+nC29_bin.14	2	1	#006D2C	1	1
+nC33_bin.27	2	1	#006D2C	1	1
+nC27_bin.130	2	1	#006D2C	1	1
+nC27_bin.114	2	1	#006D2C	1	1
+nC27_bin.160	2	1	#006D2C	1	1
+nC33_lr_bin.207	2	1	#006D2C	1	1
