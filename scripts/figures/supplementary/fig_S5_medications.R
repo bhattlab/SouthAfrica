@@ -1,6 +1,5 @@
 library(cowplot)
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(ggpubr)
 library(here)
 library(vegan)
@@ -8,45 +7,42 @@ library(vegan)
 # load data ----
 load(here("RData/metadata.RData"))
 load(here("RData/za_data.RData"))
+load(here("RData/medications.RData"))
 
-# conmeds data table ----
-conmeds <- read.table(here("input_final/pheno/conmeds.tsv"), sep = "\t",
-                      header = T, quote = "")
-
-conmeds <- conmeds %>%
-  filter(!(medicine_CURATED %in% c("", "??", "NONE", "UNKNOWN")))
-
+# meds data table ----
 # set "other" as last level
-meds <- unique(conmeds$medicine_CATEGORY)
+meds <- meds %>%
+  mutate(medicine_category = as.factor(medicine_category),
+         medicine_category = fct_relevel(medicine_category, "OTHER", after = Inf))
 
-conmeds$medicine_CATEGORY <- factor(conmeds$medicine_CATEGORY,
-                                    levels = c(sort(meds[meds != "OTHER"]), "OTHER"))
-
-conmeds_tbl <- conmeds %>%
-  group_by(medicine_CATEGORY, medicine_CURATED) %>%
+meds_tbl <- meds %>%
+  group_by(medicine_category, medicine_name) %>%
   tally()
 
-write.table(conmeds_tbl, here("final_tables/table_s2_conmeds.txt"),
+write.table(meds_tbl, here("final_tables/table_s2_medications.txt"),
             sep = "\t", quote = F, row.names = F)
 
 # stats for text ----
 # n participants anti-infective/antibiotic
-conmeds %>%
-  filter(medicine_CATEGORY == "ANTIBIOTIC") %>%
-  dplyr::select(sample, site) %>%
+meds_meta <- meds %>%
+  left_join(za_meta, by = "study_id")
+
+meds_meta %>%
+  filter(medicine_category == "ANTIBIOTIC") %>%
+  select(sample, site) %>%
   distinct() %>%
   group_by(site) %>%
   tally()
 
 # n participants anti-hypertensive
-conmeds %>%
-  filter(medicine_CATEGORY == "ANTI-HYPERTENSIVE") %>%
-  dplyr::select(sample, site) %>%
+meds_meta %>%
+  filter(medicine_category == "ANTI-HYPERTENSIVE") %>%
+  select(sample, site) %>%
   distinct() %>%
   group_by(site) %>%
   tally()
 
-# conmeds mds plots ----
+# meds mds plots ----
 vare_dis <- vegdist(t(za_S_css), method = "bray")
 
 # calculate mds
@@ -65,16 +61,16 @@ mds_data <- data.frame(sample = rownames(mds_values),
 mds_meta <- merge(mds_data, za_meta, by = "sample")
 
 # plot medicine categories with at least n patients
-categories <- conmeds %>%
-  dplyr::select(sample, medicine_CATEGORY) %>%
+categories <- meds_meta %>%
+  select(sample, medicine_category) %>%
   distinct() %>%
-  group_by(medicine_CATEGORY) %>%
+  group_by(medicine_category) %>%
   tally() %>%
-  filter(n >= 2, !medicine_CATEGORY %in% c("SUPPLEMENT", "OTHER")) %>%
-  pull(medicine_CATEGORY) %>%
+  filter(n >= 2, !medicine_category %in% c("SUPPLEMENT", "OTHER")) %>%
+  pull(medicine_category) %>%
   as.character()
 
-plot_conmeds <- function(categories, mds_plot){
+plot_meds <- function(categories, mds_plot){
   
   plot_data <- data.frame()
   
@@ -82,8 +78,8 @@ plot_conmeds <- function(categories, mds_plot){
     p <- mds_plot
     
     # which patients
-    pts <- conmeds %>%
-      filter(medicine_CATEGORY == c) %>%
+    pts <- meds_meta %>%
+      filter(medicine_category == c) %>%
       pull(sample) %>%
       unique()
     
@@ -128,25 +124,25 @@ plot_conmeds <- function(categories, mds_plot){
 }
 
 # plot by category and color by medicine
-plot_conmeds_by_drug <- function(category, mds_plot){
+plot_meds_by_drug <- function(category, mds_plot){
   
   # which patients
-  pts <- conmeds %>%
-    filter(medicine_CATEGORY == category) %>%
+  pts <- meds_meta %>%
+    filter(medicine_category == category) %>%
     pull(sample) %>%
     unique()
   
   # unique drug combos
-  c <- conmeds %>%
-    filter(medicine_CATEGORY == category) %>%
-    dplyr::select(sample, medicine_CURATED, medicine_CATEGORY) %>%
+  c <- meds_meta %>%
+    filter(medicine_category == category) %>%
+    dplyr::select(sample, medicine_name, medicine_category) %>%
     distinct() %>%
     mutate(
       value = 1
     )
   
-  c_wide <- reshape2::dcast(c, sample ~ medicine_CURATED,
-                            value.var = "medicine_CURATED")
+  c_wide <- reshape2::dcast(c, sample ~ medicine_name,
+                            value.var = "medicine_name")
   c_wide[is.na(c_wide)] <- ""
   c_wide$label <- apply(c_wide[, 2:ncol(c_wide)], 1, paste, collapse=",")
   c_wide$label <- gsub("^,+|,+$", "", c_wide$label)
@@ -214,12 +210,12 @@ meta <- za_meta %>%
 meta <- meta[match(colnames(za_S_css), meta$sample), ]
 
 # meds per patient
-meds_pp <- conmeds %>%
-  dplyr::select(sample, medicine_CATEGORY) %>%
+meds_pp <- meds_meta %>%
+  dplyr::select(sample, medicine_category) %>%
   distinct()
 
-meds_pp_wide <- reshape2::dcast(meds_pp, sample ~ medicine_CATEGORY,
-                                value.var = "medicine_CATEGORY")
+meds_pp_wide <- reshape2::dcast(meds_pp, sample ~ medicine_category,
+                                value.var = "medicine_category")
 samples <- meds_pp_wide$sample
 
 meds_pp_wide[!is.na(meds_pp_wide)] <- T
@@ -259,13 +255,13 @@ t <- res_tbl %>%
 
 
 # compile figure ----
-a <- plot_conmeds(categories, mds_meta)
-b <- plot_grid(plot_conmeds_by_drug("ANTIBIOTIC", mds_meta), t,
+a <- plot_meds(categories, mds_meta)
+b <- plot_grid(plot_meds_by_drug("ANTIBIOTIC", mds_meta), t,
                rel_widths = c(0.43, 0.57), nrow = 1, labels = c("b", "c"))
 
 plot_grid(a, b, ncol = 1, rel_heights = c(0.71, 0.29), labels = c("a", ""))
 
-ggsave(here("final_plots/supplementary/figure_S5_conmeds_mds.png"),
+ggsave(here("final_plots/supplementary/figure_S5_medications_mds.png"),
        width = 8, height = 12, bg = "white")
-ggsave(here("final_plots/pdf/supp/figure_S5_conmeds_mds.pdf"),
+ggsave(here("final_plots/pdf/supp/figure_S5_medications_mds.pdf"),
        width = 8, height = 12, bg = "white")
