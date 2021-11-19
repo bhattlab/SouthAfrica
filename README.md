@@ -6,11 +6,11 @@ To generate all figures from the manuscript, please follow these steps:
 
 1. Access phenotype data from EGA under dataset ID [EGAD00001006581](https://ega-archive.org/datasets/EGAD00001006581)
 2. Edit `scripts/create_metadata.R` to point to the location of the EGA data and run the script to create required RData file
-3. install all required packages and run each R script in `scripts/figures` and `scripts/figures/supplementary`
+3. Install all required packages and run each R script in `scripts/figures` and `scripts/figures/supplementary`
 
-e.g. from the command line:
+     e.g. from the command line:
 
-     find scripts/figures -name "*.R" | xargs -I foo Rscript foo
+          find scripts/figures -name "*.R" | xargs -I foo Rscript foo
 
 Required packages:
 
