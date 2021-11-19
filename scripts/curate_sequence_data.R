@@ -14,7 +14,7 @@ load(here("RData/metadata.RData"))
 exclude_rampelli <- c("SRR1929485", "SRR1929574", "SRR1930128", "SRR1930132",
                       "SRR1930134")
 
-pheno_global <- read.table(here("input_final/pheno_global.txt"), sep = "\t",
+pheno_global <- read.table(here("input_final/pheno/pheno_global.txt"), sep = "\t",
                            header = T)
 
 pheno_global <- pheno_global %>%
@@ -31,8 +31,6 @@ pheno_global$site2 <- factor(pheno_global$site2,
                              levels = c("Tanzania", "Madagascar", "Burkina Faso",
                                         "Bushbuckridge", "Soweto", "Sweden",
                                         "United States"))
-
-# saveRDS(pheno_global, here("rds/pheno_global.rds"))
 
 # kraken/bracken output ----
 for (rank in c("S", "G", "F", "O", "C", "P")){
@@ -111,40 +109,28 @@ for (rank in c("S", "G", "F", "O", "C", "P")){
   assign(paste0("za_", rank), za_reads)
   assign(paste0("za_", rank, "_rel"), za_rel)
   assign(paste0("za_", rank, "_pseudo_rel"), za_pseudo_rel)
-  
-  # save rds
-  # saveRDS(global_reads, here("rds", paste0("global_", rank, ".rds")))
-  # saveRDS(global_rel, here("rds", paste0("global_", rank, "_rel.rds")))
-  # saveRDS(global_pseudo_rel, here("rds", paste0("global_", rank, "_pseudo_rel.rds")))
-  # 
-  # saveRDS(za_reads, here("rds", paste0("za_", rank, ".rds")))
-  # saveRDS(za_rel, here("rds", paste0("za_", rank, "_rel.rds")))
-  # saveRDS(za_pseudo_rel, here("rds", paste0("za_", rank, "_pseudo_rel.rds")))
 }
 
 # CSS normalize ----
-# za
 for (rank in c("S", "G")){
-  cts <- readRDS(here(paste0("rds/za_", rank, ".rds")))
+  cts <- get(paste0("za_", rank))
   mr <- newMRexperiment(cts)
   p <- cumNormStatFast(mr)
   mr_css <- cumNorm(mr, p = p)
   counts_css <- MRcounts(mr_css, norm = T, log = T)
   
   assign(paste0("za_", rank, "_css"), counts_css)
-  # saveRDS(counts_css, here("rds", paste0("za_", rank, "_css.rds")))
 }
 
 # global
 for (rank in c("S", "G")){
-  cts <- readRDS(here(paste0("rds/global_", rank, ".rds")))
+  cts <- get(paste0("global_", rank))
   mr <- newMRexperiment(cts)
   p <- cumNormStatFast(mr)
   mr_css <- cumNorm(mr, p = p)
   counts_css <- MRcounts(mr_css, norm = T, log = T)
   
   assign(paste0("global_", rank, "_css"), counts_css)
-  # saveRDS(counts_css, here("rds", paste0("global_", rank, "_css.rds")))
 }
 
 # rarefied and normalized ----
@@ -177,7 +163,6 @@ for (k in c("21", "31", "51")){
     sourmash <- sourmash[keep, keep]
     
     assign(paste0("sourmash_k", k, suffix), sourmash)
-    # saveRDS(sourmash, here("rds", paste0("sourmash_k", k, suffix, ".rds")))
   }
 }
 
@@ -221,6 +206,8 @@ save(global_pal, za_pal, list = filelist, file = here("RData/za_data.RData"))
 filelist = ls()[grepl("sourmash_k", ls())]
 save(global_pal, za_pal, list = filelist, file = here("RData/sourmash_data.RData"))
 
-# palettes only
+# palettes
 save(global_pal, za_pal, file = here("RData/palettes.RData"))
 
+# vanish taxa
+save(vanish_F, vanish_G, file = here("RData/vanish.RData"))
