@@ -4,7 +4,7 @@ Analysis scripts for Wits-Stanford shotgun microbiome data.
 
 To generate all figures from the manuscript, please follow these steps:
 
-1. Access phenotype data from EGA under dataset ID [EGAD00001006581](https://ega-archive.org/datasets/EGAD00001006581). You can submit an access request to the H3Africa Data Access Committee at https://catalog.h3africa.org/.
+1. Access phenotype data from EGA under dataset ID [EGAD00001006581](https://ega-archive.org/datasets/EGAD00001006581). You can submit an access request to the H3Africa Data Access Committee at https://catalog.h3africa.org/
 2. Edit `scripts/create_metadata.R` to point to the location of the EGA data and run the script to create required RData file
 3. Install all required packages and run each R script in `scripts/figures` and `scripts/figures/supplementary`
 
