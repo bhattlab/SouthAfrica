@@ -14,7 +14,7 @@ Bacteria: environmental samples	-1.71	1.54e-06	1.03e-05
 Shigella	-1.71	0.000108	0.000391
 Citrobacter	-1.68	1.99e-06	1.21e-05
 Dialister	-1.55	1.29e-05	5.95e-05
-unclassified Alphaproteobacteria (miscellaneous)	-1.54	2.99e-09	4.01e-08
+unclassified Alphaproteobacteria	-1.54	2.99e-09	4.01e-08
 Butyricimonas	1.51	8.84e-08	9.11e-07
 Butyrivibrio	-1.41	0.00025	0.00078
 unclassified Bacteroidaceae	1.41	6.31e-06	3.13e-05
@@ -31,7 +31,7 @@ Eisenbergiella	1.13	4.54e-10	6.77e-09
 Anaerotruncus	1.08	1.43e-13	4.79e-12
 Holdemania	1.06	2.96e-07	2.65e-06
 Ruthenibacterium	1.05	5.8e-06	3.02e-05
-unclassified Burkholderiales (miscellaneous)	1.03	0.00566	0.014
+unclassified Burkholderiales	1.03	0.00566	0.014
 Victivallis	-1.01	0.00856	0.0188
 Parabacteroides	0.971	0.000161	0.000554
 Dysosmobacter	0.941	7.85e-08	8.76e-07

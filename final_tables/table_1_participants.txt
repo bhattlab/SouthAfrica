@@ -1,9 +1,9 @@
 var	site	mean	sd	range
-age	Bushbuckridge	55.19	7.92	43 - 72
+age	Bushbuckridge	55.46	7.79	43 - 72
 age	Soweto	54.1	5.86	43 - 64
-bmi	Bushbuckridge	32.36	7.97	21.2 - 59
+bmi	Bushbuckridge	32.36	7.97	21.23 - 58.97
 bmi	Soweto	36.05	9.25	20.42 - 58.62
-bp.dia	Bushbuckridge	83.72	12.12	54 - 119
+bp.dia	Bushbuckridge	83.98	12.52	52.5 - 119
 bp.dia	Soweto	89.9	14.37	58 - 119
-bp.sys	Bushbuckridge	136.95	18.28	101.33 - 189.33
+bp.sys	Bushbuckridge	136.69	18.54	103.5 - 186.5
 bp.sys	Soweto	135.47	22.54	96 - 193
