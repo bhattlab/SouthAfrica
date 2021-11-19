@@ -3,9 +3,11 @@ library(here)
 library(tidyverse)
 
 ##### EDIT HERE: #####
-ega_path <- ""
+ega_path <- "/Users/tamburif/Downloads/awigen_phase1_pilot_microbiome_study_metadata.csv"
+medications_path <- here("input_final/pheno/awigen_phase1_pilot_microbiome_study_medications.csv")
 ######################
 
+# pheno data ----
 ega_data <- read.csv(ega_path)
 
 study_samples <- read.table(here("input_final/pheno/study_samples.txt"),
@@ -26,3 +28,7 @@ za_meta <- za_pheno %>%
   select(sample, study_id, site)
 
 save(za_meta, za_pheno, file = here("RData/metadata.RData"))
+
+# medication data ----
+meds <- read.csv(medications_path)
+save(meds, file = here("RData/medications.RData"))
