@@ -1,37 +1,37 @@
-2021-09-03 10:50:33 INFO::Writing function arguments to log file
-2021-09-03 10:50:33 DEBUG::Function arguments
-2021-09-03 10:50:33 DEBUG::Output folder: /Users/tamburif/southafrica/output/maaslin2/abx_CPLM_TSS
-2021-09-03 10:50:33 DEBUG::Min Abundance: 0.000000
-2021-09-03 10:50:33 DEBUG::Min Prevalence: 0.100000
-2021-09-03 10:50:34 DEBUG::Normalization: TSS
-2021-09-03 10:50:34 DEBUG::Transform: NONE
-2021-09-03 10:50:34 DEBUG::Analysis method: CPLM
-2021-09-03 10:50:34 DEBUG::Max significance: 0.250000
-2021-09-03 10:50:34 DEBUG::Random effects:
-2021-09-03 10:50:34 DEBUG::Fixed effects: site
-2021-09-03 10:50:34 DEBUG::Correction method: BH
-2021-09-03 10:50:34 DEBUG::Standardize: FALSE
-2021-09-03 10:50:34 DEBUG::Cores: 1
-2021-09-03 10:50:34 INFO::Verifying options selected are valid
-2021-09-03 10:50:34 INFO::Determining format of input files
-2021-09-03 10:50:34 INFO::Input format is data samples as columns and metadata samples as rows
-2021-09-03 10:50:34 DEBUG::Transformed data so samples are rows
-2021-09-03 10:50:34 DEBUG::A total of 169 samples were found in both the data and metadata
-2021-09-03 10:50:34 DEBUG::Reordering data/metadata to use same sample ordering
-2021-09-03 10:50:34 INFO::Formula for fixed effects: expr ~  site
-2021-09-03 10:50:34 INFO::Filter data based on min abundance and min prevalence
-2021-09-03 10:50:34 INFO::Total samples in data: 169
-2021-09-03 10:50:34 INFO::Min samples required with min abundance for a feature not to be filtered: 16.900000
-2021-09-03 10:50:34 INFO::Total filtered features: 0
-2021-09-03 10:50:34 INFO::Filtered feature names from abundance and prevalence filtering:
-2021-09-03 10:50:34 INFO::Total filtered features with variance filtering: 0
-2021-09-03 10:50:34 INFO::Filtered feature names from variance filtering:
-2021-09-03 10:50:34 INFO::Running selected normalization method: TSS
-2021-09-03 10:50:34 INFO::Bypass z-score application to metadata
-2021-09-03 10:50:34 INFO::Running selected transform method: NONE
-2021-09-03 10:50:34 INFO::Running selected analysis method: CPLM
-2021-09-03 10:50:34 INFO::Fitting model to feature number 1, patA..ARO.3000024.
-2021-09-03 10:50:35 DEBUG::Summary output
+2021-11-18 22:39:12 INFO::Writing function arguments to log file
+2021-11-18 22:39:12 DEBUG::Function arguments
+2021-11-18 22:39:12 DEBUG::Output folder: /Users/tamburif/SouthAfrica/output/maaslin2/abx_CPLM_TSS
+2021-11-18 22:39:12 DEBUG::Min Abundance: 0.000000
+2021-11-18 22:39:12 DEBUG::Min Prevalence: 0.100000
+2021-11-18 22:39:12 DEBUG::Normalization: TSS
+2021-11-18 22:39:12 DEBUG::Transform: NONE
+2021-11-18 22:39:12 DEBUG::Analysis method: CPLM
+2021-11-18 22:39:12 DEBUG::Max significance: 0.250000
+2021-11-18 22:39:12 DEBUG::Random effects:
+2021-11-18 22:39:12 DEBUG::Fixed effects: site
+2021-11-18 22:39:12 DEBUG::Correction method: BH
+2021-11-18 22:39:12 DEBUG::Standardize: FALSE
+2021-11-18 22:39:12 DEBUG::Cores: 1
+2021-11-18 22:39:12 INFO::Verifying options selected are valid
+2021-11-18 22:39:12 INFO::Determining format of input files
+2021-11-18 22:39:12 INFO::Input format is data samples as columns and metadata samples as rows
+2021-11-18 22:39:12 DEBUG::Transformed data so samples are rows
+2021-11-18 22:39:12 DEBUG::A total of 169 samples were found in both the data and metadata
+2021-11-18 22:39:12 DEBUG::Reordering data/metadata to use same sample ordering
+2021-11-18 22:39:12 INFO::Formula for fixed effects: expr ~  site
+2021-11-18 22:39:12 INFO::Filter data based on min abundance and min prevalence
+2021-11-18 22:39:12 INFO::Total samples in data: 169
+2021-11-18 22:39:12 INFO::Min samples required with min abundance for a feature not to be filtered: 16.900000
+2021-11-18 22:39:12 INFO::Total filtered features: 0
+2021-11-18 22:39:12 INFO::Filtered feature names from abundance and prevalence filtering:
+2021-11-18 22:39:12 INFO::Total filtered features with variance filtering: 0
+2021-11-18 22:39:12 INFO::Filtered feature names from variance filtering:
+2021-11-18 22:39:12 INFO::Running selected normalization method: TSS
+2021-11-18 22:39:12 INFO::Bypass z-score application to metadata
+2021-11-18 22:39:12 INFO::Running selected transform method: NONE
+2021-11-18 22:39:12 INFO::Running selected analysis method: CPLM
+2021-11-18 22:39:12 INFO::Fitting model to feature number 1, patA..ARO.3000024.
+2021-11-18 22:39:12 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -52,8 +52,8 @@ Residual deviance: 3.7147  on 167  degrees of freedom
 AIC:  -323.34 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:35 INFO::Fitting model to feature number 2, emrA..ARO.3000027.
-2021-09-03 10:50:35 DEBUG::Summary output
+2021-11-18 22:39:12 INFO::Fitting model to feature number 2, emrA..ARO.3000027.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -74,8 +74,8 @@ Residual deviance: 11.804  on 167  degrees of freedom
 AIC:  -235.31 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:35 INFO::Fitting model to feature number 3, emrB..ARO.3000074.
-2021-09-03 10:50:35 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 3, emrB..ARO.3000074.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -96,8 +96,8 @@ Residual deviance: 3.3001  on 167  degrees of freedom
 AIC:  -246.28 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:35 INFO::Fitting model to feature number 4, tetO..ARO.3000190.
-2021-09-03 10:50:35 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 4, tetO..ARO.3000190.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -118,8 +118,8 @@ Residual deviance: 49.519  on 167  degrees of freedom
 AIC:  -851.38 
 
 Number of Fisher Scoring iterations:  4
-2021-09-03 10:50:35 INFO::Fitting model to feature number 5, tetQ..ARO.3000191.
-2021-09-03 10:50:36 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 5, tetQ..ARO.3000191.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -140,8 +140,8 @@ Residual deviance: 27.598  on 167  degrees of freedom
 AIC:  -172.91 
 
 Number of Fisher Scoring iterations:  4
-2021-09-03 10:50:36 INFO::Fitting model to feature number 6, tetW..ARO.3000194.
-2021-09-03 10:50:36 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 6, tetW..ARO.3000194.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -162,8 +162,8 @@ Residual deviance: 61.03  on 167  degrees of freedom
 AIC:  -122.5 
 
 Number of Fisher Scoring iterations:  4
-2021-09-03 10:50:36 INFO::Fitting model to feature number 7, tet32..ARO.3000196.
-2021-09-03 10:50:36 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 7, tet32..ARO.3000196.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -184,8 +184,8 @@ Residual deviance: 31.582  on 167  degrees of freedom
 AIC:  -1004.9 
 
 Number of Fisher Scoring iterations:  5
-2021-09-03 10:50:36 INFO::Fitting model to feature number 8, tetX..ARO.3000205.
-2021-09-03 10:50:36 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 8, tetX..ARO.3000205.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -206,8 +206,8 @@ Residual deviance: 151.83  on 167  degrees of freedom
 AIC:  -386.89 
 
 Number of Fisher Scoring iterations:  5
-2021-09-03 10:50:36 INFO::Fitting model to feature number 9, emrK..ARO.3000206.
-2021-09-03 10:50:36 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 9, emrK..ARO.3000206.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -228,8 +228,8 @@ Residual deviance: 11.721  on 167  degrees of freedom
 AIC:  -329.16 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:36 INFO::Fitting model to feature number 10, acrB..ARO.3000216.
-2021-09-03 10:50:36 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 10, acrB..ARO.3000216.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -250,8 +250,8 @@ Residual deviance: 6.7767  on 167  degrees of freedom
 AIC:  -122.89 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:36 INFO::Fitting model to feature number 11, TolC..ARO.3000237.
-2021-09-03 10:50:36 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 11, TolC..ARO.3000237.
+2021-11-18 22:39:13 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -272,8 +272,8 @@ Residual deviance: 8.1963  on 167  degrees of freedom
 AIC:  -539.47 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:36 INFO::Fitting model to feature number 12, emrY..ARO.3000254.
-2021-09-03 10:50:37 DEBUG::Summary output
+2021-11-18 22:39:13 INFO::Fitting model to feature number 12, emrY..ARO.3000254.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -294,8 +294,8 @@ Residual deviance: 5.4901  on 167  degrees of freedom
 AIC:  -210.46 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:37 INFO::Fitting model to feature number 13, marA..ARO.3000263.
-2021-09-03 10:50:37 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 13, marA..ARO.3000263.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -316,8 +316,8 @@ Residual deviance: 6.8395  on 167  degrees of freedom
 AIC:  -269.03 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:37 INFO::Fitting model to feature number 14, emrD..ARO.3000309.
-2021-09-03 10:50:37 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 14, emrD..ARO.3000309.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -338,8 +338,8 @@ Residual deviance: 3.1304  on 167  degrees of freedom
 AIC:  -105.47 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:37 INFO::Fitting model to feature number 15, mphA..ARO.3000316.
-2021-09-03 10:50:37 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 15, mphA..ARO.3000316.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -360,8 +360,8 @@ Residual deviance: 52.369  on 167  degrees of freedom
 AIC:  -148.46 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:37 INFO::Fitting model to feature number 16, ErmB..ARO.3000375.
-2021-09-03 10:50:37 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 16, ErmB..ARO.3000375.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -382,8 +382,8 @@ Residual deviance: 37.62  on 167  degrees of freedom
 AIC:  -233.79 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:37 INFO::Fitting model to feature number 17, sul1..ARO.3000410.
-2021-09-03 10:50:37 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 17, sul1..ARO.3000410.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -404,8 +404,8 @@ Residual deviance: 15.707  on 167  degrees of freedom
 AIC:  -107.22 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:37 INFO::Fitting model to feature number 18, sul2..ARO.3000412.
-2021-09-03 10:50:38 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 18, sul2..ARO.3000412.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -426,8 +426,8 @@ Residual deviance: 47.814  on 167  degrees of freedom
 AIC:  -444.85 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:38 INFO::Fitting model to feature number 19, acrD..ARO.3000491.
-2021-09-03 10:50:38 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 19, acrD..ARO.3000491.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -448,8 +448,8 @@ Residual deviance: 6.4669  on 167  degrees of freedom
 AIC:  -170.85 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:38 INFO::Fitting model to feature number 20, ErmF..ARO.3000498.
-2021-09-03 10:50:38 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 20, ErmF..ARO.3000498.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -470,8 +470,8 @@ Residual deviance: 85.899  on 167  degrees of freedom
 AIC:  -383.59 
 
 Number of Fisher Scoring iterations:  4
-2021-09-03 10:50:38 INFO::Fitting model to feature number 21, AcrE..ARO.3000499.
-2021-09-03 10:50:38 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 21, AcrE..ARO.3000499.
+2021-11-18 22:39:14 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -492,8 +492,8 @@ Residual deviance: 4.4977  on 167  degrees of freedom
 AIC:  -103.57 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:38 INFO::Fitting model to feature number 22, AcrF..ARO.3000502.
-2021-09-03 10:50:38 DEBUG::Summary output
+2021-11-18 22:39:14 INFO::Fitting model to feature number 22, AcrF..ARO.3000502.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -514,8 +514,8 @@ Residual deviance: 5.6135  on 167  degrees of freedom
 AIC:  -356.77 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:38 INFO::Fitting model to feature number 23, gadX..ARO.3000508.
-2021-09-03 10:50:38 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 23, gadX..ARO.3000508.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -536,8 +536,8 @@ Residual deviance: 8.0167  on 167  degrees of freedom
 AIC:  -608.37 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:38 INFO::Fitting model to feature number 24, emrR..ARO.3000516.
-2021-09-03 10:50:38 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 24, emrR..ARO.3000516.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -558,8 +558,8 @@ Residual deviance: 15.631  on 167  degrees of freedom
 AIC:  -317.1 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:38 INFO::Fitting model to feature number 25, CRP..ARO.3000518.
-2021-09-03 10:50:39 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 25, CRP..ARO.3000518.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -580,8 +580,8 @@ Residual deviance: 9.7719  on 167  degrees of freedom
 AIC:  -540.5 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:39 INFO::Fitting model to feature number 26, tet44..ARO.3000556.
-2021-09-03 10:50:39 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 26, tet44..ARO.3000556.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -602,8 +602,8 @@ Residual deviance: 60.401  on 167  degrees of freedom
 AIC:  -467.69 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:39 INFO::Fitting model to feature number 27, tet.40...ARO.3000567.
-2021-09-03 10:50:39 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 27, tet.40...ARO.3000567.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -624,8 +624,8 @@ Residual deviance: 31.961  on 167  degrees of freedom
 AIC:  -838.35 
 
 Number of Fisher Scoring iterations:  4
-2021-09-03 10:50:39 INFO::Fitting model to feature number 28, CcrA.beta.lactamase..ARO.3000578.
-2021-09-03 10:50:39 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 28, CcrA.beta.lactamase..ARO.3000578.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -646,8 +646,8 @@ Residual deviance: 19.522  on 167  degrees of freedom
 AIC:  -79.639 
 
 Number of Fisher Scoring iterations:  11
-2021-09-03 10:50:39 INFO::Fitting model to feature number 29, mefA..ARO.3000615.
-2021-09-03 10:50:39 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 29, mefA..ARO.3000615.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -668,8 +668,8 @@ Residual deviance: 30.842  on 167  degrees of freedom
 AIC:  -328.8 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:39 INFO::Fitting model to feature number 30, AcrS..ARO.3000656.
-2021-09-03 10:50:39 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 30, AcrS..ARO.3000656.
+2021-11-18 22:39:15 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -690,8 +690,8 @@ Residual deviance: 2.4403  on 167  degrees of freedom
 AIC:  -222.79 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:39 INFO::Fitting model to feature number 31, H.NS..ARO.3000676.
-2021-09-03 10:50:40 DEBUG::Summary output
+2021-11-18 22:39:15 INFO::Fitting model to feature number 31, H.NS..ARO.3000676.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -712,8 +712,8 @@ Residual deviance: 1.108  on 167  degrees of freedom
 AIC:  -158.2 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:40 INFO::Fitting model to feature number 32, mdtA..ARO.3000792.
-2021-09-03 10:50:40 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 32, mdtA..ARO.3000792.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -734,8 +734,8 @@ Residual deviance: 3.5571  on 167  degrees of freedom
 AIC:  -182.34 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:40 INFO::Fitting model to feature number 33, mdtB..ARO.3000793.
-2021-09-03 10:50:40 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 33, mdtB..ARO.3000793.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -756,8 +756,8 @@ Residual deviance: 3.5398  on 167  degrees of freedom
 AIC:  -125.19 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:40 INFO::Fitting model to feature number 34, mdtC..ARO.3000794.
-2021-09-03 10:50:40 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 34, mdtC..ARO.3000794.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -778,8 +778,8 @@ Residual deviance: 8.5902  on 167  degrees of freedom
 AIC:  -109.84 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:40 INFO::Fitting model to feature number 35, mdtE..ARO.3000795.
-2021-09-03 10:50:40 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 35, mdtE..ARO.3000795.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -800,8 +800,8 @@ Residual deviance: 13.711  on 167  degrees of freedom
 AIC:  -250.9 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:40 INFO::Fitting model to feature number 36, mdtF..ARO.3000796.
-2021-09-03 10:50:41 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 36, mdtF..ARO.3000796.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -822,8 +822,8 @@ Residual deviance: 5.9535  on 167  degrees of freedom
 AIC:  -236.59 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:41 INFO::Fitting model to feature number 37, robA..ARO.3000825.
-2021-09-03 10:50:41 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 37, robA..ARO.3000825.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -844,8 +844,8 @@ Residual deviance: 23.553  on 167  degrees of freedom
 AIC:  -59.943 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:41 INFO::Fitting model to feature number 38, sdiA..ARO.3000826.
-2021-09-03 10:50:41 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 38, sdiA..ARO.3000826.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -866,8 +866,8 @@ Residual deviance: 9.1089  on 167  degrees of freedom
 AIC:  -309.34 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:41 INFO::Fitting model to feature number 39, baeR..ARO.3000828.
-2021-09-03 10:50:41 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 39, baeR..ARO.3000828.
+2021-11-18 22:39:16 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -888,8 +888,8 @@ Residual deviance: 5.3424  on 167  degrees of freedom
 AIC:  -402.13 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:41 INFO::Fitting model to feature number 40, baeS..ARO.3000829.
-2021-09-03 10:50:41 DEBUG::Summary output
+2021-11-18 22:39:16 INFO::Fitting model to feature number 40, baeS..ARO.3000829.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -910,8 +910,8 @@ Residual deviance: 9.71  on 167  degrees of freedom
 AIC:  -61.698 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:41 INFO::Fitting model to feature number 41, cpxA..ARO.3000830.
-2021-09-03 10:50:41 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 41, cpxA..ARO.3000830.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -932,8 +932,8 @@ Residual deviance: 10.375  on 167  degrees of freedom
 AIC:  -185.63 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:41 INFO::Fitting model to feature number 42, evgA..ARO.3000832.
-2021-09-03 10:50:42 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 42, evgA..ARO.3000832.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -954,8 +954,8 @@ Residual deviance: 2.7326  on 167  degrees of freedom
 AIC:  -297.37 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:42 INFO::Fitting model to feature number 43, evgS..ARO.3000833.
-2021-09-03 10:50:42 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 43, evgS..ARO.3000833.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -976,8 +976,8 @@ Residual deviance: 5.7371  on 167  degrees of freedom
 AIC:  -158.48 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:42 INFO::Fitting model to feature number 44, mdtM..ARO.3001214.
-2021-09-03 10:50:42 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 44, mdtM..ARO.3001214.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -998,8 +998,8 @@ Residual deviance: 5.1426  on 167  degrees of freedom
 AIC:  -114.15 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:42 INFO::Fitting model to feature number 45, mdtL..ARO.3001215.
-2021-09-03 10:50:42 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 45, mdtL..ARO.3001215.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1020,8 +1020,8 @@ Residual deviance: 10.486  on 167  degrees of freedom
 AIC:  -304.37 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:42 INFO::Fitting model to feature number 46, mdtH..ARO.3001216.
-2021-09-03 10:50:42 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 46, mdtH..ARO.3001216.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1042,8 +1042,8 @@ Residual deviance: 4.085  on 167  degrees of freedom
 AIC:  -257.99 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:42 INFO::Fitting model to feature number 47, MdfA..ARO.3001328.
-2021-09-03 10:50:42 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 47, MdfA..ARO.3001328.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1064,8 +1064,8 @@ Residual deviance: 4.9161  on 167  degrees of freedom
 AIC:  -339.35 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:42 INFO::Fitting model to feature number 48, mdtG..ARO.3001329.
-2021-09-03 10:50:43 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 48, mdtG..ARO.3001329.
+2021-11-18 22:39:17 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1086,8 +1086,8 @@ Residual deviance: 22.247  on 167  degrees of freedom
 AIC:  -325.71 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:43 INFO::Fitting model to feature number 49, mdtD..ARO.3001330.
-2021-09-03 10:50:43 DEBUG::Summary output
+2021-11-18 22:39:17 INFO::Fitting model to feature number 49, mdtD..ARO.3001330.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1108,8 +1108,8 @@ Residual deviance: 3.6971  on 167  degrees of freedom
 AIC:  -264.46 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:43 INFO::Fitting model to feature number 50, TEM.211..ARO.3001388.
-2021-09-03 10:50:43 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 50, TEM.211..ARO.3001388.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1130,8 +1130,8 @@ Residual deviance: 43.827  on 167  degrees of freedom
 AIC:  -139.3 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:43 INFO::Fitting model to feature number 51, OKP.B.19..ARO.3002452.
-2021-09-03 10:50:43 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 51, OKP.B.19..ARO.3002452.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1152,8 +1152,8 @@ Residual deviance: 6.0854  on 167  degrees of freedom
 AIC:  -63.82 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:43 INFO::Fitting model to feature number 52, ANT.6..Ib..ARO.3002629.
-2021-09-03 10:50:43 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 52, ANT.6..Ib..ARO.3002629.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1174,8 +1174,8 @@ Residual deviance: 106.76  on 167  degrees of freedom
 AIC:  -532.62 
 
 Number of Fisher Scoring iterations:  6
-2021-09-03 10:50:43 INFO::Fitting model to feature number 53, APH.3....Ib..ARO.3002639.
-2021-09-03 10:50:43 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 53, APH.3....Ib..ARO.3002639.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1196,8 +1196,8 @@ Residual deviance: 44.071  on 167  degrees of freedom
 AIC:  -242.16 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:43 INFO::Fitting model to feature number 54, APH.3...IIIa..ARO.3002647.
-2021-09-03 10:50:44 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 54, APH.3...IIIa..ARO.3002647.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1218,8 +1218,8 @@ Residual deviance: 159.37  on 167  degrees of freedom
 AIC:  -358.49 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:44 INFO::Fitting model to feature number 55, APH.6..Id..ARO.3002660.
-2021-09-03 10:50:44 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 55, APH.6..Id..ARO.3002660.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1240,8 +1240,8 @@ Residual deviance: 76.282  on 167  degrees of freedom
 AIC:  -655.97 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:44 INFO::Fitting model to feature number 56, rmtF..ARO.3002666.
-2021-09-03 10:50:44 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 56, rmtF..ARO.3002666.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1262,8 +1262,8 @@ Residual deviance: 70.555  on 167  degrees of freedom
 AIC:  -77.848 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:44 INFO::Fitting model to feature number 57, msrB..ARO.3002818.
-2021-09-03 10:50:44 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 57, msrB..ARO.3002818.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1284,8 +1284,8 @@ Residual deviance: 2.515  on 167  degrees of freedom
 AIC:  -246.52 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:44 INFO::Fitting model to feature number 58, vgaC..ARO.3002831.
-2021-09-03 10:50:44 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 58, vgaC..ARO.3002831.
+2021-11-18 22:39:18 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1306,8 +1306,8 @@ Residual deviance: 57.638  on 167  degrees of freedom
 AIC:  -248.24 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:44 INFO::Fitting model to feature number 59, lnuC..ARO.3002837.
-2021-09-03 10:50:44 DEBUG::Summary output
+2021-11-18 22:39:18 INFO::Fitting model to feature number 59, lnuC..ARO.3002837.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1328,8 +1328,8 @@ Residual deviance: 51.759  on 167  degrees of freedom
 AIC:  -432.82 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:44 INFO::Fitting model to feature number 60, dfrA14..ARO.3002859.
-2021-09-03 10:50:45 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 60, dfrA14..ARO.3002859.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1350,8 +1350,8 @@ Residual deviance: 4.9845  on 167  degrees of freedom
 AIC:  -94.141 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:45 INFO::Fitting model to feature number 61, dfrF..ARO.3002867.
-2021-09-03 10:50:45 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 61, dfrF..ARO.3002867.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1372,8 +1372,8 @@ Residual deviance: 29.741  on 167  degrees of freedom
 AIC:  -926.75 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:45 INFO::Fitting model to feature number 62, SAT.4..ARO.3002897.
-2021-09-03 10:50:45 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 62, SAT.4..ARO.3002897.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1394,8 +1394,8 @@ Residual deviance: 62.347  on 167  degrees of freedom
 AIC:  -150.07 
 
 Number of Fisher Scoring iterations:  11
-2021-09-03 10:50:45 INFO::Fitting model to feature number 63, vanTG..ARO.3002972.
-2021-09-03 10:50:45 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 63, vanTG..ARO.3002972.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1416,8 +1416,8 @@ Residual deviance: 24.464  on 167  degrees of freedom
 AIC:  -126.44 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:45 INFO::Fitting model to feature number 64, arnA..ARO.3002985.
-2021-09-03 10:50:45 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 64, arnA..ARO.3002985.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1438,8 +1438,8 @@ Residual deviance: 13.412  on 167  degrees of freedom
 AIC:  -542.56 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:45 INFO::Fitting model to feature number 65, bacA..ARO.3002986.
-2021-09-03 10:50:45 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 65, bacA..ARO.3002986.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1460,8 +1460,8 @@ Residual deviance: 7.1035  on 167  degrees of freedom
 AIC:  -129.77 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:45 INFO::Fitting model to feature number 66, CblA.1..ARO.3002999.
-2021-09-03 10:50:45 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 66, CblA.1..ARO.3002999.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1482,8 +1482,8 @@ Residual deviance: 80.662  on 167  degrees of freedom
 AIC:  -487.22 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:45 INFO::Fitting model to feature number 67, vanXYG..ARO.3003069.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 67, vanXYG..ARO.3003069.
+2021-11-18 22:39:19 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1504,8 +1504,8 @@ Residual deviance: 20.504  on 167  degrees of freedom
 AIC:  -199.19 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:46 INFO::Fitting model to feature number 68, CfxA6..ARO.3003097.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:19 INFO::Fitting model to feature number 68, CfxA6..ARO.3003097.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1526,8 +1526,8 @@ Residual deviance: 96.386  on 167  degrees of freedom
 AIC:  -382.69 
 
 Number of Fisher Scoring iterations:  5
-2021-09-03 10:50:46 INFO::Fitting model to feature number 69, aadA25..ARO.3003197.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 69, aadA25..ARO.3003197.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1548,8 +1548,8 @@ Residual deviance: 19.346  on 167  degrees of freedom
 AIC:  -132.45 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:46 INFO::Fitting model to feature number 70, FosA5..ARO.3003209.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 70, FosA5..ARO.3003209.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1570,8 +1570,8 @@ Residual deviance: 27.792  on 167  degrees of freedom
 AIC:  -111.81 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:46 INFO::Fitting model to feature number 71, Escherichia.coli.rpoB.....ARO.3003288.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 71, Escherichia.coli.rpoB.....ARO.3003288.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1592,8 +1592,8 @@ Residual deviance: 13.404  on 167  degrees of freedom
 AIC:  -408.64 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:46 INFO::Fitting model to feature number 72, Escherichia.coli.gyrB.....ARO.3003303.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 72, Escherichia.coli.gyrB.....ARO.3003303.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1614,8 +1614,8 @@ Residual deviance: 4.5678  on 167  degrees of freedom
 AIC:  -254.27 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:46 INFO::Fitting model to feature number 73, Salmonella.serovars.parE.....ARO.3003317.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 73, Salmonella.serovars.parE.....ARO.3003317.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1636,8 +1636,8 @@ Residual deviance: 11.259  on 167  degrees of freedom
 AIC:  -106.9 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:46 INFO::Fitting model to feature number 74, Escherichia.coli.EF.Tu.....ARO.3003369.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 74, Escherichia.coli.EF.Tu.....ARO.3003369.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1658,8 +1658,8 @@ Residual deviance: 17.879  on 167  degrees of freedom
 AIC:  -205.51 
 
 Number of Fisher Scoring iterations:  6
-2021-09-03 10:50:46 INFO::Fitting model to feature number 75, Klebsiella.pneumoniae.acrR.....ARO.3003373.
-2021-09-03 10:50:46 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 75, Klebsiella.pneumoniae.acrR.....ARO.3003373.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1680,8 +1680,8 @@ Residual deviance: 25.826  on 167  degrees of freedom
 AIC:  -171.03 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:46 INFO::Fitting model to feature number 76, Escherichia.coli.marR.....ARO.3003378.
-2021-09-03 10:50:47 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 76, Escherichia.coli.marR.....ARO.3003378.
+2021-11-18 22:39:20 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1702,8 +1702,8 @@ Residual deviance: 0.89615  on 167  degrees of freedom
 AIC:  -209.18 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:47 INFO::Fitting model to feature number 77, Klebsiella.pneumoniae.ramR.....ARO.3003380.
-2021-09-03 10:50:47 DEBUG::Summary output
+2021-11-18 22:39:20 INFO::Fitting model to feature number 77, Klebsiella.pneumoniae.ramR.....ARO.3003380.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1724,8 +1724,8 @@ Residual deviance: 61.939  on 167  degrees of freedom
 AIC:  -122.07 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:47 INFO::Fitting model to feature number 78, Escherichia.coli.soxR.....ARO.3003381.
-2021-09-03 10:50:47 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 78, Escherichia.coli.soxR.....ARO.3003381.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1746,8 +1746,8 @@ Residual deviance: 4.5012  on 167  degrees of freedom
 AIC:  -258.47 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:47 INFO::Fitting model to feature number 79, Escherichia.coli.folP.....ARO.3003386.
-2021-09-03 10:50:47 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 79, Escherichia.coli.folP.....ARO.3003386.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1768,8 +1768,8 @@ Residual deviance: 5.0211  on 167  degrees of freedom
 AIC:  -144.11 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:47 INFO::Fitting model to feature number 80, Escherichia.coli.ompF.....ARO.3003390.
-2021-09-03 10:50:47 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 80, Escherichia.coli.ompF.....ARO.3003390.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1790,8 +1790,8 @@ Residual deviance: 6.6201  on 167  degrees of freedom
 AIC:  -422.56 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:47 INFO::Fitting model to feature number 81, Escherichia.coli.soxS.....ARO.3003511.
-2021-09-03 10:50:47 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 81, Escherichia.coli.soxS.....ARO.3003511.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1812,8 +1812,8 @@ Residual deviance: 7.054  on 167  degrees of freedom
 AIC:  -376.2 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:47 INFO::Fitting model to feature number 82, mdtN..ARO.3003548.
-2021-09-03 10:50:47 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 82, mdtN..ARO.3003548.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1834,8 +1834,8 @@ Residual deviance: 5.4032  on 167  degrees of freedom
 AIC:  -212.02 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:47 INFO::Fitting model to feature number 83, mdtO..ARO.3003549.
-2021-09-03 10:50:48 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 83, mdtO..ARO.3003549.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1856,8 +1856,8 @@ Residual deviance: 5.965  on 167  degrees of freedom
 AIC:  -279.06 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:48 INFO::Fitting model to feature number 84, mdtP..ARO.3003550.
-2021-09-03 10:50:48 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 84, mdtP..ARO.3003550.
+2021-11-18 22:39:21 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1878,8 +1878,8 @@ Residual deviance: 9.9295  on 167  degrees of freedom
 AIC:  -86.58 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:48 INFO::Fitting model to feature number 85, cepA.beta.lactamase..ARO.3003559.
-2021-09-03 10:50:48 DEBUG::Summary output
+2021-11-18 22:39:21 INFO::Fitting model to feature number 85, cepA.beta.lactamase..ARO.3003559.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1900,8 +1900,8 @@ Residual deviance: 32.704  on 167  degrees of freedom
 AIC:  18.321 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:48 INFO::Fitting model to feature number 86, PmrC..ARO.3003576.
-2021-09-03 10:50:48 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 86, PmrC..ARO.3003576.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1922,8 +1922,8 @@ Residual deviance: 10.214  on 167  degrees of freedom
 AIC:  -428.17 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:48 INFO::Fitting model to feature number 87, PmrE..ARO.3003577.
-2021-09-03 10:50:48 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 87, PmrE..ARO.3003577.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1944,8 +1944,8 @@ Residual deviance: 8.5348  on 167  degrees of freedom
 AIC:  -19.854 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:48 INFO::Fitting model to feature number 88, PmrF..ARO.3003578.
-2021-09-03 10:50:48 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 88, PmrF..ARO.3003578.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1966,8 +1966,8 @@ Residual deviance: 6.2193  on 167  degrees of freedom
 AIC:  -522.89 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:48 INFO::Fitting model to feature number 89, Klebsiella.mutant.PhoP.....ARO.3003585.
-2021-09-03 10:50:49 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 89, Klebsiella.mutant.PhoP.....ARO.3003585.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -1988,8 +1988,8 @@ Residual deviance: 46.055  on 167  degrees of freedom
 AIC:  -216.75 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:49 INFO::Fitting model to feature number 90, Escherichia.coli.nfsA.....ARO.3003751.
-2021-09-03 10:50:49 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 90, Escherichia.coli.nfsA.....ARO.3003751.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2010,8 +2010,8 @@ Residual deviance: 4.6015  on 167  degrees of freedom
 AIC:  -382.49 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:49 INFO::Fitting model to feature number 91, Escherichia.coli.murA.....ARO.3003775.
-2021-09-03 10:50:49 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 91, Escherichia.coli.murA.....ARO.3003775.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2032,8 +2032,8 @@ Residual deviance: 8.9466  on 167  degrees of freedom
 AIC:  -70.68 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:49 INFO::Fitting model to feature number 92, Escherichia.coli.acrR.....ARO.3003807.
-2021-09-03 10:50:49 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 92, Escherichia.coli.acrR.....ARO.3003807.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2054,8 +2054,8 @@ Residual deviance: 4.3656  on 167  degrees of freedom
 AIC:  -262.72 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:49 INFO::Fitting model to feature number 93, gadE..ARO.3003834.
-2021-09-03 10:50:49 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 93, gadE..ARO.3003834.
+2021-11-18 22:39:22 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2076,8 +2076,8 @@ Residual deviance: 4.2194  on 167  degrees of freedom
 AIC:  -567.84 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:49 INFO::Fitting model to feature number 94, kdpE..ARO.3003841.
-2021-09-03 10:50:49 DEBUG::Summary output
+2021-11-18 22:39:22 INFO::Fitting model to feature number 94, kdpE..ARO.3003841.
+2021-11-18 22:39:23 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2098,8 +2098,8 @@ Residual deviance: 3.1502  on 167  degrees of freedom
 AIC:  -203.42 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:49 INFO::Fitting model to feature number 95, leuO..ARO.3003843.
-2021-09-03 10:50:50 DEBUG::Summary output
+2021-11-18 22:39:23 INFO::Fitting model to feature number 95, leuO..ARO.3003843.
+2021-11-18 22:39:23 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2120,8 +2120,8 @@ Residual deviance: 3.3578  on 167  degrees of freedom
 AIC:  -277.15 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:50 INFO::Fitting model to feature number 96, mfd..ARO.3003844.
-2021-09-03 10:50:50 DEBUG::Summary output
+2021-11-18 22:39:23 INFO::Fitting model to feature number 96, mfd..ARO.3003844.
+2021-11-18 22:39:23 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2142,8 +2142,8 @@ Residual deviance: 3.6945  on 167  degrees of freedom
 AIC:  -228.09 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:50 INFO::Fitting model to feature number 97, Escherichia.coli.GlpT.....ARO.3003889.
-2021-09-03 10:50:50 DEBUG::Summary output
+2021-11-18 22:39:23 INFO::Fitting model to feature number 97, Escherichia.coli.GlpT.....ARO.3003889.
+2021-11-18 22:39:23 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2164,8 +2164,8 @@ Residual deviance: 3.9262  on 167  degrees of freedom
 AIC:  -86.205 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:50 INFO::Fitting model to feature number 98, Escherichia.coli.UhpT.....ARO.3003890.
-2021-09-03 10:50:50 DEBUG::Summary output
+2021-11-18 22:39:23 INFO::Fitting model to feature number 98, Escherichia.coli.UhpT.....ARO.3003890.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2186,8 +2186,8 @@ Residual deviance: 31.911  on 167  degrees of freedom
 AIC:  -484.07 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:50 INFO::Fitting model to feature number 99, oqxA..ARO.3003922.
-2021-09-03 10:50:50 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 99, oqxA..ARO.3003922.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2208,8 +2208,8 @@ Residual deviance: 70.141  on 167  degrees of freedom
 AIC:  -83.245 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:50 INFO::Fitting model to feature number 100, oqxB..ARO.3003923.
-2021-09-03 10:50:50 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 100, oqxB..ARO.3003923.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2230,8 +2230,8 @@ Residual deviance: 34.935  on 167  degrees of freedom
 AIC:  -60.439 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:50 INFO::Fitting model to feature number 101, Haemophilus.parainfluenzae.gyrA.....ARO.3003924.
-2021-09-03 10:50:51 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 101, Haemophilus.parainfluenzae.gyrA.....ARO.3003924.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2252,8 +2252,8 @@ Residual deviance: 6.2239  on 167  degrees of freedom
 AIC:  -81.415 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:51 INFO::Fitting model to feature number 102, Haemophilus.parainfluenzae.parC.....ARO.3003925.
-2021-09-03 10:50:51 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 102, Haemophilus.parainfluenzae.parC.....ARO.3003925.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2274,8 +2274,8 @@ Residual deviance: 9.6005  on 167  degrees of freedom
 AIC:  -11.593 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:51 INFO::Fitting model to feature number 103, Salmonella.enterica.gyrA.....ARO.3003926.
-2021-09-03 10:50:51 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 103, Salmonella.enterica.gyrA.....ARO.3003926.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2296,8 +2296,8 @@ Residual deviance: 7.4098  on 167  degrees of freedom
 AIC:  -222.48 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:51 INFO::Fitting model to feature number 104, Salmonella.enterica.parC.....ARO.3003939.
-2021-09-03 10:50:51 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 104, Salmonella.enterica.parC.....ARO.3003939.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2318,8 +2318,8 @@ Residual deviance: 2.5435  on 167  degrees of freedom
 AIC:  -111.07 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:51 INFO::Fitting model to feature number 105, msbA..ARO.3003950.
-2021-09-03 10:50:51 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 105, msbA..ARO.3003950.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2340,8 +2340,8 @@ Residual deviance: 4.5381  on 167  degrees of freedom
 AIC:  -159.37 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:51 INFO::Fitting model to feature number 106, YojI..ARO.3003952.
-2021-09-03 10:50:51 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 106, YojI..ARO.3003952.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2362,8 +2362,8 @@ Residual deviance: 4.925  on 167  degrees of freedom
 AIC:  -442.6 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:51 INFO::Fitting model to feature number 107, Klebsiella.OmpK35.conferring.....ARO.3003966.
-2021-09-03 10:50:51 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 107, Klebsiella.OmpK35.conferring.....ARO.3003966.
+2021-11-18 22:39:24 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2384,8 +2384,8 @@ Residual deviance: 75.139  on 167  degrees of freedom
 AIC:  -123.74 
 
 Number of Fisher Scoring iterations:  8
-2021-09-03 10:50:51 INFO::Fitting model to feature number 108, tetB.46...ARO.3004033.
-2021-09-03 10:50:52 DEBUG::Summary output
+2021-11-18 22:39:24 INFO::Fitting model to feature number 108, tetB.46...ARO.3004033.
+2021-11-18 22:39:25 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2406,8 +2406,8 @@ Residual deviance: 33.053  on 167  degrees of freedom
 AIC:  -85.505 
 
 Number of Fisher Scoring iterations:  11
-2021-09-03 10:50:52 INFO::Fitting model to feature number 109, Escherichia.coli.emrE..ARO.3004039.
-2021-09-03 10:50:52 DEBUG::Summary output
+2021-11-18 22:39:25 INFO::Fitting model to feature number 109, Escherichia.coli.emrE..ARO.3004039.
+2021-11-18 22:39:25 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2428,8 +2428,8 @@ Residual deviance: 3.1415  on 167  degrees of freedom
 AIC:  -95.659 
 
 Number of Fisher Scoring iterations:  10
-2021-09-03 10:50:52 INFO::Fitting model to feature number 110, Klebsiella.pneumoniae.acrA..ARO.3004041.
-2021-09-03 10:50:52 DEBUG::Summary output
+2021-11-18 22:39:25 INFO::Fitting model to feature number 110, Klebsiella.pneumoniae.acrA..ARO.3004041.
+2021-11-18 22:39:25 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2450,8 +2450,8 @@ Residual deviance: 23.734  on 167  degrees of freedom
 AIC:  -130.96 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:52 INFO::Fitting model to feature number 111, Enterobacter.cloacae.acrA..ARO.3004042.
-2021-09-03 10:50:52 DEBUG::Summary output
+2021-11-18 22:39:25 INFO::Fitting model to feature number 111, Enterobacter.cloacae.acrA..ARO.3004042.
+2021-11-18 22:39:25 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2472,8 +2472,8 @@ Residual deviance: 25.399  on 167  degrees of freedom
 AIC:  -637.72 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:52 INFO::Fitting model to feature number 112, antibiotic.resistant.fabI..ARO.3004045.
-2021-09-03 10:50:52 DEBUG::Summary output
+2021-11-18 22:39:25 INFO::Fitting model to feature number 112, antibiotic.resistant.fabI..ARO.3004045.
+2021-11-18 22:39:25 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2494,8 +2494,8 @@ Residual deviance: 5.094  on 167  degrees of freedom
 AIC:  -582.34 
 
 Number of Fisher Scoring iterations:  9
-2021-09-03 10:50:52 INFO::Fitting model to feature number 113, antibiotic.resistant.fabG..ARO.3004049.
-2021-09-03 10:50:52 DEBUG::Summary output
+2021-11-18 22:39:25 INFO::Fitting model to feature number 113, antibiotic.resistant.fabG..ARO.3004049.
+2021-11-18 22:39:25 DEBUG::Summary output
 
 Call:
 model_function(formula = formula, data = dat_sub, na.action = na.exclude)
@@ -2516,10 +2516,10 @@ Residual deviance: 13.401  on 167  degrees of freedom
 AIC:  -122.8 
 
 Number of Fisher Scoring iterations:  7
-2021-09-03 10:50:52 INFO::Counting total values for each feature
-2021-09-03 10:50:52 WARNING::Deleting existing residuals file: /Users/tamburif/southafrica/output/maaslin2/abx_CPLM_TSS/residuals.rds
-2021-09-03 10:50:52 INFO::Writing residuals to file /Users/tamburif/southafrica/output/maaslin2/abx_CPLM_TSS/residuals.rds
-2021-09-03 10:50:52 WARNING::Deleting existing fitted file: /Users/tamburif/southafrica/output/maaslin2/abx_CPLM_TSS/fitted.rds
-2021-09-03 10:50:52 INFO::Writing fitted values to file /Users/tamburif/southafrica/output/maaslin2/abx_CPLM_TSS/fitted.rds
-2021-09-03 10:50:52 INFO::Writing all results to file (ordered by increasing q-values): /Users/tamburif/southafrica/output/maaslin2/abx_CPLM_TSS/all_results.tsv
-2021-09-03 10:50:52 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): /Users/tamburif/southafrica/output/maaslin2/abx_CPLM_TSS/significant_results.tsv
+2021-11-18 22:39:25 INFO::Counting total values for each feature
+2021-11-18 22:39:25 WARNING::Deleting existing residuals file: /Users/tamburif/SouthAfrica/output/maaslin2/abx_CPLM_TSS/residuals.rds
+2021-11-18 22:39:25 INFO::Writing residuals to file /Users/tamburif/SouthAfrica/output/maaslin2/abx_CPLM_TSS/residuals.rds
+2021-11-18 22:39:25 WARNING::Deleting existing fitted file: /Users/tamburif/SouthAfrica/output/maaslin2/abx_CPLM_TSS/fitted.rds
+2021-11-18 22:39:25 INFO::Writing fitted values to file /Users/tamburif/SouthAfrica/output/maaslin2/abx_CPLM_TSS/fitted.rds
+2021-11-18 22:39:25 INFO::Writing all results to file (ordered by increasing q-values): /Users/tamburif/SouthAfrica/output/maaslin2/abx_CPLM_TSS/all_results.tsv
+2021-11-18 22:39:25 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): /Users/tamburif/SouthAfrica/output/maaslin2/abx_CPLM_TSS/significant_results.tsv
