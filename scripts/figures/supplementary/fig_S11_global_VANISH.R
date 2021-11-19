@@ -58,7 +58,6 @@ ggplot(counts_long, aes(G, relab * 100, fill = site2)) +
     legend.position = "top",
     legend.justification = "center",
     axis.text.x = element_text(face = "italic"),
-    strip.text = element_text(face = "italic"),
     axis.title.y = element_text(size = 12),
     legend.spacing.x = unit(0.1, "cm"),
     plot.margin = unit(c(0.5, 1, 0.5, 0.5), "cm"),
@@ -74,4 +73,6 @@ ggplot(counts_long, aes(G, relab * 100, fill = site2)) +
                   minor = "y")
 
 ggsave(here("final_plots/supplementary/figure_S11_VANISH_global.png"),
+       width = 9, height = 11, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S11_VANISH_global.pdf"),
        width = 9, height = 11, bg = "white")

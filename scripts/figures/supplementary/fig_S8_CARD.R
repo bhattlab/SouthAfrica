@@ -103,13 +103,15 @@ a <- ggplot(res_plot, aes(coef, aro_desc, fill = effect)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values = rev(as.vector(za_pal)),
                     labels = c("Enriched in SWT", "Enriched in BBR")) +
-  theme_cowplot() +
+  theme_cowplot(10) +
   background_grid() +
   labs(x = "Coefficient",
        y = "",
        fill = "") +
   theme(legend.position = "top",
-        legend.justification = "center")
+        legend.justification = "center",
+        legend.margin = margin(c(0.2, 0, -0.2, -2), unit = "cm"),
+        axis.text.y = element_text(size = 8))
 
 # card heatmap ----
 
@@ -142,14 +144,17 @@ card_long_pc <- card_wide %>%
 b2 <- ggplot(card_long_pc, aes(label_abbrev, aro_desc, fill = log2(rpkm))) +
   geom_tile() +
   viridis::scale_fill_viridis() +
-  theme(axis.text.y = element_text(size = 6),
+  theme_cowplot(10) +
+  theme(axis.text.y = element_text(size = 3),
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5,
-                                   size = 6),
-        plot.margin = unit(c(0, 0.5, 0.5, 0.5), "cm"),
+                                   size = 3),
+        plot.margin = unit(c(0, 0, 0, 0), "cm"),
         legend.position = "bottom",
-        legend.justification = "center") +
+        legend.justification = "right",
+        legend.margin = margin(c(-0.75, 0, -0.5, 0), unit = "cm")) +
   labs(x = "Participant",
-       y = "")
+       y = "Resistance gene",
+       fill = "log2(RPKM)")
 
 b1 <- ggplot(card_long_pc, aes(label_abbrev, "1", fill = site)) +
   geom_tile() +
@@ -160,10 +165,10 @@ b1 <- ggplot(card_long_pc, aes(label_abbrev, "1", fill = site)) +
         axis.title = element_blank(),
         axis.line = element_blank(),
         legend.position = "none",
-        plot.margin = unit(c(0.5, 0.5, 0, 0.5), "cm"))
+        plot.margin = unit(c(0.1, 0.2, -0.2, 0.2), "cm"))
 
 b <- plot_grid(b1, b2, ncol = 1, align = "v", axis = "lr",
-               rel_heights = c(0.05, 0.95))
+               rel_heights = c(0.02, 0.98))
 
 # table of labels that were truncated for plotting
 lvls <- levels(card_long_pc$aro_desc)
@@ -174,14 +179,15 @@ aro_tbl <- aro_names %>%
   mutate(aro = factor(aro, levels = lvls)) %>%
   arrange(aro) %>%
   ggtexttable(rows = NULL,
-              theme = ttheme("classic", base_size = 10,
-                             padding = unit(c(4, 4), "mm")),
+              theme = ttheme("classic", base_size = 6,
+                             padding = unit(c(2, 2), "mm")),
               cols = c("Accession", "Name"))
 
-# plot_grid(b, a, ncol = 1, rel_heights = c(0.6, 0.4), labels = c("A", "B"))
-p2 <- plot_grid(a, aro_tbl, rel_widths = c(0.55, 0.45), labels = c("B", "C"))
+p2 <- plot_grid(a, aro_tbl, rel_widths = c(0.5, 0.5), labels = c("b", "c"))
 
-plot_grid(b, p2, ncol = 1, rel_heights = c(0.6, 0.4), labels = c("A", ""))
+plot_grid(b, p2, ncol = 1, rel_heights = c(0.58, 0.42), labels = c("a", ""))
 
 ggsave(here("final_plots/supplementary/figure_S8_card.png"),
-       width = 16, height = 18, bg = "white")
+       width = 8, height = 9, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S8_card.pdf"),
+       width = 8, height = 9, bg = "white")

@@ -30,12 +30,8 @@ reads <- reads_total %>%
          classified_perc = (total_reads - unclassified_reads) / total_reads)
 
 # plot by site with statistical tests
-# https://github.com/kassambara/ggpubr/wiki/Adding-Adjusted-P-values-to-a-GGPlot
-
 my_comparisons <- list(
-  c("Bushbuckridge", "Soweto"),
-  # c("Bushbuckridge", "United States"),
-  c("Soweto", "United States")
+  c("Bushbuckridge", "Soweto")
 )
 
 pvals <- reads %>%
@@ -53,12 +49,13 @@ read_class_plot <- ggplot(reads, aes(site2, classified_perc * 100)) +
        fill="Site") +
   scale_fill_manual(values = global_pal) +
   scale_y_continuous(breaks = seq(0, 100, 10)) +
-  theme_cowplot() +
+  theme_cowplot(11) +
   theme(legend.position = "none",
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
-        plot.margin = unit(c(0, 0.5, 0, 0.5), unit = "cm")) +
-  stat_pvalue_manual(pvals, label = "p.adj.signif", tip.length = 0.01,
-                     vjust = 0.5, hide.ns = T, y.position = c(100, 104)) +
+        plot.margin = unit(c(0, 0.2, -0.5, 0.75), unit = "cm")) +
+  scale_x_discrete(guide = guide_axis(angle = 30)) +
+  stat_compare_means(label = "p.signif", method = "wilcox",
+                     comparisons = list(c("Bushbuckridge", "Soweto")),
+                     vjust = 0.5) +
   background_grid(major = "y")
 
 
@@ -94,14 +91,14 @@ plot_kmer_mds <- function(mds, k){
          y = "NMDS 2",
          color="",
          fill="Site") +
-    theme_cowplot() +
+    theme_cowplot(11) +
     theme(
       legend.position = "top",
-      plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), unit = "cm")
+      plot.margin = unit(c(0, 0, 0, 0), unit = "cm")
     ) +
     annotate("text", label = paste0("italic(k) ==", k),
-             x = min(mds_pheno$X1) + 0.1,
-             y = max(mds_pheno$X2), parse = T) +
+             x = min(mds_pheno$X1) + 0.2,
+             y = min(mds_pheno$X2) + 0.1, parse = T) +
     background_grid() +
     coord_fixed()
   
@@ -118,7 +115,9 @@ k51_mds <- kmer_mds("51")
 
 k21 <- plot_kmer_mds(k21_mds, 21) +
   theme(legend.spacing.x = unit(0.1, "cm"),
-        legend.justification = "center")
+        legend.justification = "center",
+        legend.margin = margin(c(-0.5, 0, -0.5, 0), unit = "cm"))
+
 k31 <- plot_kmer_mds(k31_mds, 31)
 k51 <- plot_kmer_mds(k51_mds, 51)
 
@@ -160,10 +159,7 @@ pvals <- compare_means(dist ~ site2.x, data = pair_dis_track_abund,
 
 # plot all species / k-mer comparisons
 my_comparisons <- list(
-  c("Soweto", "Tanzania"),
   c("Soweto", "Madagascar"),
-  c("Soweto", "Bushbuckridge"),
-  c("Soweto", "Sweden"),
   c("Soweto", "United States")
 )
 
@@ -173,14 +169,16 @@ dist_plot_all <- ggplot(pair_dis_track_abund,
   facet_wrap(~method, scales = "free",
              labeller = labeller(groupwrap = label_wrap_gen(10))) +
   scale_fill_manual(values = global_pal) +
-  scale_y_continuous(breaks = seq(0, 1, 0.25), limits = c(0, 1.5)) +
+  scale_y_continuous(breaks = seq(0, 1, 0.25), limits = c(0, 1.2)) +
   labs(x = "",
        y = "Pairwise Distance") +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(legend.position = "none",
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+        plot.margin = unit(c(0.2, 0.2, 0, 0.2), unit = "cm"),
+        strip.background = element_rect(fill = "white")) +
+  scale_x_discrete(guide = guide_axis(angle = 30)) +
   stat_compare_means(comparisons = my_comparisons, label = "p.signif",
-                     method = "wilcox.test", vjust = 0.75) +
+                     method = "wilcox.test", vjust = 0.5) +
   background_grid(major = "y")
 
 # only za/Sweden
@@ -208,9 +206,11 @@ dist_plot_za_swed <- ggplot(za_sw, aes(x = site2.y, y = dist, fill = site2.y)) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.075))) +
   labs(x = "",
        y = "Pairwise Distance") +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(legend.position = "none",
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+        plot.margin = unit(c(-0.2, 0.2, -0.5, 0.2), unit = "cm"),
+        strip.background = element_rect(fill = "white")) +
+  scale_x_discrete(guide = guide_axis(angle = 20)) +
   stat_compare_means(comparisons = list(c("Bushbuckridge", "Sweden")),
                      label = "p.signif", method = "wilcox.test",
                      vjust = 0.5) +
@@ -229,9 +229,11 @@ dist_plot_mad_usa <- ggplot(mad_usa, aes(x = site2.y, y = dist, fill = site2.y))
   scale_fill_manual(values = global_pal[c("Madagascar", "United States")]) +
   labs(x = "",
        y = "Pairwise Distance") +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(legend.position = "none",
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
+        plot.margin = unit(c(-0.2, 0.2, -0.5, 0.2), unit = "cm"),
+        strip.background = element_rect(fill = "white")) +
+  scale_x_discrete(guide = guide_axis(angle = 20)) +
   stat_compare_means(comparisons = list(c("Madagascar", "United States")),
                      label = "p.signif", method = "wilcox.test", vjust = 0.5) +
   background_grid(major = "y")
@@ -241,14 +243,15 @@ row1 <- plot_grid(get_legend(k21))
 row2 <- plot_grid(
   read_class_plot,
   k31 + theme(legend.position = "none"),
-  labels = c("A", "B"),
+  labels = c("a", "b"),
   nrow = 1
 )
 
 row4 <- plot_grid(
   dist_plot_za_swed,
   dist_plot_mad_usa,
-  labels = c("D", "E"),
+  labels = c("c", "e"),
+  vjust = 0.5,
   align = "hv",
   axis = "bt"
 )
@@ -258,12 +261,15 @@ plot_grid(
   row2,
   dist_plot_all,
   row4,
-  labels = c("", "", "C", ""),
+  labels = c("", "", "c", ""),
   ncol = 1,
-  rel_heights = c(0.05, 0.3, 0.35, 0.3)
+  rel_heights = c(0.03, 0.32, 0.37, 0.28)
 )
 
-ggsave(here("final_plots/figure_4.png"), width = 8, height = 12.5, bg = "white")
+ggsave(here("final_plots/figure_4.png"), width = 180, height = 185,
+       units = "mm", bg = "white")
+ggsave(here("final_plots/pdf/figure_4.pdf"), width = 180, height = 185,
+       units = "mm", bg = "white")
 
 # supplementary: Jaccard ----
 
@@ -275,10 +281,12 @@ ggplot(pair_dis, aes(x = site2.y, y = dist, fill = site2.y)) +
   scale_fill_manual(values = global_pal) +
   labs(x = "",
        y = "Pairwise Jaccard Distance") +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(legend.position = "none",
         axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   background_grid(major = "y")
 
 ggsave(here("final_plots/supplementary/figure_S14_jaccard_dist_kmer.png"),
-       width = 8, height = 5, bg = "white")
+       width = 6, height = 3.5, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S14_jaccard_dist_kmer.pdf"),
+       width = 6, height = 3.5, bg = "white")

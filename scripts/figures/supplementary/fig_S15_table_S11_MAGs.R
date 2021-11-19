@@ -12,16 +12,14 @@ global_pal <- c("#E3211C", "#F89897", "#6A3D9A", "#CAB2D6", "#1F78B4", "#A5CEE3"
 za_pal <- global_pal[3:4]
 
 # read input data ----
-labels <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)
-
 # genomesearch output
-gsearch <- read.table(here("input_final/uhgg_ANI_compare/perident_table_uhgg_formatted.tsv"),
+gsearch <- read.table(here("input_final/mags/uhgg_ANI_compare/perident_table_uhgg_formatted.tsv"),
                       sep = "\t", header = T,
                       col.names = c("Sample", "Bin", "gsearch.ANI",
                                     "gsearch.Phylum", "gsearch.Species"))
 
 # fastani output
-fastani <- read.table(here("input_final/uhgg_ANI_compare/fastani_top.txt"),
+fastani <- read.table(here("input_final/mags/uhgg_ANI_compare/fastani_top.txt"),
                       sep = "\t", header = F,
                       col.names = c("Sample", "Bin","UHGG_genome", "fastani.ANI",
                                     "fragment_mappings", "query_fragments", "AF"))
@@ -75,11 +73,11 @@ mags <- mags %>%
          near_complete = (Completeness >= 90 & Contamination <= 5 & N50 >= 10e3 &
                           X..contigs.....0.bp. <= 500 & Coverage >= 5 &
                           (Size.Mb*1e3)/X..contigs.....0.bp. >= 5)) %>%
-  left_join(za_meta, by = c("Sample" = "sample")) %>%
+  left_join(za_pheno, by = c("Sample" = "sample")) %>%
   left_join(gsearch, by = c("Sample", "Bin")) %>%
   left_join(fastani_top, by = c("Sample", "Bin")) %>%
   left_join(gtdbtk[, c("Sample", "Bin", "classification")], by = c("Sample", "Bin")) %>%
-  left_join(labels[, c("sample", "label_abbrev")], by = c("Sample" = "sample")) %>%
+  # left_join(labels[, c("sample", "label_abbrev")], by = c("Sample" = "sample")) %>%
   mutate(za_rep95 = paste(Sample, Bin) %in% paste(drep_za_95$Sample, drep_za_95$Bin),
          za_rep99 = paste(Sample, Bin) %in% paste(drep_za_99$Sample, drep_za_99$Bin),
          uhgg_rep = paste(Sample, Bin) %in% paste(drep_za_uhgg$Sample, drep_za_uhgg$Bin),
@@ -162,7 +160,6 @@ b <- ggplot(data_b, aes(site_abbrev, fastani.ANI, fill = site_abbrev)) +
   geom_jitter(position = position_jitterdodge(jitter.width = 0.7), alpha = 0.75,
               size = 1, color = "darkgray") +
   geom_boxplot(outlier.shape = NA, alpha = 0.75) +
-  # ylim(c(0, 100)) +
   labs(x = "", 
        y = "FastANI to UHGG") + 
   scale_fill_manual(values = za_pal) +
@@ -187,11 +184,14 @@ d <- novel_mags %>%
   ggtexttable(rows = NULL, cols = c("Participant", "Phylum", "Class", "Order",
                                     "Family", "Genus", "Species"),
               theme = ttheme("classic", base_size = 8,
-                             padding = unit(c(4, 4), "mm")))
+                             padding = unit(c(4, 4), "mm"))) %>%
+  table_cell_font(row = 2:nrow(novel_mags), column = 6:7, face = "italic",
+                  size = 8)
 
-plot_grid(plot_grid(a, b, labels = c("A", "B"), rel_widths = c(0.6, 0.4)),
-          d, ncol = 1, labels = c("", "C"))
-
+plot_grid(plot_grid(a, b, labels = c("a", "b"), rel_widths = c(0.65, 0.35)),
+          d, ncol = 1, labels = c("", "c"))
 
 ggsave(here("final_plots/supplementary/figure_S15_MAGs.png"),
-       width = 8, height = 9)
+       width = 8, height = 8, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S15_MAGs.pdf"),
+       width = 8, height = 8, bg = "white")

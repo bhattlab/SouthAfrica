@@ -28,7 +28,6 @@ plot_panphlan <- function(panphlan_f, plot_title = "", legend = F){
   # calculate jaccard distance
   panphlan_t <- t(panphlan)
   dist_matrix <- vegdist(panphlan_t, method = "jaccard", binary = T)
-  # colnames(dist_matrix) <- colnames(panphlan)
   
   # calculate pcoa/mds
   mds <- cmdscale(dist_matrix, eig = TRUE, x.ret = TRUE)
@@ -54,13 +53,14 @@ plot_panphlan <- function(panphlan_f, plot_title = "", legend = F){
          y = paste0("MDS 2 (", mds_var_per[2], "%)"),
          color = "",
          title = plot_title) +
-    theme_cowplot() +
+    theme_cowplot(12) +
     background_grid() +
-    scale_color_manual(values = c(za_pal, "black")) +
+    scale_color_manual(values = c(za_pal, "black"),
+                       breaks = c("Bushbuckridge", "Soweto")) +
     theme(legend.position = "top",
           legend.justification = "center",
-          plot.title = element_text(face = "italic"))
-    # coord_fixed()
+          plot.title = element_text(face = "italic", size = 12))
+    # coord_equal()
   
   if (!legend) g <- g + theme(legend.position = "none")
   
@@ -88,7 +88,7 @@ for (org in sp){
 
 legend <- get_legend(p + theme(legend.position = "top"))
 
-a1 <- plot_grid(plotlist = plots, ncol = 3, align = "hv", axis = "lrbt")
+a1 <- plot_grid(plotlist = plots, ncol = 2, align = "hv", axis = "lrbt")
 
 a <- plot_grid(a1, legend, ncol = 1, rel_heights = c(0.95, 0.05))
 
@@ -126,11 +126,14 @@ b <- adonis_res %>%
   mutate(R2 = round(R2, 3),
          FDR = p.adjust(pvalue, method = "fdr"),
          Species = gsub("_", " ", Species)) %>%
-  ggtexttable(rows = NULL, cols = c("Species", "R2", "Pr(>F)", "FDR"), theme =
-                ttheme("classic", base_size = 12, padding = unit(c(4, 4), "mm")))
+  ggtexttable(rows = NULL, cols = c("Species", "R2", "Pr(>F)", "FDR"),
+              theme = ttheme("classic", base_size = 12, padding = unit(c(4, 4), "mm"))) %>%
+  table_cell_font(row = 2:7, column = 1, face = "italic")
 
 # plot ----
-plot_grid(a, b, ncol = 1, labels = c("A", "B"), rel_heights = c(0.7, 0.3))
+plot_grid(a, b, ncol = 1, labels = c("a", "b"), rel_heights = c(0.75, 0.25))
 
 ggsave(here("final_plots/supplementary/figure_S13_panphlan.png"),
        width = 10, height = 8)
+ggsave(here("final_plots/pdf/supp/figure_S13_panphlan.pdf"),
+       width = 5.5, height = 8)

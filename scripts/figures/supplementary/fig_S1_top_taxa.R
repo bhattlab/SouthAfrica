@@ -23,16 +23,17 @@ top_plot <- function(counts, n = 10){
   
   ggplot(counts_long, aes(taxon, relab * 100, fill = site)) +
     geom_jitter(position = position_jitterdodge(jitter.width = 0.2),
-                alpha = 0.75, color = "darkgray", size = 1.25) +
+                alpha = 0.75, color = "darkgray", size = 1) +
     geom_boxplot(outlier.shape = NA, alpha = 0.5) +
     theme_cowplot(12) +
     theme(legend.position = "top",
-      legend.justification = "center") +
+          legend.justification = "center",
+          axis.text.y = element_text(face = "italic")) +
     scale_fill_manual(values = za_pal, breaks = c("Bushbuckridge", "Soweto")) +
     labs(x = "",
          y = "Relative abundance (%)",
          color = "",
-         fill = "Site") +
+         fill = "") +
     coord_flip() +
     background_grid(major = "x", minor = "x")
 }
@@ -42,17 +43,18 @@ top_S_bracken <- top_plot(za_S_rel)
 
 # top genus plot
 g <- za_G_rel
-# rownames(g) <- gsub("miscellaneous", "misc", rownames(g))
 top_G_bracken <- top_plot(g)
 
 plot_grid(
   top_S_bracken,
   top_G_bracken + theme(legend.position = "none"),
   ncol = 1,
-  labels = c("A", "B"),
+  labels = c("a", "b"),
   align = "hv",
   axis = "l"
 )
 
 ggsave(here("final_plots/supplementary/figure_S1_top_taxa.png"),
-       width = 8, height = 10)
+       width = 6, height = 7, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S1_top_taxa.pdf"),
+       width = 6, height = 7, bg = "white")

@@ -10,7 +10,7 @@ load(here("RData/metadata.RData"))
 load(here("RData/za_data.RData"))
 
 # conmeds data table ----
-conmeds <- read.table(here("input_final/conmeds.tsv"), sep = "\t",
+conmeds <- read.table(here("input_final/pheno/conmeds.tsv"), sep = "\t",
                       header = T, quote = "")
 
 conmeds <- conmeds %>%
@@ -74,8 +74,6 @@ categories <- conmeds %>%
   pull(medicine_CATEGORY) %>%
   as.character()
 
-# categories <- c(categories[categories != "ANTIBIOTIC"], "ANTIBIOTIC")
-
 plot_conmeds <- function(categories, mds_plot){
   
   plot_data <- data.frame()
@@ -110,6 +108,7 @@ plot_conmeds <- function(categories, mds_plot){
     scale_alpha_manual(values = c(0.5, 0.85)) +
     scale_color_manual(values = c("red3"), na.value = "darkgray") +
     facet_wrap(~ category, ncol = 3) +
+    coord_equal() +
     labs(x = paste("MDS 1 (", mds_var_per[1], "%)",sep=""),
          y = paste("MDS 2 (", mds_var_per[2], "%)",sep=""),
          color = "") +
@@ -119,10 +118,12 @@ plot_conmeds <- function(categories, mds_plot){
       shape = "Site",
       color = "Medication"
     ) +
-    guides(color = F, alpha = F) +
+    guides(color = "none", alpha = "none") +
     theme(
       legend.position = "top",
-      legend.justification = "center"
+      legend.justification = "center",
+      strip.background = element_rect(fill = "gray90"),
+      legend.margin = margin(c(-0.2, 0.5, -0.2, 0.5), unit = "cm")
     )
 }
 
@@ -179,20 +180,27 @@ plot_conmeds_by_drug <- function(category, mds_plot){
     scale_alpha_manual(values = c(0.5, 0.85)) +
     scale_color_discrete(na.value = "darkgray",
                          breaks = sort(unique(plot_data$label))) +
+    coord_equal() +
     labs(x = paste("MDS 1 (", mds_var_per[1], "%)",sep=""),
          y = paste("MDS 2 (", mds_var_per[2], "%)",sep=""),
          color = "") +
     facet_wrap(~ category) +
     theme_cowplot() +
     background_grid() +
-    theme(legend.position = "bottom") +
+    theme(legend.position = "bottom",
+          legend.justification = "left",
+          strip.background = element_rect(fill = "gray90"),
+          legend.margin = margin(c(-0.2, 0.5, -0.2, -0.2), unit = "cm"),
+          legend.key = element_rect(size = 0.46),
+          legend.key.height = unit(0.46, "cm"),
+          legend.key.width = unit(0.46, "cm")) +
     labs(
       shape = "Site",
       color = ""
     ) +
     guides(
-      alpha = F,
-      shape = F,
+      alpha = "none",
+      shape = "none",
       color = guide_legend(ncol = 1)
       )
 }
@@ -247,15 +255,17 @@ t <- res_tbl %>%
   mutate(FDR = p.adjust(`Pr(>F)`, method = "fdr"),
          FDR = round(FDR, 3)) %>%
   ggtexttable(rows = NULL, theme =
-                ttheme("classic", base_size = 12, padding = unit(c(4, 4), "mm")))
+                ttheme("classic", base_size = 11, padding = unit(c(4, 4), "mm")))
 
 
 # compile figure ----
 a <- plot_conmeds(categories, mds_meta)
 b <- plot_grid(plot_conmeds_by_drug("ANTIBIOTIC", mds_meta), t,
-               rel_widths = c(0.395, 0.605), nrow = 1, labels = c("B", "C"))
+               rel_widths = c(0.43, 0.57), nrow = 1, labels = c("b", "c"))
 
-plot_grid(a, b, ncol = 1, rel_heights = c(0.71, 0.29), labels = c("A", ""))
+plot_grid(a, b, ncol = 1, rel_heights = c(0.71, 0.29), labels = c("a", ""))
 
 ggsave(here("final_plots/supplementary/figure_S5_conmeds_mds.png"),
-       width = 8, height = 14, bg = "white")
+       width = 8, height = 12, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S5_conmeds_mds.pdf"),
+       width = 8, height = 12, bg = "white")

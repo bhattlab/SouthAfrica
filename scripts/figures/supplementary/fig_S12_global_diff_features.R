@@ -105,7 +105,9 @@ ggplot(counts_meta, aes(geography, rel_abundance, fill = geography)) +
     legend.position = "bottom",
     legend.justification = "center",
     axis.text.x = element_blank(),
-    axis.ticks.x = element_blank()
+    axis.ticks.x = element_blank(),
+    strip.background = element_rect(fill = "gray90"),
+    strip.text = element_text(face = "italic")
   ) +
   facet_wrap(~ species, scales = "free_y", ncol = 3,
              labeller = label_wrap_gen(20)) +
@@ -118,4 +120,6 @@ ggplot(counts_meta, aes(geography, rel_abundance, fill = geography)) +
   background_grid(major = "y")
 
 ggsave(here("final_plots/supplementary/figure_S12_za_vs_western_nonwestern.png"),
+       width = 8, height = 10, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S12_za_vs_western_nonwestern.pdf"),
        width = 8, height = 10, bg = "white")

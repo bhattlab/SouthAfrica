@@ -6,9 +6,10 @@ library(RColorBrewer)
 
 # metadata ----
 load(here("RData/metadata.RData"))
-# load(here("RData/za_data.RData"))
+load(here("RData/palettes.RData"))
 
 rownames(za_meta) <- za_meta$sample
+names(za_pal) <- NULL
 
 # functions ----
 
@@ -69,7 +70,6 @@ fp <- here("input_final/humann/join_metacyc-pwy-CPM.tsv")
 humann_out <- load_humann(fp)
 
 humann_filt <- humann_out[, za_meta$sample]
-# humann_filt <- filter_humann(humann_filt)
 
 if (!file.exists(outfile)){
   
@@ -82,32 +82,6 @@ if (!file.exists(outfile)){
   # save results
   saveRDS(res, outfile)
 }
-
-# volcano plot ----
-# prefix <- paste(model, norm, sep = "_")
-# outfile <- here(paste0("rds/res_humann_", prefix, ".rds"))
-# res <- readRDS(outfile)
-# 
-# labs <- data.frame("label" = rownames(humann_filt),
-#                    "feature" = make.names(rownames(humann_filt)))
-# 
-# res_plot <- res %>%
-#   left_join(labs, by = "feature") %>%
-#   mutate(label = ifelse(qval < 0.05, label, ""),
-#          signif = ifelse(qval < 0.05, T, F),
-#          effect = ifelse(pval < 0.05, coef < 0, NA))
-# 
-# g <- ggplot(res_plot, aes(coef, -log10(pval), label = label, size = signif,
-#                           color = effect)) +
-#   geom_point() +
-#   scale_size_manual(values = c(1.5, 2.5)) +
-#   scale_color_manual(values = rev(za_pal), na.value = "#000000") +
-#   ggrepel::geom_text_repel(size = 2.5) +
-#   geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
-#   theme_cowplot() +
-#   background_grid() +
-#   labs(x = "Coefficient") +
-#   theme(legend.position = "none")
 
 # coef plot ----
 prefix <- paste(model, norm, sep = "_")
@@ -132,14 +106,16 @@ a <- ggplot(res_plot, aes(coef, label, fill = effect)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values = rev(za_pal), na.value = "#000000",
                     labels = c("Enriched in SWT", "Enriched in BBR")) +
-  theme_cowplot() +
+  theme_cowplot(12) +
   background_grid() +
   labs(x = "Coefficient",
        y = "MetaCyc pathway",
        fill = "") +
   theme(legend.position = "bottom",
         legend.justification = "center",
-        plot.margin = unit(c(0.5, 0, 0.5, 0.5), "cm"))
+        plot.margin = unit(c(0.5, 0, 0.5, 0.5), "cm"),
+        axis.text.y = element_text(size = 9)
+        )
 
 # stratified taxon plot of significant pathways ----
 humann_strat <- load_humann(fp, remove_unclass = F)
@@ -164,7 +140,6 @@ humann_plot <- humann_strat %>%
   mutate(mean_rel = mean(tot_rel)) %>%
   ungroup() %>%
   mutate(taxon = fct_reorder(taxon, mean_rel, .desc = T),
-         # taxon = fct_expand(taxon, "Other"),
          group_no = as.integer(factor(taxon))) %>%
   filter(group_no <= display_n | taxon == "unclassified") %>%
   select(-tot, -mean_rel, -group_no)
@@ -175,25 +150,28 @@ other <- humann_plot %>%
   summarise(tot_rel = 1 - sum(tot_rel)) %>%
   mutate(taxon = "Other")
 
-fct_lvls <- c(levels(humann_plot$taxon), "Other")
+fct_levels <- humann_plot %>%
+  group_by(taxon) %>%
+  summarise(sum_rel = sum(tot_rel)) %>%
+  arrange(-sum_rel) %>%
+  filter(taxon != "unclassified") %>%
+  pull(taxon) %>%
+  as.character()
+
+fct_lvls <- c(fct_levels, "Unclassified", "Other")
 
 humann_plot <- bind_rows(humann_plot, other) %>%
-  mutate(taxon = factor(taxon, levels = fct_lvls),
+  mutate(taxon = gsub("unclassified", "Unclassified", taxon),
+         taxon = factor(taxon, levels = fct_lvls),
          pwy = factor(pwy, levels = levels(res_plot$label)))
 
 # color palette
-# myCols <- colorRampPalette(brewer.pal(9, "Set1"))
-# pal <- myCols(display_n)
-# pal <- sample(pal)
-# pal[display_n + 1] <- "lightgray"
-
-pal <- brewer.pal(12, "Set3")
-pal <- pal[!(pal == "#D9D9D9")]
-pal <- c(pal, "#D9D9D9")
+pal <- brewer.pal(12, "Set3")[c(2:8, 10:12)]
+pal <- c(pal, "#A9A9A9", "#D9D9D9")
 
 b <- ggplot(humann_plot, aes(pwy, tot_rel * 100, fill = taxon)) +
   geom_bar(stat = "identity", color = "gray60") +
-  theme_cowplot() +
+  theme_cowplot(12) +
   scale_fill_manual(values = pal) +
   scale_y_continuous(expand = c(0, 0)) +
   # scale_fill_brewer(palette = "Set3") +
@@ -203,6 +181,7 @@ b <- ggplot(humann_plot, aes(pwy, tot_rel * 100, fill = taxon)) +
         axis.line.y = element_blank(),
         legend.position = "bottom",
         legend.justification = "center",
+        legend.text = element_text(face = "italic"),
         strip.background = element_rect(fill = "white"),
         plot.margin = unit(c(0.5, 0.5, 0.5, 0), "cm")) +
   labs(x = "",
@@ -212,10 +191,12 @@ b <- ggplot(humann_plot, aes(pwy, tot_rel * 100, fill = taxon)) +
   guides(fill = guide_legend(ncol = 3))
 
 plot_grid(a, b, ncol = 2, align = "h", axis = "bt", rel_widths = c(0.65, 0.35),
-          labels = c("A", "B"))
+          labels = c("a", "b"))
 
 ggsave(here("final_plots/supplementary/figure_S9_humann_metacyc.png"),
        width = 14, height = 8, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S9_humann_metacyc.pdf"),
+       width = 11, height = 6, bg = "white")
 
 # write output table ----
 humann_tbl <- humann_filt

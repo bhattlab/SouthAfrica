@@ -9,7 +9,7 @@ library(tidyverse)
 load(here("RData/metadata.RData"))
 
 # nanopore figure ----
-labels <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)
+labels <- read.table(here("input_final/pheno/za_labels.tsv"), sep = "\t", header = T)
 
 # nanopore mags
 nmags <- read.table(here("nanopore/input_final/nanopore_gtdbtk.bac120.summary.tsv"),
@@ -66,7 +66,7 @@ for (lvl in c("S", "G")){
 plot_nanopore <- function(count_data, sample, n_taxa, rank_label){
   
   # color palette for n taxa
-  myCols <- colorRampPalette(brewer.pal(12, "Paired"))
+  myCols <- colorRampPalette(brewer.pal(12, "Set3"))
   global_pal <- myCols(n_taxa)
   global_pal <- sample(global_pal)
   global_pal[n_taxa + 1] <- "gray"
@@ -113,7 +113,7 @@ plot_nanopore <- function(count_data, sample, n_taxa, rank_label){
            taxon = factor(taxon, levels = unique(taxon)))
   
   ggplot(bracken_plot, aes(label, rel_abundance * 100, fill = taxon)) +
-    geom_bar(stat="identity") +
+    geom_bar(stat = "identity") +
     labs(
       x = "",
       y = paste(rank_label, "relative abundance (%)"),
@@ -124,19 +124,20 @@ plot_nanopore <- function(count_data, sample, n_taxa, rank_label){
                                default.unit = "inch")) +
     theme_cowplot() +
     theme(
-      legend.text = element_text(size = 11),
+      legend.text = element_text(size = 11, face = "italic"),
       legend.title = element_blank(),
       axis.ticks.x = element_blank(),
-      axis.text.x = element_blank()
+      axis.text.x = element_blank(),
+      plot.title = element_text(face = "plain"),
     ) +
     scale_y_continuous(limits = c(0, 100), expand = c(0, 0))
 }
 
 nmag_samples <- c("C27", "C29", "C33")
-nmag_species <- lapply(nmag_samples, function(x){plot_nanopore(bracken_S_rel,
-                                                               x,30, "Species")})
-nmag_genus <- lapply(nmag_samples, function(x){plot_nanopore(bracken_G_rel,
-                                                             x, 30, "Genus")})
+nmag_species <- lapply(nmag_samples,
+                       function(x){plot_nanopore(bracken_S_rel, x, 30, "Species")})
+nmag_genus <- lapply(nmag_samples,
+                     function(x){plot_nanopore(bracken_G_rel, x, 30, "Genus")})
 
 a1 <- nmag_species[[1]] + ggtitle("Bushbuckridge 106")
 a2 <- nmag_genus[[1]]
@@ -149,20 +150,9 @@ c2 <- nmag_genus[[3]]
 
 plot_grid(a1, a2, b1, b2, c1, c2,
           ncol = 2, align = "hv", axis = "bt",
-          labels = c("A", "", "B", "", "C", ""))
+          labels = c("a", "", "b", "", "c", ""))
 
-ggsave(here("final_plots/supplementary/figure_S16_za_nanopore_taxa2.png"),
-       width = 8.5, height = 15)
-
-# # check labels
-# s <- "C33"
-# nanopore_bins %>%
-#   filter(Sample == s) %>%
-#   arrange(Final.Class) %>%
-#   pull(Final.Class) %>%
-#   unique()
-# 
-# illumina_bins %>%
-#   filter(Sample == s) %>%
-#   arrange(Final.Class)
-# 
+ggsave(here("final_plots/supplementary/figure_S16_za_nanopore_taxa.png"),
+       width = 8.5, height = 15, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S16_za_nanopore_taxa.pdf"),
+       width = 8.5, height = 15, device = cairo_pdf)

@@ -40,7 +40,9 @@ density_plot <- ggplot(succin_long, aes(x = relab * 100)) +
   labs(
     x = "Relative abundance (%)",
     y = "Density"
-  )
+  ) +
+  theme(strip.text = element_text(face = "italic")) +
+  background_grid()
 
 # correlate VANISH taxa ----
 vanish_cor <- function(counts){
@@ -67,22 +69,26 @@ vanish_cor <- function(counts){
     ) +
     labs(
       fill = "Spearman's\nrho"
-    )  
+    )
 }
 
 plot_data <- za_G_VANISH
-rownames(plot_data) <- paste0(rownames(plot_data), "\n(", vanish_tax[match(rownames(plot_data), vanish_tax$G), "F"], ")")
+rownames(plot_data) <- paste0(rownames(plot_data), "\n(",
+                              vanish_tax[match(rownames(plot_data),
+                                               vanish_tax$G), "F"], ")")
 
 plot_G <- vanish_cor(plot_data)
 plot_F <- vanish_cor(za_F_VANISH)
 
 plot_grid(
-  plot_grid(density_plot, plot_F, labels = c("A", "B")),
+  plot_grid(density_plot, plot_F, labels = c("a", "b")),
   plot_G,
   ncol = 1,
-  labels = c("", "C"),
+  labels = c("", "c"),
   rel_heights = c(0.27, 0.63)
 )
 
 ggsave(here("final_plots/supplementary/figure_S2_VANISH_cor.png"),
+       width = 9, height = 11)
+ggsave(here("final_plots/pdf/supp/figure_S2_VANISH_cor.pdf"),
        width = 9, height = 11)

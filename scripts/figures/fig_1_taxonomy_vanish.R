@@ -6,6 +6,7 @@ library(tidyverse)
 # load data ----
 load(here("RData/metadata.RData"))
 load(here("RData/za_data.RData"))
+load(here("RData/vanish.RData"))
 
 # crassphage ----
 crass <- za_G[grep("crAss", rownames(za_G)), ]
@@ -82,11 +83,11 @@ plot_bracken <- function(counts, title){
     scale_fill_manual(values = barplot_pal) +
     guides(fill = guide_legend(ncol = 1, keywidth = 0.125, keyheight = 0.1,
                                default.unit = "inch")) +
-    theme_cowplot(12) +
-    theme(plot.title = element_text(face = "plain", size = 14),
-          axis.text.x = element_text(size = 6, angle = 90, hjust = 1,
+    theme_cowplot(10) +
+    theme(plot.title = element_text(face = "plain", size = 12),
+          axis.text.x = element_text(size = 5, angle = 90, hjust = 1,
                                      vjust = 0.5),
-          legend.text = element_text(size = 10)) +
+          legend.text = element_text(size = 8, face = "italic")) +
     scale_y_continuous(limits = c(0, 100.1), expand = c(0, 0))
   
   return(g)
@@ -123,11 +124,11 @@ counts_long <- za_G_VANISH %>%
          site = factor(site))
 
 # compare BBR vs SWT means
-counts_long %>%
-  group_by(G, site) %>%
-  summarise(mean = mean(relab)) %>%
-  group_by(G) %>%
-  summarise("inc_BBR" <- mean[site == "Bushbuckridge"] > mean[site == "Soweto"])
+# counts_long %>%
+#   group_by(G, site) %>%
+#   summarise(mean = mean(relab)) %>%
+#   group_by(G) %>%
+#   summarise("inc_BBR" <- mean[site == "Bushbuckridge"] > mean[site == "Soweto"])
 
 # add pseudo percent
 min_perc <- min(counts_long$relab[counts_long$relab > 0])
@@ -140,23 +141,33 @@ b <- ggplot(counts_long, aes(G, relab * 100, fill = site)) +
   facet_grid(~`F`, scales = "free", space = "free") +
   scale_y_log10(labels = c("0.0001", "0.01", "1", "100"),
                 breaks = c(0.0001, 0.01, 1, 100)) +
-  theme_cowplot() +
+  theme_cowplot(10) +
   theme(legend.position = "bottom",
         legend.justification = "center",
-        axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5,
-                                   face = "italic"),
-        axis.title.y = element_text(size = 12),
-        strip.text = element_text(face = "italic")) +
+        axis.text.x = element_text(face = "italic"),
+        strip.background = element_rect(fill = "white"),
+        legend.margin = margin(c(-0.5, 0, 0, 0), unit = "cm"),
+        plot.margin = margin(c(0, 0.5, 0, 0.5), unit = "cm")) +
+  scale_x_discrete(guide = guide_axis(angle = 20)) +
   scale_fill_manual(values = za_pal) +
   scale_color_manual(values = za_pal) +
   labs(x = "",
        y = "Relative Abundance (%)",
        fill = "") +
-  stat_compare_means(label = "p.signif", label.y = 2.5,
+  stat_compare_means(label = "p.signif", label.y = 1.9, size = 3,
                      method = "wilcox.test") +
   background_grid(major = "y")
 
-# figure 1 ----
-plot_grid(a, b, labels = c("A", "B"), ncol = 1, rel_heights = c(0.55, 0.45))
+# p-values
+pvals <- counts_long %>%
+  group_by(G) %>%
+  do(w = wilcox.test(relab ~ site, data = ., paired = F)) %>% 
+  summarise(G, pvalue = w$p.value)
 
-ggsave(here("final_plots/figure_1.png"), width = 10, height = 12, bg = "white")
+# figure 1 ----
+plot_grid(a, b, labels = c("a", "b"), ncol = 1, rel_heights = c(0.57, 0.43))
+
+ggsave(here("final_plots/figure_1.png"), width = 180, height = 200,
+       units = "mm", bg = "white")
+ggsave(here("final_plots/pdf/figure_1.pdf"), width = 180, height = 200,
+       units = "mm", bg = "white")

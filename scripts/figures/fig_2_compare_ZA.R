@@ -55,11 +55,13 @@ mds_plot <- ggplot(mds_meta, aes(x, y, color = site)) +
   labs(x = paste("MDS 1 (", mds_var_per[1], "%)",sep=""),
        y = paste("MDS 2 (", mds_var_per[2], "%)",sep=""),
        color = "") +
-  theme_cowplot() +
+  theme_cowplot(12) +
   background_grid() +
   coord_fixed() +
   theme(legend.position = "top",
-        legend.justification = "center")
+        legend.justification = "center",
+        plot.margin = margin(t = 0, unit = "cm"),
+        legend.margin = margin(b = -0.25, unit = "cm"))
 
 mds_plot_ci <- mds_plot +
   stat_ellipse(aes(color = site), type = 't', size = 1, show.legend = F)
@@ -85,9 +87,10 @@ div_plot <- ggplot(div_meta, aes(site, shannon_div)) +
   stat_compare_means(method = "wilcox", label = "p.signif",
                      comparisons = list(c("Soweto", "Bushbuckridge")),
                      label.y = 6) +
-  theme_cowplot() +
+  theme_cowplot(12) +
   theme(axis.text.x = element_text(size = 12),
-        legend.position = "none") +
+        legend.position = "none",
+        plot.margin = unit(c(0.2, 0.5, 0, 0.2), unit = "cm")) +
   background_grid(major = "y")
 
 wilcox.test(shannon_div ~ site, data = div_meta, exact = T)
@@ -117,15 +120,16 @@ res <- results(dds, name = "site_Soweto_vs_Bushbuckridge", alpha = 0.05)
 
 res_plot <- res %>%
   as_tibble(rownames = "genus") %>%
-  arrange(pvalue) %>%
-  filter(padj < 0.05, abs(log2FoldChange) > 1) %>%
   mutate(site = ifelse(log2FoldChange < 0, "Bushbuckridge", "Soweto"),
          genus = gsub(" \\(miscellaneous\\)", "", genus),
          genus = fct_reorder(genus, log2FoldChange))
 
-deseq_genera <- ggplot(res_plot, aes(log2FoldChange, genus, fill = site)) +
+deseq_genera <- res_plot %>%
+  arrange(pvalue) %>%
+  filter(padj < 0.05, abs(log2FoldChange) > 1) %>%
+  ggplot(aes(log2FoldChange, genus, fill = site)) +
   geom_bar(stat = "identity") +
-  theme_cowplot() +
+  theme_cowplot(12) +
   theme(axis.text.y = element_text(face = "italic")) +
   scale_fill_manual(values = za_pal) +
   labs(x = "Log2 Fold Change (Soweto/Bushbuckridge)",
@@ -133,11 +137,12 @@ deseq_genera <- ggplot(res_plot, aes(log2FoldChange, genus, fill = site)) +
        fill = "") +
   background_grid() +
   theme(legend.position = "top",
-        legend.justification = "center")
+        legend.justification = "center",
+        legend.margin = margin(c(0, 0, -0.25, 0), unit = "cm"),
+        plot.margin = unit(c(0, 0.5, 0, 0.5), unit = "cm"))
 
 # results table ----
-
-res_table_G <- resOrdered %>%
+res_table_G <- res_plot %>%
   arrange(site, log2FoldChange) %>%
   mutate(across(where(is.numeric), ~ signif(., 3))) %>%
   filter(padj < 0.05) %>%
@@ -150,30 +155,13 @@ write.table(res_table_G, "final_tables/table_s7_deseq_genera.txt", sep = "\t",
             row.names = F, quote = F)
 
 # plot multipanel figure ----
-row1 <- plot_grid(mds_plot_ci, div_plot, labels = c('A', 'B'), align = "hv",
-                  axis = "bt", label_size = 14, rel_widths = c(0.6, 0.4))
+row1 <- plot_grid(mds_plot_ci, div_plot, labels = c("a", "b"),
+                  rel_widths = c(0.6, 0.4))
 
-plot_grid(row1, deseq_genera, labels = c("", "C"), ncol = 1, label_size = 14,
-          rel_heights = c(0.4, 0.6))
+plot_grid(row1, deseq_genera, labels = c("", "c"), ncol = 1,
+          rel_heights = c(0.38, 0.62))
 
-ggsave(here("final_plots/figure_2.png"), width = 7.5, height = 10,
-       bg = "white")
-
-# supplementary: plot mds plot highlighting nanopore samples ----
-# nmag_samples <- c("C27", "C29", "C33")
-# 
-# mds_meta_nmag <- mds_meta %>%
-#   mutate(highlight = ifelse(sample %in% nmag_samples, T, F))
-# 
-# ggplot(mds_meta_nmag, aes(x, y, color = highlight, size = highlight,
-#                           shape = site)) +
-#   geom_point(alpha = 0.75) +
-#   scale_color_manual(values = c("darkgrey", "red")) +
-#   scale_size_manual(values = c(2, 3)) +
-#   labs(x = paste("MDS 1 (", mds_var_per[1], "%)", sep = ""),
-#        y = paste("MDS 2 (", mds_var_per[2], "%)", sep = ""),
-#        shape = "Site") +
-#   theme_cowplot() +
-#   guides(size = F, color = F)
-# 
-# ggsave("final_plots/misc/nanopore_mds.png", width = 7, height = 5)
+ggsave(here("final_plots/figure_2.png"), width = 170, height = 185,
+       units = "mm", bg = "white")
+ggsave(here("final_plots/pdf/figure_2.pdf"), width = 170, height = 185,
+       units = "mm", bg = "white")

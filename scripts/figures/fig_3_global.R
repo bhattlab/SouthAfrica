@@ -10,11 +10,13 @@ library(vegan)
 library(metagenomeSeq)
 library(genefilter)
 
+set.seed(1)
+
 # load data ----
 load(here("RData/metadata.RData"))
-load(here("RData/sequence_data.RData"))
+load(here("RData/global_data.RData"))
 
-# panel A: cohort summary plot ----
+# panel a: cohort summary plot ----
 cohort_size <- pheno_global %>%
   group_by(site2) %>%
   tally()
@@ -23,7 +25,7 @@ cohort_plot <- ggplot(cohort_size, aes(site2, n, fill = site2)) +
   geom_bar(stat = "identity") +
   scale_fill_manual(values = global_pal) +
   scale_y_continuous(breaks = seq(0, 150, 25)) +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(
     legend.position = "none",
     axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)
@@ -34,10 +36,9 @@ cohort_plot <- ggplot(cohort_size, aes(site2, n, fill = site2)) +
   ) +
   background_grid(major = "y")
 
-# panel B: MDS ----
+# panel b: MDS ----
 
 # bray-curtis distance
-# vare_dis <- vegdist(t(global_S_rare_css), method = "bray")
 vare_dis <- vegdist(t(global_S_css), method = "bray")
 
 # permanova
@@ -78,7 +79,7 @@ global_mds <- ggplot(mds_meta, aes(x, y, color = site2)) +
   labs(x = paste("MDS 1 (", mds_var_per[1], "%)", sep = ""),
        y = paste("MDS 2 (", mds_var_per[2], "%)", sep = ""),
        color = " ") +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(legend.position = "top",
         legend.justification = "center") +
   coord_fixed() +
@@ -138,25 +139,21 @@ scatter_F <- ggplot(mds_taxa_plot, aes(x = x, y = rel_abundance * 100, color = s
   geom_point(size = 1) +
   facet_wrap(feature ~ ., scales = "free_y", ncol = 1, strip.position = "right") +
   scale_color_manual(values = global_pal) +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(axis.title.x = element_blank(),
         strip.background = element_blank(),
-        # strip.position = "left",
         strip.placement = "outside",
-        strip.text.y.right = element_text(angle = 90, face = "italic", size = 9)
-        # axis.text = element_blank(),
-        # axis.ticks = element_blank(),
-        # axis.line.y = element_blank()
+        strip.text.y.right = element_text(angle = 90, size = 8)
         ) +
   background_grid() +
   labs( y = "Relative Abundance (%)")
 
-# panel C: mds axes ----
+# panel c: mds axes ----
 mds1 <- ggplot(mds_meta, aes(site2, x, fill = site2)) +
   geom_jitter(alpha = 0.75, color = "darkgray", width = 0.25) +
   geom_boxplot(outlier.shape = NA, alpha = 0.75) +
   scale_fill_manual(values = global_pal) +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         legend.position = "none") +
@@ -168,7 +165,7 @@ mds2 <- ggplot(mds_meta, aes(site2, y, fill = site2)) +
   geom_jitter(alpha = 0.75, color = "darkgray", width = 0.25) +
   geom_boxplot(outlier.shape = NA, alpha = 0.75) +
   scale_fill_manual(values = global_pal) +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(axis.text.x = element_blank(),
         axis.ticks.x = element_blank(),
         legend.position = "none") +
@@ -185,8 +182,6 @@ shannon_div <- diversity(global_S_rare, index = "shannon")
 div <- data.frame("shannon_div" = shannon_div, "sample" = names(shannon_div))
 div_meta <- merge(div, pheno_global, by = "sample")
 
-# div_meta <- div_meta[complete.cases(div_meta), ]
-
 # add p-values
 pvals <- compare_means(shannon_div ~ site2, data = div_meta, method = "wilcox.test", p.adjust.method = "fdr")
 
@@ -198,7 +193,7 @@ shannon_global <- ggplot(div_meta, aes(site2, shannon_div, fill = site2)) +
        fill = "") +
   scale_fill_manual(values = global_pal) +
   scale_y_continuous(breaks = seq(1, 6, 1)) +
-  theme_cowplot(12) +
+  theme_cowplot(11) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
         legend.position = "none") +
   background_grid(major = "y")
@@ -212,7 +207,7 @@ col1 <- plot_grid(
   ncol = 1,
   align = "v",
   axis = "lbr",
-  labels = c("A", "C", "", "D"),
+  labels = c("a", "c", "", "d"),
   rel_heights = c(0.3, 0.2, 0.2, 0.3)
 )
 
@@ -224,8 +219,8 @@ mds_scatter <- plot_grid(
   align = "hv",
   axis = "lr",
   ncol = 1,
-  labels = c("B", ""),
-  rel_heights = c(0.48, 0.52)
+  labels = c("b", ""),
+  rel_heights = c(0.44, 0.56)
 )
 
 p1 <- plot_grid(
@@ -237,5 +232,8 @@ p1 <- plot_grid(
 
 plot_grid(get_legend(global_mds), p1, ncol = 1, rel_heights = c(0.05, 0.95))
 
-ggsave(here("final_plots/figure_3.png"), width = 9, height = 10, bg = "white")
+ggsave(here("final_plots/figure_3.png"), width = 180, height = 210,
+       units = "mm", bg = "white")
+ggsave(here("final_plots/pdf/figure_3.pdf"), width = 180, height = 210,
+       units = "mm", bg = "white")
 

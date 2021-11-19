@@ -50,7 +50,6 @@ res_df_filt$species <- factor(res_df_filt$species,
                             levels = as.character(res_df_filt$species))
 
 ggplot(res_df_filt, aes(log2FoldChange, species, fill = site)) +
-  # geom_point(size = 2, color = "black", pch = 21) +
   geom_bar(stat = "identity") +
   theme_cowplot() +
   theme(axis.text.y = element_text(face = "italic")) +
@@ -58,7 +57,7 @@ ggplot(res_df_filt, aes(log2FoldChange, species, fill = site)) +
   scale_x_continuous(breaks = seq(-7.5, 2.5, 2.5)) +
   labs(
     x = "Log2 Fold Change (Soweto/Bushbuckridge)",
-    y = "species",
+    y = "Species",
     fill = ""
   ) +
   background_grid() +
@@ -66,7 +65,9 @@ ggplot(res_df_filt, aes(log2FoldChange, species, fill = site)) +
         legend.justification = "center")
 
 ggsave(here("final_plots/supplementary/figure_S6_deseq_species.png"),
-       width = 8.5, height = 11)
+       width = 8.5, height = 11, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S6_deseq_species.pdf"),
+       width = 8.5, height = 11, bg = "white")
 
 res_table_S <- resOrdered %>%
   arrange(site, log2FoldChange) %>%

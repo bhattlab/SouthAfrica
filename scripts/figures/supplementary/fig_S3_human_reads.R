@@ -8,20 +8,21 @@ library(tidyverse)
 
 # load data ----
 load(here("RData/metadata.RData"))
+load(here("RData/palettes.RData"))
 
-labs <- read.table(here("input_final/za_labels.tsv"), sep = "\t", header = T)
+labs <- read.table(here("input_final/pheno/za_labels.tsv"), sep = "\t", header = T)
 
 # readcounts ----
 
 # read PAIRS
 za_readcounts <- read.table(here("input_final", "readcounts",
-                                 "za_readcounts_preprocessing.txt"),
+                                 "za_reads_preprocess.txt"),
                             sep = '\t', header = T)
 
 # read PAIRS -- multiply by 2
 # filter out extra samples
 za_counts <- za_readcounts %>%
-  filter(Sample %in% za_meta$sample) %>%
+  filter(sample %in% za_meta$sample) %>%
   mutate(raw_reads = raw_reads * 2,
          trimmed_reads = trimmed_reads * 2,
          dedup_reads = dedup_reads * 2,
@@ -29,8 +30,6 @@ za_counts <- za_readcounts %>%
          orphan_reads = orphan_reads * 2
          ) %>%
   dplyr::select(-starts_with("orphan"), -ends_with("frac"))
-
-# za_counts <- za_readcounts[, c(1:3, 5, 7)]
 
 # stats for intro
 za_counts %>%
@@ -99,7 +98,7 @@ z %>%
 
 a <- ggplot(z, aes(human_rm_frac * 100, fill = site)) +
   geom_histogram(color = "white") +
-  scale_fill_manual(values = za_pal) +
+  scale_fill_manual(values = c("#6A3D9A", "#CAB2D6")) +
   theme_cowplot() +
   theme(
     legend.position = "top",
@@ -115,7 +114,7 @@ a <- ggplot(z, aes(human_rm_frac * 100, fill = site)) +
 b <- ggplot(z, aes(site, human_rm_frac * 100, fill = site)) +
   geom_jitter(color = "darkgray", alpha = 0.75, width = 0.3) +
   geom_boxplot(outlier.shape = NA, alpha = 0.5) +
-  scale_fill_manual(values = za_pal) +
+  scale_fill_manual(values = c("#6A3D9A", "#CAB2D6")) +
   theme_cowplot() +
   theme(legend.position = "none") +
   stat_compare_means(method = "wilcox.test", label = "p.signif", label.x = 1.5) +
@@ -125,10 +124,12 @@ b <- ggplot(z, aes(site, human_rm_frac * 100, fill = site)) +
   ) +
   background_grid(major = "y")
 
-plot_grid(a, b, labels = c("A", "B"), ncol = 1)
+plot_grid(a, b, labels = c("a", "b"), nrow = 1, rel_widths = c(0.6, 0.4))
 
 ggsave(here("final_plots/supplementary/figure_S3_human_reads.png"),
-       width = 5, height = 9)
+       width = 8, height = 4, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S3_human_reads.pdf"),
+       width = 8, height = 4, bg = "white")
 
 za_counts <- za_counts %>%
   mutate("Human reads removed after de-duplication" =

@@ -10,32 +10,17 @@ library(vegan)
 # load data ----
 load(here("RData/metadata.RData"))
 load(here("RData/za_data.RData"))
-# load(here("RData/global_data.RData"))
 
 # mds plot ----
 # ethnicity info
-awi_data_f <- here("input_final/pheno/awi-phase1.csv")
-awi_data <- read.csv(awi_data_f)
-
-awi_ethnicity <- data.frame(
-  "ethnicity_name" = c("Zulu", "Xhosa", "Ndebele", "Sotho", "Venda", "Tsonga",
-                       "Tswana", "BaPedi", "Zimbabwean", "Other", "Unknown",
-                       "Swati", "Other"),
-  "ethnicity" = c(1:12, 40))
-
-awi_eth <- awi_data[, c("Microbiome_link", "study_id", "site", "ethnicity")]
-awi_eth$ethnicity_name <- awi_ethnicity[match(awi_eth$ethnicity,
-                                              awi_ethnicity$ethnicity), "ethnicity_name"]
-
-awi_eth$site_name <- ifelse(awi_eth$site == "6", "Soweto", "Bushbuckridge")
-
-eth_counts <- plyr::count(awi_eth, c("site_name", "ethnicity_name"))
+ethnicity <- read.table(here("input_final/pheno/ethnicity.txt"), sep = "\t",
+                        header = T)
 
 # nmds clustering by ethincity
 pheno <- merge(za_pheno, awi_eth, by.x = "study_id", by.y = "Microbiome_link")
 
 # mds
-vare_dis <- vegdist(t(za_S_css), method = "bray")
+vare_dis <- vegdist(t(za_S_rare_css), method = "bray")
 mds <- cmdscale(vare_dis, eig = TRUE, x.ret = TRUE)
 mds_values <- mds$points
 
@@ -49,15 +34,15 @@ mds_data <- data.frame(sample = rownames(mds_values),
 
 # merge pheno data
 mds_meta <- merge(mds_data, pheno, by = "sample", all.x = T)
-mds_meta$ethnicity_name[is.na(mds_meta$ethnicity_name)] <- "Unknown"
+mds_meta$ethnicity[is.na(mds_meta$ethnicity)] <- "Unknown"
 
-mds_meta$ethnicity_name <- factor(
-  mds_meta$ethnicity_name,
-  levels = c(sort(unique(mds_meta$ethnicity_name[-which(mds_meta$ethnicity_name
+mds_meta$ethnicity <- factor(
+  mds_meta$ethnicity,
+  levels = c(sort(unique(mds_meta$ethnicity[-which(mds_meta$ethnicity
                                                         %in% c("Other", "Unknown"))])),
              "Other", "Unknown"))
 
-ggplot(mds_meta, aes(x, y, color = ethnicity_name)) +
+ggplot(mds_meta, aes(x, y, color = ethnicity)) +
   geom_point(size = 2, alpha = 0.75) +
   scale_color_manual(values = c(brewer.pal(9, "Set1"), "#4A4A4A")) +
   labs(x = paste("MDS 1 (", mds_var_per[1], "%)",sep=""),
@@ -68,4 +53,6 @@ ggplot(mds_meta, aes(x, y, color = ethnicity_name)) +
   background_grid()
 
 ggsave(here("final_plots/supplementary/figure_S10_za_ethnicity_mds.png"),
+       height = 4, width = 6, bg = "white")
+ggsave(here("final_plots/pdf/supp/figure_S10_za_ethnicity_mds.pdf"),
        height = 4, width = 6, bg = "white")

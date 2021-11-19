@@ -85,9 +85,15 @@ plot_tax <- function(counts, ntax = 20, legend_ncol = 4){
     guides(fill = guide_legend(ncol = legend_ncol)) +
     facet_grid(~site, scales = "free_x", space = "free") +
     theme_cowplot(12) +
-    theme(axis.ticks.x = element_blank(),
-          axis.text.x = element_blank(),
-          legend.position = "bottom")
+    theme(
+      axis.text.x = element_text(size = 4),
+      legend.position = "bottom",
+      legend.text = element_text(face = "italic"),
+      strip.background = element_rect(fill = "white"),
+      legend.margin = margin(c(-0.2, 0.2, 0, -0.25), unit = "cm")
+      ) +
+    scale_x_discrete(guide = guide_axis(angle = 90)) +
+    scale_y_continuous(expand = c(0, 0))
 }
 
 plot_richness <- function(counts, cohort){
@@ -131,6 +137,8 @@ m_out_s <- process_metaphlan(m_out, "s", "placeholder")
 
 plot_m <- m_out_s
 rownames(plot_m) <- make.names(gsub(".+s__", "", rownames(plot_m)), unique = T)
+rownames(plot_m) <- gsub("_", " ", rownames(plot_m))
+rownames(plot_m) <- gsub("sp", "sp.", rownames(plot_m))
 
 a <- plot_tax(plot_m)
 
@@ -140,11 +148,7 @@ rownames(cts) <- gsub("g__", "", rownames(cts))
 
 b <- plot_tax(cts * 100, legend_ncol = 6)
 
-# genbank plot ----
-# c <- plot_tax(za_S_rel * 100)
-
 # plot shannon diversity ----
-
 m <- plot_richness(m_out_s/100, "Metaphlan")
 gb <- plot_richness(za_S_rel, "Genbank")
 gtdb <- plot_richness(bracken_S_rel, "GTDB")
@@ -153,7 +157,7 @@ all <- rbind(m, gb, gtdb)
 
 d <- ggplot(all, aes(cohort, value)) +
   geom_boxplot() +
-  stat_compare_means(method = "wilcox", label = "p.signif", 
+  stat_compare_means(method = "wilcox", label = "p.signif", paired = T,
                      comparisons = list(c("Genbank", "GTDB"), c("Metaphlan", "GTDB")),
                      vjust = 0.5) +
   theme_cowplot() +
@@ -162,16 +166,18 @@ d <- ggplot(all, aes(cohort, value)) +
        y = "Shannon diversity")
 
 plot_grid(a, b, plot_grid(d, NULL, nrow = 1),
-          ncol = 1, labels = c("A", "B", "C"),
+          ncol = 1, labels = c("a", "b", "c"),
           rel_heights = c(0.36, 0.34, 0.3))
 
 ggsave(here("final_plots/supplementary/figure_S7_metaphlan_gtdb.png"),
-       width = 8.5, height = 12)
+       width = 8, height = 11)
+ggsave(here("final_plots/pdf/supp/figure_S7_metaphlan_gtdb.pdf"),
+       width = 8, height = 11)
 
 # stats tests
 # Genbank vs GTDB
-wilcox.test(value ~ cohort, rbind(gb, gtdb))
+wilcox.test(value ~ cohort, rbind(gb, gtdb), paired = T)
 
 # Metaphlan vs GTDB
-wilcox.test(value ~ cohort, rbind(m, gtdb))
+wilcox.test(value ~ cohort, rbind(m, gtdb), paired = T)
 
