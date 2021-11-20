@@ -1,4 +1,4 @@
-# Bushbuckridge and Soweto microbiome project
+# AWI-Gen Microbiome Pilot: Metagenomics
 
 Analysis scripts for Wits-Stanford shotgun microbiome data.
 
@@ -13,7 +13,7 @@ To generate all figures from the manuscript, please follow these steps:
 
           find scripts/figures -name "*.R" | xargs -I foo Rscript foo
 
-Required packages:
+Required packages for figures:
 
 * DESeq2
 * MASS
@@ -30,13 +30,15 @@ Required packages:
 * gtools
 * harrietr
 * here
-* maps
 * metagenomeSeq
 * reshape2
+* scales
+* tidyverse
+* vegan
+
+Optional packages to reproduce map figure from Supplementary Information (`scripts/figures/supplementary/supp_info_map.R`)
+* maps
 * rgeos
 * rnaturalearth
 * rnaturalearthdata
-* scales
 * sf
-* tidyverse
-* vegan
