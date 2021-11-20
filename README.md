@@ -25,7 +25,6 @@ Required packages for figures:
 * ggplot2
 * ggpubr
 * ggrepel
-* ggspatial
 * gplots
 * gtools
 * harrietr
@@ -37,6 +36,7 @@ Required packages for figures:
 * vegan
 
 Optional packages to reproduce map figure from Supplementary Information (`scripts/figures/supplementary/supp_info_map.R`)
+* ggspatial
 * maps
 * rgeos
 * rnaturalearth
