@@ -3,8 +3,8 @@ library(here)
 library(tidyverse)
 
 ##### EDIT HERE: #####
-ega_path <- "/Users/tamburif/Downloads/awigen_phase1_pilot_microbiome_study_metadata.csv"
-medications_path <- here("input_final/pheno/awigen_phase1_pilot_microbiome_study_medications.csv")
+ega_path <- "/path/to/EGA_pheno"
+medications_path <- "/path/to/EGA_medications"
 ######################
 
 # pheno data ----
